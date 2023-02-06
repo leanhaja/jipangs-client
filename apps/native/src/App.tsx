@@ -1,24 +1,23 @@
-import { StyleSheet, Text, View } from 'react-native'
+import styled from '@emotion/native'
 import { Button } from 'ui'
 
-const styles = StyleSheet.create({
-  container: {
-    alignItems: 'center',
-    backgroundColor: '#fff',
-    flex: 1,
-    justifyContent: 'center',
-  },
-  header: {
-    fontSize: 36,
-    fontWeight: 'bold',
-    marginBottom: 20,
-  },
-})
+const Container = styled.View`
+  align-items: center;
+  background-color: #fff;
+  flex: 1;
+  justify-content: center;
+`
+
+const Header = styled.Text`
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 20px;
+`
 
 export default function Native() {
   return (
-    <View style={styles.container}>
-      <Text style={styles.header}>Native</Text>
+    <Container>
+      <Header>Native With Emotion</Header>
       <Button
         onClick={() => {
           console.log('Pressed!')
@@ -26,6 +25,6 @@ export default function Native() {
         }}
         text="Boop"
       />
-    </View>
+    </Container>
   )
 }

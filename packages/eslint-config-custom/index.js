@@ -59,5 +59,6 @@ module.exports = {
     'react/no-unstable-nested-components': ['error', { allowAsProps: true }],
     '@next/next/no-html-link-for-pages': 'off',
     'react/jsx-key': 'off',
+    'import/prefer-default-export': 'off',
   },
 }

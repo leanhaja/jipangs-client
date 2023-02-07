@@ -25,5 +25,8 @@
     "tsconfig": "*",
     "typescript": "4.9.5",
     "ui": "*"
+  },
+  "devDependencies": {
+    "@emotion/babel-plugin": "^11.10.5"
   }
 }

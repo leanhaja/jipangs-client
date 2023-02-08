@@ -7,7 +7,7 @@ import Title from '../title'
 import { styles } from './styles'
 
 interface TextInputWithButtonProps {
-  isRequired: boolean
+  isRequired?: boolean
   placeholder: string
   title?: string
 }
@@ -19,7 +19,7 @@ export function TextInputWithButton({
 }: TextInputWithButtonProps) {
   return (
     <View style={styles.outerContainer}>
-      {!!title && <Title isRequired={isRequired} text={title} />}
+      {!!title && <Title isRequired={!!isRequired} text={title} />}
       <View style={styles.innerContainer}>
         <TextInput
           autoComplete="email"

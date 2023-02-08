@@ -30,6 +30,7 @@ export function Button({
           display: 'flex',
           height: 56,
           justifyContent: 'center',
+          width,
         },
         text: {
           color: disabled ? COLORS.BLACK : COLORS.WHITE,
@@ -41,11 +42,7 @@ export function Button({
   )
 
   return (
-    <Pressable
-      disabled={disabled}
-      onPress={onPress}
-      style={[styles.container, { width }]}
-    >
+    <Pressable disabled={disabled} onPress={onPress} style={[styles.container]}>
       <Text style={styles.text}>{text}</Text>
     </Pressable>
   )

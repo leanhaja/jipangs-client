@@ -8,6 +8,7 @@ module.exports = {
     'sort-destructure-keys',
     'sort-keys-fix',
     'typescript-sort-keys',
+    'better-styled-components',
   ],
   extends: [
     'airbnb',
@@ -61,5 +62,6 @@ module.exports = {
     'react/jsx-key': 'off',
     'import/prefer-default-export': 'off',
     'import/no-extraneous-dependencies': 'off',
+    'better-styled-components/sort-declarations-alphabetically': 2,
   },
 }

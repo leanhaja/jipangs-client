@@ -1,1 +1,3 @@
-export { Button, type ButtonProps } from "./button";
+export { Button } from './button'
+export { GeneralTextInput } from './input/generalTextInput'
+export { TextInputWithButton } from './input/textInputWithButton'

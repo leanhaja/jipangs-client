@@ -1,15 +1,52 @@
-import { GestureResponderEvent, Text, TouchableOpacity } from "react-native";
-import { styles } from "./styled";
+import { useMemo } from 'react'
+import { StyleSheet } from 'react-native'
+import { GestureResponderEvent, Pressable, Text } from 'react-native-web'
+
+import COLORS from '../constants/color'
 
 export interface ButtonProps {
-  text: string;
-  onClick?: (event: GestureResponderEvent) => void;
+  borderRadius?: number
+  disabled?: boolean
+  onPress?: (event: GestureResponderEvent) => void
+  text: string
+  width?: number
 }
 
-export function Button({ text, onClick }: ButtonProps) {
+export function Button({
+  borderRadius,
+  disabled,
+  onPress,
+  text,
+  width,
+}: ButtonProps) {
+  const styles = useMemo(
+    () =>
+      StyleSheet.create({
+        container: {
+          alignItems: 'center',
+          alignSelf: width ? 'auto' : 'stretch',
+          backgroundColor: disabled ? COLORS.DISABLED : COLORS.BUTTON_GREEN,
+          borderRadius: borderRadius || 12,
+          display: 'flex',
+          height: 56,
+          justifyContent: 'center',
+        },
+        text: {
+          color: disabled ? COLORS.BLACK : COLORS.WHITE,
+          fontSize: 16,
+          fontWeight: 'bold',
+        },
+      }),
+    [borderRadius, disabled, width]
+  )
+
   return (
-    <TouchableOpacity style={styles.button} onPress={onClick}>
+    <Pressable
+      disabled={disabled}
+      onPress={onPress}
+      style={[styles.container, { width }]}
+    >
       <Text style={styles.text}>{text}</Text>
-    </TouchableOpacity>
-  );
+    </Pressable>
+  )
 }

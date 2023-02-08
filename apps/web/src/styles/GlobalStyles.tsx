@@ -7,12 +7,24 @@ export default function GlobalStyles() {
       styles={css`
         ${emotionReset}
         body {
+          align-items: center;
+          display: flex;
           font-family: 'SF Pro Text', 'SF Pro Icons', 'Helvetica Neue',
             'Helvetica', 'Arial', sans-serif;
-          display: flex;
           height: 100vh;
-          align-items: center;
           justify-content: center;
+          margin: 0 auto;
+          width: 375px;
+        }
+
+        #__next {
+          align-items: center;
+          display: flex;
+          flex-direction: column;
+          height: 100%;
+          overflow: hidden;
+          padding: 0 16px;
+          width: 100%;
         }
       `}
     />

@@ -1,27 +1,25 @@
-import { TextInput, View } from 'react-native-web'
+import { TextInput, View, TextInputProps } from 'react-native-web'
 
 import COLORS from '../../constants/color'
 import Title from '../title'
 
 import { styles } from './styles'
 
-interface GeneralTextInputProps {
+interface GeneralTextInputProps extends TextInputProps {
   isRequired?: boolean
-  placeholder: string
   title?: string
 }
 
 export function GeneralTextInput({
   isRequired,
-  placeholder,
   title,
+  ...props
 }: GeneralTextInputProps) {
   return (
     <View style={styles.container}>
       {!!title && <Title isRequired={!!isRequired} text={title} />}
       <TextInput
-        autoComplete="email"
-        placeholder={placeholder}
+        {...props}
         placeholderTextColor={COLORS.GREY4}
         style={styles.input}
       />

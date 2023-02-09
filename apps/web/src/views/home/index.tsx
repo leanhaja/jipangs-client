@@ -5,7 +5,7 @@ import * as Styled from './styled'
 export default function Home() {
   return (
     <Styled.Container>
-      <h1>Web With Emotion</h1>
+      <h1>Web With Deployed on AWS</h1>
       <Button
         onClick={() => {
           console.log('Pressed!')

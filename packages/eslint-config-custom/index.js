@@ -27,6 +27,7 @@ module.exports = {
       'error',
       { multiline: 'first', reservedFirst: true },
     ],
+    'react/jsx-props-no-spreading': 'off',
     'simple-import-sort/exports': 'error',
     'import/first': 'error',
     'import/newline-after-import': 'error',

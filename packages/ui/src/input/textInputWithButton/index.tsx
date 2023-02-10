@@ -1,4 +1,4 @@
-import { TextInput, TextInputProps, View } from 'react-native-web'
+import { TextInput, TextInputProps, View } from 'react-native'
 
 import { Button } from '../../button'
 import COLORS from '../../constants/color'

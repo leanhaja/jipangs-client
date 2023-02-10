@@ -44,7 +44,7 @@ export function Button({
           fontWeight: 'bold',
         },
       }),
-    [borderRadius, disabled, width]
+    [borderRadius, disabled, height, width]
   )
 
   return (

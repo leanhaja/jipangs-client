@@ -1,12 +1,17 @@
 import { useMemo } from 'react'
-import { StyleSheet } from 'react-native'
-import { GestureResponderEvent, Pressable, Text } from 'react-native-web'
+import {
+  StyleSheet,
+  GestureResponderEvent,
+  Pressable,
+  Text,
+} from 'react-native'
 
 import COLORS from '../constants/color'
 
 export interface ButtonProps {
   borderRadius?: number
   disabled?: boolean
+  height?: number
   onPress?: (event: GestureResponderEvent) => void
   text: string
   width?: number
@@ -15,6 +20,7 @@ export interface ButtonProps {
 export function Button({
   borderRadius,
   disabled,
+  height,
   onPress,
   text,
   width,
@@ -25,10 +31,10 @@ export function Button({
         container: {
           alignItems: 'center',
           alignSelf: width ? 'auto' : 'stretch',
-          backgroundColor: disabled ? COLORS.DISABLED : COLORS.BUTTON_GREEN,
+          backgroundColor: disabled ? COLORS.DISABLED : COLORS.PRIMARY_BLUE,
           borderRadius: borderRadius || 12,
           display: 'flex',
-          height: 56,
+          height: height || 59,
           justifyContent: 'center',
           width,
         },

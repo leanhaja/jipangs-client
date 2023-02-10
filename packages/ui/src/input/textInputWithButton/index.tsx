@@ -22,10 +22,10 @@ export function TextInputWithButton({
       <View style={styles.innerContainer}>
         <TextInput
           {...props}
-          placeholderTextColor={COLORS.GREY4}
+          placeholderTextColor={COLORS.GREY3}
           style={styles.input}
         />
-        <Button borderRadius={6} text="중복확인" width={96} />
+        <Button borderRadius={6} height={48} text="중복확인" width={96} />
       </View>
     </View>
   )

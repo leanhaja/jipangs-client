@@ -20,7 +20,7 @@ export function GeneralTextInput({
       {!!title && <Title isRequired={!!isRequired} text={title} />}
       <TextInput
         {...props}
-        placeholderTextColor={COLORS.GREY4}
+        placeholderTextColor={COLORS.GREY3}
         style={styles.input}
       />
     </View>

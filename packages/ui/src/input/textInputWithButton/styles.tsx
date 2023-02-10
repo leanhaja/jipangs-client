@@ -10,11 +10,11 @@ export const styles = StyleSheet.create({
   },
   input: {
     alignSelf: 'stretch',
-    borderColor: COLORS.BLACK,
+    borderColor: COLORS.GREY3,
     borderRadius: 6,
     borderWidth: 1,
     fontSize: 16,
-    height: 56,
+    height: 48,
     paddingHorizontal: 16,
     width: 239,
   },

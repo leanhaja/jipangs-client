@@ -60,7 +60,6 @@ module.exports = {
     'react/require-default-props': 'off',
     'react/no-unstable-nested-components': ['error', { allowAsProps: true }],
     '@next/next/no-html-link-for-pages': 'off',
-    'react/jsx-key': 'off',
     'import/prefer-default-export': 'off',
     'import/no-extraneous-dependencies': 'off',
     'better-styled-components/sort-declarations-alphabetically': 2,

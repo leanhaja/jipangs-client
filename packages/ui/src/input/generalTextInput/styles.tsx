@@ -7,7 +7,13 @@ export const styles = StyleSheet.create({
     alignSelf: 'stretch',
     display: 'flex',
     flexDirection: 'column',
-    height: 79,
+    height: 96,
+  },
+  error: {
+    color: COLORS.POINT_RED,
+    fontSize: 12,
+    marginTop: 8,
+    paddingLeft: 16,
   },
   input: {
     alignSelf: 'stretch',
@@ -18,8 +24,14 @@ export const styles = StyleSheet.create({
     height: 48,
     paddingHorizontal: 16,
   },
+  invalid: {
+    borderColor: COLORS.POINT_RED,
+  },
   placeholder: {
     fontSize: 16,
     fontWeight: 'bold',
+  },
+  valid: {
+    borderColor: COLORS.PRIMARY_BLUE,
   },
 })

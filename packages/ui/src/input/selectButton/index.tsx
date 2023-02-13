@@ -1,7 +1,7 @@
 import { Dispatch, SetStateAction } from 'react'
 import { Pressable, Text, View } from 'react-native'
 
-import Title from '../title'
+import { Title } from '../title'
 
 import { styles } from './styles'
 

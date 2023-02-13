@@ -7,7 +7,7 @@ interface TitleProps {
   text: string
 }
 
-export default function Title({ isRequired, text }: TitleProps) {
+export function Title({ isRequired, text }: TitleProps) {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>{text}</Text>

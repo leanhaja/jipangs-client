@@ -2,7 +2,7 @@ import { TextInput, TextInputProps, View } from 'react-native'
 
 import { Button } from '../../button'
 import COLORS from '../../constants/color'
-import Title from '../title'
+import { Title } from '../title'
 
 import { styles } from './styles'
 

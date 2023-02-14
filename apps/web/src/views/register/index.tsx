@@ -14,11 +14,18 @@ const emailRegex =
 export default function RegisterPage() {
   const {
     control,
-    formState: { errors, touchedFields },
+    formState: { touchedFields },
     handleSubmit,
     register,
     watch,
   } = useForm<FormData>()
+
+  const isNameValid = watch('name')?.length >= 2
+  const isNicknameValid =
+    watch('nickname')?.length <= 8 && watch('nickname')?.length >= 2
+  const isEmailValid = emailRegex.test(watch('email'))
+  const isBirthValid =
+    watch('birth')?.length === 6 && /^\d{6}$/.test(watch('birth'))
 
   return (
     <>
@@ -27,21 +34,16 @@ export default function RegisterPage() {
           placeholder="이름을 입력해주세요."
           title="이름"
           {...register('name')}
-          isInValid={touchedFields.name && watch('name')?.length < 2}
-          isValid={watch('name')?.length >= 2}
+          isInValid={touchedFields.name && !isNameValid}
+          isValid={isNameValid}
           minLength={2}
         />
         <TextInput
           placeholder="한글 2~8자를 입력해주세요."
           title="닉네임"
           {...register('nickname')}
-          isInValid={
-            touchedFields.nickname &&
-            (watch('nickname')?.length < 2 || watch('nickname')?.length > 8)
-          }
-          isValid={
-            watch('nickname')?.length <= 8 && watch('nickname')?.length >= 2
-          }
+          isInValid={touchedFields.nickname && !isNicknameValid}
+          isValid={isNicknameValid}
           maxLength={8}
           minLength={2}
         />
@@ -49,8 +51,8 @@ export default function RegisterPage() {
           placeholder="id@jipangs.com."
           title="이메일"
           {...register('email')}
-          isInValid={touchedFields.email && !emailRegex.test(watch('email'))}
-          isValid={emailRegex.test(watch('email'))}
+          isInValid={touchedFields.email && !isEmailValid}
+          isValid={isEmailValid}
           pattern={emailRegex.toString()}
           type="email"
         />
@@ -70,13 +72,8 @@ export default function RegisterPage() {
           placeholder="ex) 990909"
           title="생년월일"
           {...register('birth')}
-          isInValid={
-            touchedFields.birth &&
-            (watch('birth')?.length !== 6 || /^\d{6}$/.test(watch('birth')))
-          }
-          isValid={
-            watch('birth')?.length === 6 && /^\d{6}$/.test(watch('birth'))
-          }
+          isInValid={touchedFields.birth && !isBirthValid}
+          isValid={isBirthValid}
           maxLength={6}
           minLength={6}
         />

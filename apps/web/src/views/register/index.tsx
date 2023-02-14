@@ -63,6 +63,7 @@ export default function RegisterPage() {
               name="gender"
               option1="남성"
               option2="여성"
+              title="성별"
             />
           )}
           control={control}

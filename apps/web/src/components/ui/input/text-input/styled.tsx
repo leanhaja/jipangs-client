@@ -28,17 +28,17 @@ export const TextInput = styled.input<StyleProps>`
 `
 
 export const OuterContainer = styled.div`
-  height: 96px;
   width: 100%;
 `
 
 export const InnerContainer = styled.div`
-  margin: 8px 0 8px 0;
+  margin-top: 8px;
 `
 
 export const Error = styled.p`
   color: ${(props) => props.theme.colors.POINT_RED};
   font-size: 12px;
+  margin-top: 8px;
   padding-left: 19px;
   width: 100%;
 `

@@ -1,23 +1,26 @@
-import { Dispatch, PropsWithChildren, SetStateAction, MouseEvent } from 'react'
+import type { PropsWithChildren, MouseEvent } from 'react'
+import { useController, UseControllerProps } from 'react-hook-form'
 
 import * as Styled from './styled'
 import { StyleProps } from './styled'
 
-interface ButtonProps extends StyleProps {
-  setValue: Dispatch<SetStateAction<string>>
-  value?: string
-}
+import { FormData } from '@/views/register/register'
+
+type ButtonProps = StyleProps & UseControllerProps<FormData>
 
 export default function Button({
   borderRadius,
   children,
   height,
-  setValue,
-  value,
   width,
+  ...controllerProps
 }: PropsWithChildren<ButtonProps>) {
+  const {
+    field: { onChange, value },
+  } = useController(controllerProps)
+
   const handleClick = (e: MouseEvent<HTMLButtonElement>) => {
-    setValue(e.currentTarget.innerText)
+    onChange(e.currentTarget.innerText)
   }
 
   return (
@@ -26,6 +29,7 @@ export default function Button({
       height={height}
       onClick={handleClick}
       selected={children === value}
+      type="button"
       width={width}
     >
       {children}

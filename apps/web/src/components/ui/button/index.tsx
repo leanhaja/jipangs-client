@@ -5,6 +5,7 @@ import * as Styled from './styled'
 
 interface ButtonProps extends StyleProps {
   onClick?: () => void
+  type?: 'submit' | 'button' | 'reset'
 }
 
 export default function Button({
@@ -13,6 +14,7 @@ export default function Button({
   disabled,
   height,
   onClick,
+  type = 'button',
   width,
 }: PropsWithChildren<ButtonProps>) {
   return (
@@ -21,6 +23,7 @@ export default function Button({
       disabled={disabled}
       height={height}
       onClick={onClick}
+      type={type}
       width={width}
     >
       {children}

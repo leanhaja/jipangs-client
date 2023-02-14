@@ -77,7 +77,20 @@ export default function RegisterPage() {
           maxLength={6}
           minLength={6}
         />
-        <Button>다음</Button>
+        <Button
+          disabled={
+            !(
+              isNameValid &&
+              isBirthValid &&
+              isEmailValid &&
+              isNicknameValid &&
+              !!watch('gender')
+            )
+          }
+          type="submit"
+        >
+          다음
+        </Button>
       </Styled.Container>
       <DevTool control={control} />
     </>

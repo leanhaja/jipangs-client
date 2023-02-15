@@ -19,7 +19,7 @@ declare module '@emotion/react' {
       CONTAINER_GREEN: string
       CONTAINER_ORANGE: string
       CONTAINER_RED: string
-      CONTAINER_YELLO: string
+      CONTAINER_YELLOW: string
       DISABLED: string
       GREY1: string
       GREY2: string

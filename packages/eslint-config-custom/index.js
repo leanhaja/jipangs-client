@@ -8,6 +8,7 @@ module.exports = {
     'sort-destructure-keys',
     'sort-keys-fix',
     'typescript-sort-keys',
+    'better-styled-components',
   ],
   extends: [
     'airbnb',
@@ -26,6 +27,7 @@ module.exports = {
       'error',
       { multiline: 'first', reservedFirst: true },
     ],
+    'react/jsx-props-no-spreading': 'off',
     'simple-import-sort/exports': 'error',
     'import/first': 'error',
     'import/newline-after-import': 'error',
@@ -60,5 +62,6 @@ module.exports = {
     '@next/next/no-html-link-for-pages': 'off',
     'import/prefer-default-export': 'off',
     'import/no-extraneous-dependencies': 'off',
+    'better-styled-components/sort-declarations-alphabetically': 2,
   },
 }

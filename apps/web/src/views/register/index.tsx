@@ -8,6 +8,11 @@ import Button from '@/components/ui/button'
 import ButtonInput from '@/components/ui/input/button-input'
 import TextInput from '@/components/ui/input/text-input'
 
+// TODO: 상수폴더로 빼기
+const MINIMUM_NAME_LEN = 2
+const MAXIMUM_NICKNAME_LEN = 8
+const MINIMUM_NICKNAME_LEN = 2
+const BIRTH_FORMAT_LEN = 6
 const emailRegex =
   /^[_A-Za-z0-9-\\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$/
 
@@ -20,12 +25,12 @@ export default function RegisterPage() {
     watch,
   } = useForm<FormData>()
 
-  const isNameValid = watch('name')?.length >= 2
+  const isNameValid = watch('name')?.length >= MINIMUM_NAME_LEN
   const isNicknameValid =
-    watch('nickname')?.length <= 8 && watch('nickname')?.length >= 2
+    watch('nickname')?.length <= MAXIMUM_NICKNAME_LEN &&
+    watch('nickname')?.length >= MINIMUM_NICKNAME_LEN
   const isEmailValid = emailRegex.test(watch('email'))
-  const isBirthValid =
-    watch('birth')?.length === 6 && /^\d{6}$/.test(watch('birth'))
+  const isBirthValid = /^\d{6}$/.test(watch('birth'))
 
   return (
     <>
@@ -36,7 +41,7 @@ export default function RegisterPage() {
           {...register('name')}
           isInValid={touchedFields.name && !isNameValid}
           isValid={isNameValid}
-          minLength={2}
+          minLength={MINIMUM_NAME_LEN}
         />
         <TextInput
           placeholder="한글 2~8자를 입력해주세요."
@@ -44,8 +49,8 @@ export default function RegisterPage() {
           {...register('nickname')}
           isInValid={touchedFields.nickname && !isNicknameValid}
           isValid={isNicknameValid}
-          maxLength={8}
-          minLength={2}
+          maxLength={MAXIMUM_NICKNAME_LEN}
+          minLength={MINIMUM_NICKNAME_LEN}
         />
         <TextInput
           placeholder="id@jipangs.com."
@@ -75,8 +80,8 @@ export default function RegisterPage() {
           {...register('birth')}
           isInValid={touchedFields.birth && !isBirthValid}
           isValid={isBirthValid}
-          maxLength={6}
-          minLength={6}
+          maxLength={BIRTH_FORMAT_LEN}
+          minLength={BIRTH_FORMAT_LEN}
         />
         <Button
           disabled={

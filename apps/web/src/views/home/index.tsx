@@ -6,13 +6,7 @@ export default function Home() {
   return (
     <Styled.Container>
       <h1>Web Deployed on AWS</h1>
-      <Button
-        onClick={() => {
-          console.log('Pressed!')
-          alert('Pressed!')
-        }}
-        text="Boop"
-      />
+      <Button text="Boop" />
     </Styled.Container>
   )
 }

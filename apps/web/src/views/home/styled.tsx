@@ -1,10 +1,10 @@
 import styled from '@emotion/styled'
 
 export const Container = styled.div`
-  text-align: center;
+  align-items: center;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   gap: 16px;
+  justify-content: center;
+  text-align: center;
 `

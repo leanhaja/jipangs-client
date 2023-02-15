@@ -5,7 +5,7 @@ import Title from '../../title'
 import Button from './button'
 import * as Styled from './styled'
 
-import { FormData } from '@/views/register/register'
+import { FormData } from '@/views/register/userInfo/userInfo'
 
 interface ButtonInputProps extends UseControllerProps<FormData> {
   option1: string

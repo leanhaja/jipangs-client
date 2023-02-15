@@ -1,12 +1,12 @@
 import { DevTool } from '@hookform/devtools'
 import { Controller, useForm } from 'react-hook-form'
 
-import type { FormData } from './register'
 import * as Styled from './styled'
+import type { FormData } from './userInfo'
 
-import Button from '@/components/ui/button'
-import ButtonInput from '@/components/ui/input/button-input'
-import TextInput from '@/components/ui/input/text-input'
+import Button from '@/components/user-interface/button'
+import ButtonInput from '@/features/register/input/button-input'
+import TextInput from '@/features/register/input/text-input'
 
 // TODO: 상수폴더로 빼기
 const MINIMUM_NAME_LEN = 2
@@ -20,7 +20,6 @@ export default function RegisterPage() {
   const {
     control,
     formState: { touchedFields },
-    handleSubmit,
     register,
     watch,
   } = useForm<FormData>()

@@ -1,6 +1,5 @@
 import { Global, css } from '@emotion/react'
 import localFont from '@next/font/local'
-import emotionNormalize from 'emotion-normalize'
 import emotionReset from 'emotion-reset'
 
 const pretendard = localFont({

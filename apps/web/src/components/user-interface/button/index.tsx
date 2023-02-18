@@ -1,16 +1,18 @@
-import type { PropsWithChildren } from 'react'
+import type { PropsWithChildren, MouseEvent } from 'react'
 
 import { StyleProps } from './styled'
 import * as Styled from './styled'
 
 interface ButtonProps extends StyleProps {
-  onClick?: () => void
+  onClick?: (e: MouseEvent<HTMLButtonElement>) => void
   type?: 'submit' | 'button' | 'reset'
 }
 
 export default function Button({
+  backgroundColor,
   borderRadius,
   children,
+  color,
   disabled,
   height,
   onClick,
@@ -19,7 +21,9 @@ export default function Button({
 }: PropsWithChildren<ButtonProps>) {
   return (
     <Styled.Button
+      backgroundColor={backgroundColor}
       borderRadius={borderRadius}
+      color={color}
       disabled={disabled}
       height={height}
       onClick={onClick}

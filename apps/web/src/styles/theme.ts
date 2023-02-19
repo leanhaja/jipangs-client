@@ -1,12 +1,12 @@
 const theme = {
   btn1: {
     'font-size': '16px',
-    'font-weight': 600,
+    'font-weight': '600',
     'line-height': '100%',
   },
   c1: {
     'font-size': '10px',
-    'font-weight': 400,
+    'font-weight': '400',
     'line-height': '100%',
   },
   colors: {

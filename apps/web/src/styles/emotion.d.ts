@@ -4,13 +4,13 @@ declare module '@emotion/react' {
   export interface Theme {
     btn1: {
       'font-size': string
-      'font-weight': number
+      'font-weight': string
       'line-height': string
     }
 
     c1: {
       'font-size': string
-      'font-weight': number
+      'font-weight': string
       'line-height': string
     }
     colors: {
@@ -35,52 +35,52 @@ declare module '@emotion/react' {
     }
     h1: {
       'font-size': string
-      'font-weight': number
+      'font-weight': string
       'line-height': string
     }
     h2: {
       'font-size': string
-      'font-weight': number
+      'font-weight': string
       'line-height': string
     }
     h3: {
       'font-size': string
-      'font-weight': number
+      'font-weight': string
       'line-height': string
     }
     h4: {
       'font-size': string
-      'font-weight': number
+      'font-weight': string
       'line-height': string
     }
     h5: {
       'font-size': string
-      'font-weight': number
+      'font-weight': string
       'line-height': string
     }
     p1: {
       'font-size': string
-      'font-weight': number
+      'font-weight': string
       'line-height': string
     }
     p2: {
       'font-size': string
-      'font-weight': number
+      'font-weight': string
       'line-height': string
     }
     p3: {
       'font-size': string
-      'font-weight': number
+      'font-weight': string
       'line-height': string
     }
     p4: {
       'font-size': string
-      'font-weight': number
+      'font-weight': string
       'line-height': string
     }
     p5: {
       'font-size': string
-      'font-weight': number
+      'font-weight': string
       'line-height': string
     }
   }

@@ -69,9 +69,6 @@ export default function GlobalStyles() {
           padding: 0 16px;
           width: 100%;
         }
-        * {
-          box-sizing: border-box;
-        }
 
         * {
           box-sizing: border-box;
@@ -79,10 +76,6 @@ export default function GlobalStyles() {
           margin: 0;
           letter-spacing: -0.05em;
           outline: none;
-          -webkit-tap-highlight-color: transparent;
-          -webkit-touch-callout: none;
-          -ms-overflow-style: none; // IE and Edge
-          scrollbar-width: none; // Firefox
 
           &::before,
           &::after {
@@ -102,25 +95,6 @@ export default function GlobalStyles() {
           text-decoration: none;
         }
 
-        select,
-        input,
-        textarea {
-          font-size: 16px;
-        }
-
-        input,
-        button {
-          -webkit-appearance: none;
-        }
-
-        input::-webkit-contacts-auto-fill-button {
-          position: absolute;
-          right: 0;
-          display: none !important;
-          pointer-events: none;
-          visibility: hidden;
-        }
-
         input {
           background-color: transparent;
           background-image: none !important;
@@ -138,11 +112,6 @@ export default function GlobalStyles() {
           }
         }
 
-        input:is([type='button'], [type='submit'], [type='reset']),
-        input[type='file']::file-selector-button,
-        button {
-          color: initial;
-        }
         ${pretendard.style}
       `}
     />

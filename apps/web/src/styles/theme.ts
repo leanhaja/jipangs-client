@@ -1,4 +1,6 @@
-const theme = {
+import { Theme } from '@emotion/react'
+
+const theme: Theme = {
   btn1: {
     'font-size': '16px',
     'font-weight': '600',
@@ -48,6 +50,15 @@ const theme = {
     'font-size': '18px',
     'font-weight': '500',
     'line-height': '100%',
+  },
+  multilineEllipsis: {
+    '-webkit-box-orient': 'vertical',
+    '-webkit-line-clamp': '2',
+    display: '-webkit-box',
+    'margin-top': '16px',
+    overflow: 'hidden',
+    'text-align': 'left',
+    'text-overflow': 'ellipsis',
   },
   p1: {
     'font-size': '16px',

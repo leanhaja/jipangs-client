@@ -53,10 +53,14 @@ declare module '@emotion/react' {
       'font-weight': string
       'line-height': string
     }
-    h5: {
-      'font-size': string
-      'font-weight': string
-      'line-height': string
+    multilineEllipsis: {
+      '-webkit-box-orient': string
+      '-webkit-line-clamp': string
+      display: string
+      'margin-top': string
+      overflow: string
+      'text-align': string
+      'text-overflow': string
     }
     p1: {
       'font-size': string

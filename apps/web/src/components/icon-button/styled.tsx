@@ -6,3 +6,5 @@ export const Button = styled.button`
   cursor: pointer;
   padding: 0;
 `
+
+// TODO: css reset 변경되면 수정 필요

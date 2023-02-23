@@ -9,6 +9,7 @@ export interface IconButtonProps {
   className?: string
   iconName: IconName
   onClick?: VoidFunction
+  style?: React.CSSProperties
 }
 
 function IconButton({
@@ -17,12 +18,14 @@ function IconButton({
   className,
   iconName,
   onClick,
+  style,
 }: PropsWithChildren<IconButtonProps>) {
   return (
     <Styled.Button
       aria-label={ariaLabel}
       className={className}
       onClick={onClick}
+      style={style}
       type="button"
     >
       <Icon iconName={iconName} />

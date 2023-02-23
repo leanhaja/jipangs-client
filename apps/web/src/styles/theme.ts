@@ -1,6 +1,7 @@
 import { Theme } from '@emotion/react'
 
 const theme: Theme = {
+  bottomNavigationHeight: '88px',
   btn1: {
     'font-size': '16px',
     'font-weight': '600',

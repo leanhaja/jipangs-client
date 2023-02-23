@@ -2,12 +2,12 @@ import '@emotion/react'
 
 declare module '@emotion/react' {
   export interface Theme {
+    bottomNavigationHeight: string
     btn1: {
       'font-size': string
       'font-weight': string
       'line-height': string
     }
-
     c1: {
       'font-size': string
       'font-weight': string

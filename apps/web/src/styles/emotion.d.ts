@@ -4,14 +4,14 @@ declare module '@emotion/react' {
   export interface Theme {
     bottomNavigationHeight: string
     btn1: {
-      'font-size': string
-      'font-weight': string
-      'line-height': string
+      fontSize: string
+      fontWeight: string
+      lineHeight: string
     }
     c1: {
-      'font-size': string
-      'font-weight': string
-      'line-height': string
+      fontSize: string
+      fontWeight: string
+      lineHeight: string
     }
     colors: {
       BLACK: string
@@ -34,58 +34,58 @@ declare module '@emotion/react' {
       WHITE: string
     }
     h1: {
-      'font-size': string
-      'font-weight': string
-      'line-height': string
+      fontSize: string
+      fontWeight: string
+      lineHeight: string
     }
     h2: {
-      'font-size': string
-      'font-weight': string
-      'line-height': string
+      fontSize: string
+      fontWeight: string
+      lineHeight: string
     }
     h3: {
-      'font-size': string
-      'font-weight': string
-      'line-height': string
+      fontSize: string
+      fontWeight: string
+      lineHeight: string
     }
     h4: {
-      'font-size': string
-      'font-weight': string
-      'line-height': string
+      fontSize: string
+      fontWeight: string
+      lineHeight: string
     }
     multilineEllipsis: {
-      '-webkit-box-orient': string
-      '-webkit-line-clamp': string
+      WebkitBoxOrient: string
+      WebkitLineClamp: string
       display: string
-      'margin-top': string
+      marginTop: string
       overflow: string
-      'text-align': string
-      'text-overflow': string
+      textAlign: string
+      textOverflow: string
     }
     p1: {
-      'font-size': string
-      'font-weight': string
-      'line-height': string
+      fontSize: string
+      fontWeight: string
+      lineHeight: string
     }
     p2: {
-      'font-size': string
-      'font-weight': string
-      'line-height': string
+      fontSize: string
+      fontWeight: string
+      lineHeight: string
     }
     p3: {
-      'font-size': string
-      'font-weight': string
-      'line-height': string
+      fontSize: string
+      fontWeight: string
+      lineHeight: string
     }
     p4: {
-      'font-size': string
-      'font-weight': string
-      'line-height': string
+      fontSize: string
+      fontWeight: string
+      lineHeight: string
     }
     p5: {
-      'font-size': string
-      'font-weight': string
-      'line-height': string
+      fontSize: string
+      fontWeight: string
+      lineHeight: string
     }
   }
 }

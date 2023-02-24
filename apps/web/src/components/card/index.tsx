@@ -42,8 +42,11 @@ function Card({ imageSrc, location, onScrapClick, tags, title }: CardProps) {
         <Styled.Footer>
           <span>{location}</span>
           <IconButton
+            style={{
+              WebkitBoxOrient: 'vertical',
+            }}
             ariaLabel="스크랩"
-            iconName={isBookMarked ? 'bookmark_colored' : 'bookmark'}
+            iconName={isBookMarked ? 'bookmark_filled' : 'bookmark'}
             onClick={onClick}
           />
         </Styled.Footer>

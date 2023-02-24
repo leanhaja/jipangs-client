@@ -65,12 +65,12 @@ declare module '@emotion/react' {
       lineHeight: string
     }
     multilineEllipsis: {
-      WebkitBoxOrient: string
+      WebkitBoxOrient: 'vertical'
       WebkitLineClamp: string
       display: string
       marginTop: string
       overflow: string
-      textAlign: string
+      textAlign: 'left'
       textOverflow: string
     }
     p1: {

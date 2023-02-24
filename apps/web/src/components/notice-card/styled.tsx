@@ -14,8 +14,8 @@ export const Button = styled.button<{ isNotChecked?: boolean }>`
 `
 
 export const Title = styled.h1`
-  font-size: ${(props) => props.theme.btn1['font-size']};
-  font-weight: ${(props) => props.theme.btn1['font-weight']};
+  font-size: ${(props) => props.theme.btn1.fontSize};
+  font-weight: ${(props) => props.theme.btn1.fontWeight};
   margin-bottom: 6px;
 `
 
@@ -23,8 +23,8 @@ export const Description = styled.p`
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
   display: -webkit-box;
-  font-size: ${(props) => props.theme.p4['font-size']};
-  font-weight: ${(props) => props.theme.p4['font-weight']};
+  font-size: ${(props) => props.theme.p4.fontSize};
+  font-weight: ${(props) => props.theme.p4.fontWeight};
   overflow: hidden;
 `
 
@@ -36,8 +36,8 @@ export const ProfileImage = styled.img`
 `
 export const Date = styled.time`
   bottom: 0;
-  font-size: ${(props) => props.theme.p4['font-size']};
-  font-weight: ${(props) => props.theme.p4['font-weight']};
+  font-size: ${(props) => props.theme.p4.fontSize};
+  font-weight: ${(props) => props.theme.p4.fontWeight};
   left: 0;
   position: absolute;
 `

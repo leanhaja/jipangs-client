@@ -4,9 +4,9 @@ export const Container = styled.div``
 
 export const Button = styled.button`
   --bottom-line-width: 2px;
-
-  ${({ theme }) => theme.h3};
   color: ${({ theme }) => theme.colors.GREY3};
+  ${({ theme }) => theme.h3};
+  height: 44px;
   padding: 9.5px 12px;
   position: relative;
 
@@ -24,3 +24,5 @@ export const Button = styled.button`
     width: 100%;
   }
 `
+
+// TODO: 폰트 적용되면 스타일 점검

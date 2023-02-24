@@ -8,6 +8,12 @@ declare module '@emotion/react' {
       fontWeight: string
       lineHeight: string
     }
+    buttonSizes: {
+      large: {
+        height: string
+        width: string
+      }
+    }
     c1: {
       fontSize: string
       fontWeight: string
@@ -32,6 +38,11 @@ declare module '@emotion/react' {
       SCRIM: string
       TRANSPARENT_GRAY: string
       WHITE: string
+    }
+    flexCenter: {
+      alignItems: string
+      display: string
+      justifyContent: string
     }
     h1: {
       fontSize: string

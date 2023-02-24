@@ -7,6 +7,12 @@ const theme: Theme = {
     fontWeight: '600',
     lineHeight: '100%',
   },
+  buttonSizes: {
+    large: {
+      height: '44px',
+      width: '44px',
+    },
+  },
   c1: {
     fontSize: '10px',
     fontWeight: '400',
@@ -31,6 +37,11 @@ const theme: Theme = {
     SCRIM: '#808080',
     TRANSPARENT_GRAY: '#F7F7F7',
     WHITE: '#FFFFFF',
+  },
+  flexCenter: {
+    alignItems: 'center',
+    display: 'flex',
+    justifyContent: 'center',
   },
   h1: {
     fontSize: '24px',

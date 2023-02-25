@@ -49,6 +49,11 @@ const theme = {
     'font-weight': '500',
     'line-height': '100%',
   },
+  levels: {
+    BACKGROUND: -100,
+    BASE: 0,
+    FOREGROUND: 100,
+  },
   p1: {
     'font-size': '16px',
     'font-weight': '500',

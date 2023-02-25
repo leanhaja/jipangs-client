@@ -3,15 +3,16 @@ import styled from '@emotion/styled'
 import IconButton from '@/components/icon-button'
 
 export const Nav = styled.nav`
+  background-color: ${(props) => props.theme.colors.WHITE};
   bottom: 0;
   box-shadow: 0px -2px 9px rgba(0, 0, 0, 0.1);
   display: flex;
   justify-content: space-between;
   left: 0;
   padding: 0 0 32.5px;
-
   position: fixed;
   width: 100%;
+  z-index: ${(props) => props.theme.levels.FOREGROUND};
 
   & button:first-of-type {
     margin-left: 12px;

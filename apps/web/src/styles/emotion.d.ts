@@ -58,6 +58,11 @@ declare module '@emotion/react' {
       'font-weight': string
       'line-height': string
     }
+    levels: {
+      BACKGROUND: number
+      BASE: number
+      FOREGROUND: number
+    }
     p1: {
       'font-size': string
       'font-weight': string

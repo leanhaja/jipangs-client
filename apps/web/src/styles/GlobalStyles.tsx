@@ -66,7 +66,6 @@ export default function GlobalStyles() {
           flex-direction: column;
           height: 100%;
           overflow: hidden;
-          padding: 0 16px;
           width: 100%;
         }
 

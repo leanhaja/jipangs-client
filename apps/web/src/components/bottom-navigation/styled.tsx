@@ -4,6 +4,7 @@ import IconButton from '@/components/icon-button'
 
 export const Nav = styled.nav`
   align-items: baseline;
+  background-color: ${({ theme }) => theme.colors.WHITE};
   bottom: 0;
   box-shadow: 0px -2px 9px rgba(0, 0, 0, 0.1);
   display: flex;
@@ -12,7 +13,10 @@ export const Nav = styled.nav`
   padding: 3px 11px 0;
   position: fixed;
   width: 100%;
+  z-index: 1;
 `
+
+// TODO: bottomNavigation 바텀 만큼 페이지 띄워줘야 함
 
 export const Button = styled(IconButton)`
   align-items: center;

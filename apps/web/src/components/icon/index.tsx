@@ -4,6 +4,7 @@ import AlarmNewInActive from './assets/alarm_new_inactive.svg'
 import BeforeArrow from './assets/before_arrow.svg'
 import BookMark from './assets/bookmark.svg'
 import BookmarkFilled from './assets/bookmark_filled.svg'
+import BookmarkNavigation from './assets/bookmark_navigation.svg'
 import Check from './assets/check.svg'
 import Community from './assets/community.svg'
 import Home from './assets/home.svg'
@@ -19,6 +20,7 @@ export type IconName =
   | 'before_arrow'
   | 'bookmark'
   | 'bookmark_filled'
+  | 'bookmark_navigation'
   | 'check'
   | 'community'
   | 'home'
@@ -38,6 +40,7 @@ const icons: Record<IconName, React.ReactElement> = {
   before_arrow: <BeforeArrow />,
   bookmark: <BookMark />,
   bookmark_filled: <BookmarkFilled />,
+  bookmark_navigation: <BookmarkNavigation />,
   check: <Check />,
   community: <Community />,
   home: <Home />,

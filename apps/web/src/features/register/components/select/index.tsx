@@ -1,4 +1,3 @@
-import { AnimatePresence, motion } from 'framer-motion'
 import { Dispatch, SetStateAction, useRef, MouseEvent } from 'react'
 
 import * as Styled from './styled'

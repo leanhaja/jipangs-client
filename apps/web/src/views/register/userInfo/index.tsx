@@ -5,8 +5,8 @@ import * as Styled from './styled'
 import type { FormData } from './userInfo'
 
 import Button from '@/components/user-interface/button'
-import ButtonInput from '@/features/register/input/button-input'
-import TextInput from '@/features/register/input/text-input'
+import ButtonInput from '@/features/register/components/input/button-input'
+import TextInput from '@/features/register/components/input/text-input'
 
 // TODO: 상수폴더로 빼기
 const MINIMUM_NAME_LEN = 2

@@ -17,10 +17,10 @@ declare module '@emotion/react' {
     c1: {
       fontSize: string
       fontWeight: string
-      lineHeight: string
     }
     colors: {
       BLACK: string
+      BOOKMARK_PURPLE: string
       BUTTON_GREEN: string
       CONTAINER_GREEN: string
       CONTAINER_ORANGE: string
@@ -68,7 +68,6 @@ declare module '@emotion/react' {
       WebkitBoxOrient: 'vertical'
       WebkitLineClamp: string
       display: string
-      marginTop: string
       overflow: string
       textAlign: 'left'
       textOverflow: string

@@ -52,13 +52,13 @@ export default function GlobalStyles() {
         body {
           font-family: 'Pretendard', 'SF Pro Text', 'SF Pro Icons',
             'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+          padding-top: 74px;
         }
 
         * {
           box-sizing: border-box;
           padding: 0;
           margin: 0;
-          outline: none;
 
           &::before,
           &::after {

@@ -13,7 +13,7 @@ export const Nav = styled.nav`
   padding: 3px 11px 0;
   position: fixed;
   width: 100%;
-  z-index: 1;
+  z-index: ${({ theme }) => theme.levels.FOREGROUND};
 `
 
 // TODO: bottomNavigation 바텀 만큼 페이지 띄워줘야 함

@@ -1,6 +1,6 @@
 import { useRef } from 'react'
 
-import Button from '../../../components/user-interface/button'
+import Button from '../../../../components/user-interface/button'
 
 import * as Styled from './styled'
 

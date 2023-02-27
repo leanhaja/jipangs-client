@@ -63,6 +63,11 @@ const theme: Theme = {
     fontWeight: '500',
     lineHeight: '100%',
   },
+  levels: {
+    BACKGROUND: -100,
+    BASE: 0,
+    FOREGROUND: 100,
+  },
   multilineEllipsis: {
     WebkitBoxOrient: 'vertical',
     WebkitLineClamp: '2',

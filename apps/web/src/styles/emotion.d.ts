@@ -64,6 +64,11 @@ declare module '@emotion/react' {
       fontWeight: string
       lineHeight: string
     }
+    levels: {
+      BACKGROUND: number
+      BASE: number
+      FOREGROUND: number
+    }
     multilineEllipsis: {
       WebkitBoxOrient: 'vertical'
       WebkitLineClamp: string

@@ -5,7 +5,8 @@
   "files": [
     "base.json",
     "nextjs.json",
-    "react-library.json"
+    "react-library.json",
+    "react-native.json"
   ],
   "devDependencies": {
     "typescript-styled-plugin": "^0.18.2"

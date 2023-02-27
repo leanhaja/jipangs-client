@@ -1,27 +1,35 @@
-export const BUTTONS = [
+import { type IconName } from '@/components/icon'
+
+export interface NavigationButton {
+  iconName: IconName
+  label: string
+  route: string
+}
+
+export const BUTTONS: NavigationButton[] = [
   {
     iconName: 'home',
     label: '홈',
     route: '/',
   },
   {
-    iconName: 'bookmark',
+    iconName: 'bookmark_navigation',
     label: '저장',
-    route: 'save',
+    route: '/save',
   },
   {
-    iconName: 'forum',
+    iconName: 'community',
     label: '커뮤니티',
-    route: 'forum',
+    route: '/community',
   },
   {
-    iconName: 'notification',
+    iconName: 'alarm',
     label: '알림',
-    route: 'notification',
+    route: '/alarm',
   },
   {
     iconName: 'user',
     label: '마이페이지',
-    route: 'user',
+    route: '/user',
   },
-] as const
+]

@@ -50,31 +50,14 @@ export default function GlobalStyles() {
         ${emotionReset}
 
         body {
-          align-items: center;
           font-family: 'Pretendard', 'SF Pro Text', 'SF Pro Icons',
             'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
-          display: flex;
-          height: 100vh;
-          justify-content: center;
-          margin: 0 auto;
-          width: 375px;
-        }
-
-        #__next {
-          align-items: center;
-          display: flex;
-          flex-direction: column;
-          height: 100%;
-          overflow: hidden;
-          padding: 0 16px;
-          width: 100%;
         }
 
         * {
           box-sizing: border-box;
           padding: 0;
           margin: 0;
-          letter-spacing: -0.05em;
           outline: none;
 
           &::before,

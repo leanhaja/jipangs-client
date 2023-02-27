@@ -10,18 +10,22 @@ export interface LayoutProps {
 function Layout({ children }: LayoutProps) {
   const router = useRouter()
 
+  const getOnButtonClick = (routeName: string) => () => {
+    router.push(routeName).catch(() => {
+      throw new Error('routing error occurred!')
+    })
+  }
+
   return (
     <>
       <BottomNavigation
         buttons={BUTTONS.map(({ iconName, label, route }) => ({
           iconName,
           label,
-          onClick() {
-            router.push(route).catch(() => {
-              throw new Error('routing error occurred!')
-            })
-          },
+          onClick: getOnButtonClick(route),
+          route,
         }))}
+        selectedRouteName={router.pathname}
       />
       {children}
     </>

@@ -1,8 +1,4 @@
 module.exports = {
-  parser: '@typescript-eslint/parser',
-  parserOptions: {
-    project: ['./tsconfig.json'],
-  },
   plugins: [
     'simple-import-sort',
     'sort-destructure-keys',
@@ -10,6 +6,20 @@ module.exports = {
     'typescript-sort-keys',
     'better-styled-components',
   ],
+  settings: {
+    next: {
+      rootDir: ['apps/*/', 'packages/*/'],
+    },
+    'import/parsers': {
+      '@typescript-eslint/parser': ['.ts', '.tsx'],
+    },
+    'import/resolver': {
+      typescript: {
+        alwaysTryTypes: true,
+        project: ['apps/*/tsconfig.json'],
+      },
+    },
+  },
   extends: [
     'airbnb',
     'airbnb-typescript',
@@ -63,5 +73,16 @@ module.exports = {
     'import/prefer-default-export': 'off',
     'import/no-extraneous-dependencies': 'off',
     'better-styled-components/sort-declarations-alphabetically': 2,
+    '@typescript-eslint/no-unused-vars': 'error',
   },
+  ignorePatterns: [
+    '**/*.js',
+    '**/*.json',
+    'node_modules',
+    'public',
+    '.next',
+    'coverage',
+    'dist',
+    '.turbo',
+  ],
 }

@@ -12,14 +12,14 @@ export const Container = styled(motion.div)`
   position: absolute;
   text-align: start;
   width: 100%;
-  z-index: ${(props) => props.theme.levels.BASE};
+  z-index: ${({ theme }) => theme.levels.BASE};
 `
 
 export const SelectItem = styled.button`
   height: 48px;
   text-align: start;
   width: 100%;
-  ${(props) => props.theme.p1}
+  ${({ theme }) => theme.p1}
 
   :not(:last-child) {
     margin-bottom: 8px;
@@ -27,12 +27,12 @@ export const SelectItem = styled.button`
 `
 export const Title = styled.h1`
   color: #9e9e9e;
-  ${(props) => props.theme.p1}
+  ${({ theme }) => theme.p1}
   margin-bottom:18px;
 `
 export const BackDrop = styled.div`
   align-items: center;
-  background-color: ${(props) => props.theme.colors.BLACK}0C;
+  background-color: ${({ theme }) => theme.colors.BLACK}0C;
   bottom: 0;
   display: flex;
   justify-content: center;
@@ -41,5 +41,5 @@ export const BackDrop = styled.div`
   position: absolute;
   right: 0;
   top: 0;
-  z-index: ${(props) => props.theme.levels.BACKGROUND};
+  z-index: ${({ theme }) => theme.levels.BACKGROUND};
 `

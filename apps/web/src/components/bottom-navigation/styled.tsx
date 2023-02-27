@@ -3,51 +3,36 @@ import styled from '@emotion/styled'
 import IconButton from '@/components/icon-button'
 
 export const Nav = styled.nav`
-  background-color: ${(props) => props.theme.colors.WHITE};
+  align-items: baseline;
+  background-color: ${({ theme }) => theme.colors.WHITE};
   bottom: 0;
   box-shadow: 0px -2px 9px rgba(0, 0, 0, 0.1);
   display: flex;
+  height: ${({ theme }) => theme.bottomNavigationHeight};
   justify-content: space-between;
-  left: 0;
-  padding: 0 0 32.5px;
+  padding: 3px 11px 0;
   position: fixed;
   width: 100%;
-  z-index: ${(props) => props.theme.levels.FOREGROUND};
-
-  & button:first-of-type {
-    margin-left: 12px;
-  }
-
-  & button:last-of-type {
-    margin-right: 12px;
-  }
+  z-index: ${({ theme }) => theme.levels.FOREGROUND};
 `
+
+// TODO: bottomNavigation 바텀 만큼 페이지 띄워줘야 함
 
 export const Button = styled(IconButton)`
   align-items: center;
+  color: ${({ theme }) => theme.colors.GREY3};
   display: flex;
-  height: 58px;
-  justify-content: center;
-  padding: 16px;
-  width: 58px;
+  flex-direction: column;
 
-  & path:last-of-type {
-    fill: #000;
+  &.selected {
+    color: initial;
   }
 
-  & span {
-    bottom: 25px;
-    line-height: 1;
-    position: absolute;
+  path {
+    fill: ${({ theme }) => theme.colors.GREY3};
   }
 
-  &.selected::after {
-    background-color: #f0355b;
-    border-radius: 50%;
-    bottom: 16px;
-    content: '';
-    height: 4px;
-    position: absolute;
-    width: 4px;
+  &.selected path {
+    fill: initial;
   }
 `

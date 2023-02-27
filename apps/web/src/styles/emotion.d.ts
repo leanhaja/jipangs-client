@@ -2,19 +2,25 @@ import '@emotion/react'
 
 declare module '@emotion/react' {
   export interface Theme {
+    bottomNavigationHeight: string
     btn1: {
-      'font-size': string
-      'font-weight': string
-      'line-height': string
+      fontSize: string
+      fontWeight: string
+      lineHeight: string
     }
-
+    buttonSizes: {
+      large: {
+        height: string
+        width: string
+      }
+    }
     c1: {
-      'font-size': string
-      'font-weight': string
-      'line-height': string
+      fontSize: string
+      fontWeight: string
     }
     colors: {
       BLACK: string
+      BOOKMARK_PURPLE: string
       BUTTON_GREEN: string
       CONTAINER_GREEN: string
       CONTAINER_ORANGE: string
@@ -33,60 +39,68 @@ declare module '@emotion/react' {
       TRANSPARENT_GRAY: string
       WHITE: string
     }
+    flexCenter: {
+      alignItems: string
+      display: string
+      justifyContent: string
+    }
     h1: {
-      'font-size': string
-      'font-weight': string
-      'line-height': string
+      fontSize: string
+      fontWeight: string
+      lineHeight: string
     }
     h2: {
-      'font-size': string
-      'font-weight': string
-      'line-height': string
+      fontSize: string
+      fontWeight: string
+      lineHeight: string
     }
     h3: {
-      'font-size': string
-      'font-weight': string
-      'line-height': string
+      fontSize: string
+      fontWeight: string
+      lineHeight: string
     }
     h4: {
-      'font-size': string
-      'font-weight': string
-      'line-height': string
-    }
-    h5: {
-      'font-size': string
-      'font-weight': string
-      'line-height': string
+      fontSize: string
+      fontWeight: string
+      lineHeight: string
     }
     levels: {
       BACKGROUND: number
       BASE: number
       FOREGROUND: number
     }
+    multilineEllipsis: {
+      WebkitBoxOrient: 'vertical'
+      WebkitLineClamp: string
+      display: string
+      overflow: string
+      textAlign: 'left'
+      textOverflow: string
+    }
     p1: {
-      'font-size': string
-      'font-weight': string
-      'line-height': string
+      fontSize: string
+      fontWeight: string
+      lineHeight: string
     }
     p2: {
-      'font-size': string
-      'font-weight': string
-      'line-height': string
+      fontSize: string
+      fontWeight: string
+      lineHeight: string
     }
     p3: {
-      'font-size': string
-      'font-weight': string
-      'line-height': string
+      fontSize: string
+      fontWeight: string
+      lineHeight: string
     }
     p4: {
-      'font-size': string
-      'font-weight': string
-      'line-height': string
+      fontSize: string
+      fontWeight: string
+      lineHeight: string
     }
     p5: {
-      'font-size': string
-      'font-weight': string
-      'line-height': string
+      fontSize: string
+      fontWeight: string
+      lineHeight: string
     }
   }
 }

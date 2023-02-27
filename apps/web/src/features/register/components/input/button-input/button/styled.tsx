@@ -19,8 +19,8 @@ export const Button = styled.button<StyleProps>`
     props.selected ? props.theme.colors.WHITE : props.theme.colors.GREY4};
   cursor: pointer;
   display: flex;
-  font-size: ${(props) => props.theme.btn1['font-size']};
-  font-weight: ${(props) => props.theme.btn1['font-weight']};
+  font-size: ${(props) => props.theme.btn1.fontSize};
+  font-weight: ${(props) => props.theme.btn1.fontWeight};
   height: ${(props) => props.height || '44px'};
   justify-content: center;
   width: ${(props) => props.width || '164px'};

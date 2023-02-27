@@ -1,16 +1,25 @@
-const theme = {
+import { type Theme } from '@emotion/react'
+
+const theme: Theme = {
+  bottomNavigationHeight: '88px',
   btn1: {
-    'font-size': '16px',
-    'font-weight': '600',
-    'line-height': '100%',
+    fontSize: '16px',
+    fontWeight: '600',
+    lineHeight: '100%',
+  },
+  buttonSizes: {
+    large: {
+      height: '44px',
+      width: '44px',
+    },
   },
   c1: {
-    'font-size': '10px',
-    'font-weight': '400',
-    'line-height': '100%',
+    fontSize: '9px',
+    fontWeight: '400',
   },
   colors: {
     BLACK: '#000000',
+    BOOKMARK_PURPLE: '#778bf7',
     BUTTON_GREEN: '#58B99D',
     CONTAINER_GREEN: '#E7F2E5',
     CONTAINER_ORANGE: '#F8ECDD',
@@ -29,55 +38,68 @@ const theme = {
     TRANSPARENT_GRAY: '#F7F7F7',
     WHITE: '#FFFFFF',
   },
+  flexCenter: {
+    alignItems: 'center',
+    display: 'flex',
+    justifyContent: 'center',
+  },
   h1: {
-    'font-size': '24px',
-    'font-weight': '600',
-    'line-height': '100%',
+    fontSize: '24px',
+    fontWeight: '600',
+    lineHeight: '100%',
   },
   h2: {
-    'font-size': '20px',
-    'font-weight': '600',
-    'line-height': '130%',
+    fontSize: '20px',
+    fontWeight: '600',
+    lineHeight: '130%',
   },
   h3: {
-    'font-size': '18px',
-    'font-weight': '600',
-    'line-height': '130%',
+    fontSize: '18px',
+    fontWeight: '600',
+    lineHeight: '130%',
   },
   h4: {
-    'font-size': '18px',
-    'font-weight': '500',
-    'line-height': '100%',
+    fontSize: '18px',
+    fontWeight: '500',
+    lineHeight: '100%',
   },
   levels: {
     BACKGROUND: -100,
     BASE: 0,
     FOREGROUND: 100,
   },
+  multilineEllipsis: {
+    WebkitBoxOrient: 'vertical',
+    WebkitLineClamp: '2',
+    display: '-webkit-box',
+    overflow: 'hidden',
+    textAlign: 'left',
+    textOverflow: 'ellipsis',
+  },
   p1: {
-    'font-size': '16px',
-    'font-weight': '500',
-    'line-height': '100%',
+    fontSize: '16px',
+    fontWeight: '500',
+    lineHeight: '100%',
   },
   p2: {
-    'font-size': '14px',
-    'font-weight': '500',
-    'line-height': '140%',
+    fontSize: '14px',
+    fontWeight: '500',
+    lineHeight: '140%',
   },
   p3: {
-    'font-size': '12px',
-    'font-weight': '600',
-    'line-height': '140%',
+    fontSize: '12px',
+    fontWeight: '600',
+    lineHeight: '140%',
   },
   p4: {
-    'font-size': '12px',
-    'font-weight': '400',
-    'line-height': '140%',
+    fontSize: '12px',
+    fontWeight: '400',
+    lineHeight: '140%',
   },
   p5: {
-    'font-size': '12px',
-    'font-weight': '400',
-    'line-height': '100%',
+    fontSize: '11px',
+    fontWeight: '400',
+    lineHeight: '100%',
   },
 }
 

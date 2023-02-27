@@ -1,13 +1,12 @@
 import styled from '@emotion/styled'
 
-interface StyleProps {
+export interface ProgressStyleProps {
   currentStep: number
   totalStep: number
 }
 
 export const ProgressHeader = styled.div`
   align-items: center;
-  /* background-color: red; */
   display: flex;
   flex-direction: column;
   height: 74px;
@@ -32,7 +31,7 @@ export const Title = styled.h1`
   ${({ theme }) => theme.h4}
 `
 
-export const ProgressBar = styled.div<StyleProps>`
+export const ProgressBar = styled.div<ProgressStyleProps>`
   background-color: ${({ theme }) => theme.colors.GREY6};
   height: 2px;
   margin-top: 10px;

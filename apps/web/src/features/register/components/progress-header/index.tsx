@@ -1,12 +1,11 @@
 import * as Styled from './styled'
+import type { ProgressStyleProps } from './styled'
 
 import IconButton from '@/components/icon-button'
 
-interface ProgressHeaderProps {
-  currentStep: number
+interface ProgressHeaderProps extends ProgressStyleProps {
   onClickBack?: () => void
   title: string
-  totalStep: number
 }
 
 export default function ProgressHeader({

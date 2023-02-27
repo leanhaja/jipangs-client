@@ -2,7 +2,7 @@ import styled from '@emotion/styled'
 import { motion } from 'framer-motion'
 
 export const Container = styled(motion.div)`
-  background-color: ${(props) => props.theme.colors.WHITE};
+  background-color: ${({ theme }) => theme.colors.WHITE};
   border-top-left-radius: 16px;
   border-top-right-radius: 16px;
   bottom: 0px;
@@ -19,7 +19,7 @@ export const SelectItem = styled.button`
   height: 48px;
   text-align: start;
   width: 100%;
-  ${({ theme }) => theme.p1}
+  ${({ theme }) => theme.typographies.p1}
 
   :not(:last-child) {
     margin-bottom: 8px;
@@ -27,7 +27,7 @@ export const SelectItem = styled.button`
 `
 export const Title = styled.h1`
   color: #9e9e9e;
-  ${({ theme }) => theme.p1}
+  ${({ theme }) => theme.typographies.p1}
   margin-bottom:18px;
 `
 export const BackDrop = styled.div`

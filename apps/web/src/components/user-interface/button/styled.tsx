@@ -10,30 +10,25 @@ export interface StyleProps {
 }
 
 export const Button = styled.button<StyleProps>`
+  ${({ theme }) => theme.typographies.btn1};
   align-items: center;
-  background-color: ${(props) => {
-    if (!props.backgroundColor) {
-      return props.disabled
-        ? props.theme.colors.DISABLED
-        : props.theme.colors.PRIMARY_BLUE
+  background-color: ${({ backgroundColor, disabled, theme }) => {
+    if (!backgroundColor) {
+      return disabled ? theme.colors.DISABLED : theme.colors.PRIMARY_BLUE
     }
-    return props.disabled ? props.theme.colors.DISABLED : props.backgroundColor
+    return disabled ? theme.colors.DISABLED : backgroundColor
   }};
   border: 0;
-  border-radius: ${(props) => props.borderRadius || '8px'};
-  color: ${(props) => {
-    if (!props.color) {
-      return props.disabled
-        ? props.theme.colors.BLACK
-        : props.theme.colors.WHITE
+  border-radius: ${({ borderRadius }) => borderRadius || '8px'};
+  color: ${({ color, disabled, theme }) => {
+    if (!color) {
+      return disabled ? theme.colors.BLACK : theme.colors.WHITE
     }
-    return props.disabled ? props.theme.colors.BLACK : props.color
+    return disabled ? theme.colors.BLACK : color
   }};
   cursor: pointer;
   display: flex;
-  font-size: ${(props) => props.theme.btn1.fontSize};
-  font-weight: ${(props) => props.theme.btn1.fontWeight};
-  height: ${(props) => props.height || '59px'};
+  height: ${({ height }) => height || '59px'};
   justify-content: center;
-  width: ${(props) => props.width || '100%'};
+  width: ${({ width }) => width || '100%'};
 `

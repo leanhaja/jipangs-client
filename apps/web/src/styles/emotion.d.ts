@@ -3,20 +3,11 @@ import '@emotion/react'
 declare module '@emotion/react' {
   export interface Theme {
     bottomNavigationHeight: string
-    btn1: {
-      fontSize: string
-      fontWeight: string
-      lineHeight: string
-    }
     buttonSizes: {
       large: {
         height: string
         width: string
       }
-    }
-    c1: {
-      fontSize: string
-      fontWeight: string
     }
     colors: {
       BLACK: string
@@ -44,26 +35,6 @@ declare module '@emotion/react' {
       display: string
       justifyContent: string
     }
-    h1: {
-      fontSize: string
-      fontWeight: string
-      lineHeight: string
-    }
-    h2: {
-      fontSize: string
-      fontWeight: string
-      lineHeight: string
-    }
-    h3: {
-      fontSize: string
-      fontWeight: string
-      lineHeight: string
-    }
-    h4: {
-      fontSize: string
-      fontWeight: string
-      lineHeight: string
-    }
     levels: {
       BACKGROUND: number
       BASE: number
@@ -77,30 +48,61 @@ declare module '@emotion/react' {
       textAlign: 'left'
       textOverflow: string
     }
-    p1: {
-      fontSize: string
-      fontWeight: string
-      lineHeight: string
-    }
-    p2: {
-      fontSize: string
-      fontWeight: string
-      lineHeight: string
-    }
-    p3: {
-      fontSize: string
-      fontWeight: string
-      lineHeight: string
-    }
-    p4: {
-      fontSize: string
-      fontWeight: string
-      lineHeight: string
-    }
-    p5: {
-      fontSize: string
-      fontWeight: string
-      lineHeight: string
+    typographies: {
+      btn1: {
+        fontSize: string
+        fontWeight: string
+        lineHeight: string
+      }
+      c1: {
+        fontSize: string
+        fontWeight: string
+      }
+      h1: {
+        fontSize: string
+        fontWeight: string
+        lineHeight: string
+      }
+      h2: {
+        fontSize: string
+        fontWeight: string
+        lineHeight: string
+      }
+      h3: {
+        fontSize: string
+        fontWeight: string
+        lineHeight: string
+      }
+      h4: {
+        fontSize: string
+        fontWeight: string
+        lineHeight: string
+      }
+      p1: {
+        fontSize: string
+        fontWeight: string
+        lineHeight: string
+      }
+      p2: {
+        fontSize: string
+        fontWeight: string
+        lineHeight: string
+      }
+      p3: {
+        fontSize: string
+        fontWeight: string
+        lineHeight: string
+      }
+      p4: {
+        fontSize: string
+        fontWeight: string
+        lineHeight: string
+      }
+      p5: {
+        fontSize: string
+        fontWeight: string
+        lineHeight: string
+      }
     }
   }
 }

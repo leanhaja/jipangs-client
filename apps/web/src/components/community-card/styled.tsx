@@ -40,6 +40,6 @@ export const ShareButton = styled(IconButton)`
 
 export const Title = styled.h3`
   ${({ theme }) => theme.multilineEllipsis};
-  ${({ theme }) => theme.p3};
+  ${({ theme }) => theme.typographies.p3};
   padding: 12px 10px;
 `

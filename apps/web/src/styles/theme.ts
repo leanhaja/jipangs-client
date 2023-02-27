@@ -2,20 +2,11 @@ import { type Theme } from '@emotion/react'
 
 const theme: Theme = {
   bottomNavigationHeight: '88px',
-  btn1: {
-    fontSize: '16px',
-    fontWeight: '600',
-    lineHeight: '100%',
-  },
   buttonSizes: {
     large: {
       height: '44px',
       width: '44px',
     },
-  },
-  c1: {
-    fontSize: '9px',
-    fontWeight: '400',
   },
   colors: {
     BLACK: '#000000',
@@ -43,26 +34,6 @@ const theme: Theme = {
     display: 'flex',
     justifyContent: 'center',
   },
-  h1: {
-    fontSize: '24px',
-    fontWeight: '600',
-    lineHeight: '100%',
-  },
-  h2: {
-    fontSize: '20px',
-    fontWeight: '600',
-    lineHeight: '130%',
-  },
-  h3: {
-    fontSize: '18px',
-    fontWeight: '600',
-    lineHeight: '130%',
-  },
-  h4: {
-    fontSize: '18px',
-    fontWeight: '500',
-    lineHeight: '100%',
-  },
   levels: {
     BACKGROUND: -100,
     BASE: 0,
@@ -76,30 +47,61 @@ const theme: Theme = {
     textAlign: 'left',
     textOverflow: 'ellipsis',
   },
-  p1: {
-    fontSize: '16px',
-    fontWeight: '500',
-    lineHeight: '100%',
-  },
-  p2: {
-    fontSize: '14px',
-    fontWeight: '500',
-    lineHeight: '140%',
-  },
-  p3: {
-    fontSize: '12px',
-    fontWeight: '600',
-    lineHeight: '140%',
-  },
-  p4: {
-    fontSize: '12px',
-    fontWeight: '400',
-    lineHeight: '140%',
-  },
-  p5: {
-    fontSize: '11px',
-    fontWeight: '400',
-    lineHeight: '100%',
+  typographies: {
+    btn1: {
+      fontSize: '16px',
+      fontWeight: '600',
+      lineHeight: '100%',
+    },
+    c1: {
+      fontSize: '9px',
+      fontWeight: '400',
+    },
+    h1: {
+      fontSize: '24px',
+      fontWeight: '600',
+      lineHeight: '100%',
+    },
+    h2: {
+      fontSize: '20px',
+      fontWeight: '600',
+      lineHeight: '130%',
+    },
+    h3: {
+      fontSize: '18px',
+      fontWeight: '600',
+      lineHeight: '130%',
+    },
+    h4: {
+      fontSize: '18px',
+      fontWeight: '500',
+      lineHeight: '100%',
+    },
+    p1: {
+      fontSize: '16px',
+      fontWeight: '500',
+      lineHeight: '100%',
+    },
+    p2: {
+      fontSize: '14px',
+      fontWeight: '500',
+      lineHeight: '140%',
+    },
+    p3: {
+      fontSize: '12px',
+      fontWeight: '600',
+      lineHeight: '140%',
+    },
+    p4: {
+      fontSize: '12px',
+      fontWeight: '400',
+      lineHeight: '140%',
+    },
+    p5: {
+      fontSize: '11px',
+      fontWeight: '400',
+      lineHeight: '100%',
+    },
   },
 }
 

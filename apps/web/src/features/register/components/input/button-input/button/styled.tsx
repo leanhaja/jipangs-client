@@ -8,20 +8,17 @@ export interface StyleProps {
 }
 
 export const Button = styled.button<StyleProps>`
+  ${({ theme }) => theme.typographies.btn1};
   align-items: center;
-  background-color: ${(props) =>
-    props.selected
-      ? props.theme.colors.PRIMARY_BLUE
-      : props.theme.colors.GREY1};
+  background-color: ${({ selected, theme }) =>
+    selected ? theme.colors.PRIMARY_BLUE : theme.colors.GREY1};
   border: 0;
-  border-radius: ${(props) => props.borderRadius || '8px'};
-  color: ${(props) =>
-    props.selected ? props.theme.colors.WHITE : props.theme.colors.GREY4};
+  border-radius: ${({ borderRadius }) => borderRadius || '8px'};
+  color: ${({ selected, theme }) =>
+    selected ? theme.colors.WHITE : theme.colors.GREY4};
   cursor: pointer;
   display: flex;
-  font-size: ${(props) => props.theme.btn1.fontSize};
-  font-weight: ${(props) => props.theme.btn1.fontWeight};
-  height: ${(props) => props.height || '44px'};
+  height: ${({ height }) => height || '44px'};
   justify-content: center;
-  width: ${(props) => props.width || '164px'};
+  width: ${({ width }) => width || '164px'};
 `

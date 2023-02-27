@@ -1,4 +1,4 @@
-import { Theme } from '@emotion/react'
+import { type Theme } from '@emotion/react'
 
 const theme: Theme = {
   bottomNavigationHeight: '88px',
@@ -14,12 +14,12 @@ const theme: Theme = {
     },
   },
   c1: {
-    fontSize: '10px',
+    fontSize: '9px',
     fontWeight: '400',
-    lineHeight: '100%',
   },
   colors: {
     BLACK: '#000000',
+    BOOKMARK_PURPLE: '#778bf7',
     BUTTON_GREEN: '#58B99D',
     CONTAINER_GREEN: '#E7F2E5',
     CONTAINER_ORANGE: '#F8ECDD',
@@ -67,7 +67,6 @@ const theme: Theme = {
     WebkitBoxOrient: 'vertical',
     WebkitLineClamp: '2',
     display: '-webkit-box',
-    marginTop: '16px',
     overflow: 'hidden',
     textAlign: 'left',
     textOverflow: 'ellipsis',
@@ -93,7 +92,7 @@ const theme: Theme = {
     lineHeight: '140%',
   },
   p5: {
-    fontSize: '12px',
+    fontSize: '11px',
     fontWeight: '400',
     lineHeight: '100%',
   },

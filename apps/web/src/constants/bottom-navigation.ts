@@ -1,11 +1,19 @@
-export const BUTTONS = [
+import { type IconName } from '@/components/icon'
+
+export interface NavigationButton {
+  iconName: IconName
+  label: string
+  route: string
+}
+
+export const BUTTONS: NavigationButton[] = [
   {
     iconName: 'home',
     label: '홈',
     route: '/',
   },
   {
-    iconName: 'bookmark',
+    iconName: 'bookmark_navigation',
     label: '저장',
     route: '/save',
   },
@@ -24,4 +32,4 @@ export const BUTTONS = [
     label: '마이페이지',
     route: '/user',
   },
-] as const
+]

@@ -28,6 +28,7 @@ const theme: Theme = {
     SCRIM: '#808080',
     TRANSPARENT_GRAY: '#F7F7F7',
     WHITE: '#FFFFFF',
+    YELLOW_KAKAO: '#FEE500',
   },
   flexCenter: {
     alignItems: 'center',

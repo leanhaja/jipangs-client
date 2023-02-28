@@ -29,6 +29,7 @@ declare module '@emotion/react' {
       SCRIM: string
       TRANSPARENT_GRAY: string
       WHITE: string
+      YELLOW_KAKAO: string
     }
     flexCenter: {
       alignItems: string

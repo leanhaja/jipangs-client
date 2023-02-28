@@ -8,6 +8,8 @@ import BookmarkNavigation from './assets/bookmark_navigation.svg'
 import Check from './assets/check.svg'
 import Community from './assets/community.svg'
 import Home from './assets/home.svg'
+import AppleLogo from './assets/logo_apple.svg'
+import KakaoLogo from './assets/logo_kakao.svg'
 import Search from './assets/search.svg'
 import Share from './assets/share.svg'
 import User from './assets/user.svg'
@@ -28,6 +30,8 @@ export type IconName =
   | 'share'
   | 'user'
   | 'x'
+  | 'kakao'
+  | 'apple'
 
 export interface IconProps {
   iconName: IconName
@@ -37,6 +41,7 @@ const icons: Record<IconName, React.ReactElement> = {
   alarm: <Alarm />,
   alarm_new: <AlarmNew />,
   alarm_new_inactive: <AlarmNewInActive />,
+  apple: <AppleLogo />,
   before_arrow: <BeforeArrow />,
   bookmark: <BookMark />,
   bookmark_filled: <BookmarkFilled />,
@@ -44,6 +49,7 @@ const icons: Record<IconName, React.ReactElement> = {
   check: <Check />,
   community: <Community />,
   home: <Home />,
+  kakao: <KakaoLogo />,
   search: <Search />,
   share: <Share />,
   user: <User />,

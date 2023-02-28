@@ -57,6 +57,8 @@ export default function GlobalStyles() {
         #__next {
           display: flex;
           justify-content: center;
+          height: 100vh;
+          align-items: center;
         }
 
         * {

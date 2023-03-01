@@ -23,6 +23,7 @@ declare module '@emotion/react' {
       GREY3: string
       GREY4: string
       GREY5: string
+      GREY6: string
       POINT_RED: string
       PRIMARYCONTAINER_BLUE: string
       PRIMARY_BLUE: string

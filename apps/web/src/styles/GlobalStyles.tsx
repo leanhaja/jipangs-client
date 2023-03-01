@@ -58,7 +58,6 @@ export default function GlobalStyles() {
           box-sizing: border-box;
           padding: 0;
           margin: 0;
-          outline: none;
 
           &::before,
           &::after {

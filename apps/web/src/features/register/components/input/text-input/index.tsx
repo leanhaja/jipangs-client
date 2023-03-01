@@ -1,6 +1,6 @@
 import { ChangeEventHandler, FocusEventHandler, forwardRef } from 'react'
 
-import Title from '../../title'
+import Label from '../../label'
 
 import * as Styled from './styled'
 
@@ -50,7 +50,7 @@ const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
 
     return (
       <Styled.OuterContainer>
-        {title && <Title>{title}</Title>}
+        {title && <Label>{title}</Label>}
         <Styled.InnerContainer>
           <Styled.TextInput
             ref={ref}

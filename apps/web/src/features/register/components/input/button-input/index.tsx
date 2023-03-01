@@ -1,11 +1,11 @@
 import type { UseControllerProps } from 'react-hook-form'
 
-import Title from '../../title'
+import Label from '../../label'
 
 import Button from './button'
 import * as Styled from './styled'
 
-import { FormData } from '@/views/register/userInfo/userInfo'
+import { FormData } from '@/views/register/user-info/userInfo'
 
 interface ButtonInputProps extends UseControllerProps<FormData> {
   option1: string
@@ -21,7 +21,7 @@ export default function ButtonInput({
 }: ButtonInputProps) {
   return (
     <Styled.OuterContainer>
-      {title && <Title>{title}</Title>}
+      {title && <Label>{title}</Label>}
       <Styled.InnerContainer>
         <Button {...controllerProps}>{option1}</Button>
         <Button {...controllerProps}>{option2}</Button>

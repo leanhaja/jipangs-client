@@ -1,5 +1,12 @@
+const path = require('path')
+
 module.exports = {
   reactStrictMode: true,
+  output: 'standalone',
+  experimental: {
+    // this includes files from the monorepo base two directories up
+    outputFileTracingRoot: path.join(__dirname, '../../'),
+  },
   webpack: (config) => {
     config.resolve.alias = {
       ...(config.resolve.alias || {}),
@@ -18,6 +25,7 @@ module.exports = {
       issuer: /\.[jt]sx?$/,
       use: ['@svgr/webpack'],
     })
+
     return config
   },
 }

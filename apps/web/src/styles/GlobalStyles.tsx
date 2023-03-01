@@ -52,7 +52,6 @@ export default function GlobalStyles() {
         body {
           font-family: 'Pretendard', 'SF Pro Text', 'SF Pro Icons',
             'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
-          padding-top: 74px;
         }
 
         * {

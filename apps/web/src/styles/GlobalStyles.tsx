@@ -54,6 +54,17 @@ export default function GlobalStyles() {
             'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
         }
 
+        #__next {
+          display: flex;
+          justify-content: center;
+          height: 100vh;
+          align-items: center;
+        }
+
+        :root {
+          --device-max-width: 375px;
+        }
+
         * {
           box-sizing: border-box;
           padding: 0;

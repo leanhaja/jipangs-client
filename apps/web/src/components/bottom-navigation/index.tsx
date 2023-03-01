@@ -1,4 +1,5 @@
 import classNames from 'classnames'
+import { useRouter } from 'next/router'
 
 import * as Styled from './styled'
 
@@ -20,10 +21,14 @@ function BottomNavigation({
   onNavigationChange,
   selectedRouteName,
 }: BottomNavigationProps) {
+  const router = useRouter()
+
   const onButtonClick = (route: string, onClick?: VoidFunction) => {
     onNavigationChange?.(route)
     onClick?.()
   }
+
+  if (router.pathname === '/login') return null
 
   return (
     <Styled.Nav>

@@ -28,7 +28,7 @@ export const Header = styled.div`
 `
 
 export const Title = styled.h1`
-  ${({ theme }) => theme.h4}
+  ${({ theme }) => theme.typographies.h4}
 `
 
 export const ProgressBar = styled.div<ProgressStyleProps>`

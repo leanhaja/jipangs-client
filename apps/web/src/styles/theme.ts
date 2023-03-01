@@ -23,6 +23,7 @@ const theme: Theme = {
     GREY4: '#7F7F7F',
     GREY5: '#2F2F2F',
     GREY6: '#EEEEEE',
+    GREY7: '#A6A6A6',
     POINT_RED: '#EB4D3D',
     PRIMARY_BLUE: '#476BFF',
     PRIMARYCONTAINER_BLUE: '#F3F4FF',
@@ -48,6 +49,11 @@ const theme: Theme = {
     overflow: 'hidden',
     textAlign: 'left',
     textOverflow: 'ellipsis',
+  },
+  singlelineEllipsis: {
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
+    'white-space': 'nowrap',
   },
   typographies: {
     btn1: {

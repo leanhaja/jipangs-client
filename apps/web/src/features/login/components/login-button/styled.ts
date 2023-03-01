@@ -1,20 +1,16 @@
 import styled from '@emotion/styled'
 
 export interface StyleProps {
-  OAuthProvider: 'kakao' | 'apple'
+  oauthProvider: 'kakao' | 'apple'
 }
 
 export const Button = styled.button<StyleProps>`
   align-items: center;
-  background-color: ${({ OAuthProvider, theme }) => {
-    if (OAuthProvider === 'kakao') return theme.colors.YELLOW_KAKAO
-    return theme.colors.BLACK
-  }};
+  background-color: ${({ oauthProvider, theme }) =>
+    oauthProvider === 'kakao' ? theme.colors.YELLOW_KAKAO : theme.colors.BLACK};
   border-radius: 8px;
-  color: ${({ OAuthProvider, theme }) => {
-    if (OAuthProvider === 'kakao') return theme.colors.BLACK
-    return theme.colors.WHITE
-  }};
+  color: ${({ oauthProvider, theme }) =>
+    oauthProvider === 'kakao' ? theme.colors.BLACK : theme.colors.WHITE};
   display: flex;
   height: 48px;
   justify-content: center;

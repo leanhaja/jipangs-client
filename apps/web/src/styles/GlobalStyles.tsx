@@ -61,6 +61,10 @@ export default function GlobalStyles() {
           align-items: center;
         }
 
+        :root {
+          --device-max-width: 375px;
+        }
+
         * {
           box-sizing: border-box;
           padding: 0;

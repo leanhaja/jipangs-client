@@ -8,12 +8,12 @@ interface LoginButtonProps extends StyleProps {
 }
 
 export default function LoginButton({
-  OAuthProvider,
+  oauthProvider,
   onClick,
 }: LoginButtonProps) {
   return (
-    <Styled.Button OAuthProvider={OAuthProvider} onClick={onClick}>
-      <Icon iconName={OAuthProvider} />
+    <Styled.Button oauthProvider={oauthProvider} onClick={onClick}>
+      <Icon iconName={oauthProvider} />
       <Styled.Text>카카오로 계속하기</Styled.Text>
     </Styled.Button>
   )

@@ -1,27 +1,37 @@
-import {
-  PropsWithChildren,
-  MouseEvent,
-  Dispatch,
-  SetStateAction,
-  useState,
-} from 'react'
+import { MouseEvent } from 'react'
+import { useController, UseControllerProps } from 'react-hook-form'
 
 import * as Styled from './styled'
 
-interface ButtonProps extends PropsWithChildren {
-  onClick: Dispatch<SetStateAction<string>>
+import { MajorData } from '@/views/register/register'
+
+interface ButtonProps extends UseControllerProps<MajorData> {
+  children: string
 }
 
-export default function Button({ children, onClick }: ButtonProps) {
-  const [isSelected, setIsSelected] = useState(false)
+export default function Button({ children, ...controllerProps }: ButtonProps) {
+  const {
+    field: { onChange, value },
+  } = useController(controllerProps)
+
+  const isSelected = Array.isArray(value) && value.includes(children)
 
   const handleClick = (e: MouseEvent<HTMLButtonElement>) => {
-    onClick(e.currentTarget.innerText)
-    setIsSelected((prev) => !prev)
+    if (!Array.isArray(value)) {
+      onChange([children])
+      return
+    }
+
+    if (value.includes(children)) {
+      onChange(value.filter((item) => item !== children))
+      return
+    }
+
+    onChange([...value, e.currentTarget.innerText])
   }
 
   return (
-    <Styled.Button isSelected={isSelected} onClick={handleClick}>
+    <Styled.Button id={children} isSelected={isSelected} onClick={handleClick}>
       {children}
     </Styled.Button>
   )

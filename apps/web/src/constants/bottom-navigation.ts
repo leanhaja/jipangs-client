@@ -14,8 +14,8 @@ export const BUTTONS: NavigationButton[] = [
   },
   {
     iconName: 'bookmark_navigation',
-    label: '저장',
-    route: '/save',
+    label: '스크랩',
+    route: '/scrap',
   },
   {
     iconName: 'community',

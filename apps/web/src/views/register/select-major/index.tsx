@@ -1,6 +1,7 @@
-import { DevTool } from '@hookform/devtools'
+import { Dispatch, SetStateAction } from 'react'
 import { useFormContext } from 'react-hook-form'
 
+import { Step } from '../enums'
 import { FormData } from '../register'
 
 import * as Styled from './styled'
@@ -30,33 +31,41 @@ const MAJOR = [
   '한의학',
 ]
 
-export default function SelectMajorPage() {
+interface SelectMajorPageProps {
+  setStep: Dispatch<SetStateAction<Step>>
+}
+
+export default function SelectMajorPage({ setStep }: SelectMajorPageProps) {
   const { control, watch } = useFormContext<FormData>()
 
   const { abstractMajors } = watch()
 
+  const handleNextButton = () => setStep(1)
+
   return (
-    <>
-      <Styled.Container>
-        <Title>전공을 선택해주세요.</Title>
-        <Description>
-          전공에 꼭 맞는 봉사활동 및 대외활동 추천을 위해 필요해요.
-        </Description>
-        <Styled.ButtonContainer>
-          {MAJOR.map((major, index) => (
-            <Button
-              key={`${major}-${index + 1}`}
-              chooseOne
-              control={control}
-              name="abstractMajors"
-            >
-              {major}
-            </Button>
-          ))}
-        </Styled.ButtonContainer>
-        <NextButton disabled={abstractMajors.length !== 1}>다음</NextButton>
-      </Styled.Container>
-      <DevTool control={control} />
-    </>
+    <Styled.Container>
+      <Title>전공을 선택해주세요.</Title>
+      <Description>
+        전공에 꼭 맞는 봉사활동 및 대외활동 추천을 위해 필요해요.
+      </Description>
+      <Styled.ButtonContainer>
+        {MAJOR.map((major, index) => (
+          <Button
+            key={`${major}-${index + 1}`}
+            chooseOne
+            control={control}
+            name="abstractMajors"
+          >
+            {major}
+          </Button>
+        ))}
+      </Styled.ButtonContainer>
+      <NextButton
+        disabled={abstractMajors.length !== 1}
+        onClick={handleNextButton}
+      >
+        다음
+      </NextButton>
+    </Styled.Container>
   )
 }

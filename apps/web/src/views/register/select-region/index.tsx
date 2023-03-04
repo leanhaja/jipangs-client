@@ -1,5 +1,7 @@
+import { Dispatch, SetStateAction } from 'react'
 import { useFormContext } from 'react-hook-form'
 
+import { Step } from '../enums'
 import { FormData } from '../register'
 
 import * as Styled from './styled'
@@ -8,6 +10,10 @@ import NextButton from '@/components/user-interface/button'
 import Button from '@/features/register/components/button'
 import Description from '@/features/register/components/description'
 import Title from '@/features/register/components/title'
+
+interface SelectMajorPageProps {
+  setStep: Dispatch<SetStateAction<Step>>
+}
 
 const REGION = [
   '서울',
@@ -28,8 +34,12 @@ const REGION = [
   '제주',
 ]
 
-export default function SelectRegionPage() {
+export default function SelectRegionPage({ setStep }: SelectMajorPageProps) {
   const { control, watch } = useFormContext<FormData>()
+
+  const { region: regionArr } = watch()
+
+  const handleNextButton = () => setStep(2)
 
   return (
     <Styled.Container>
@@ -46,7 +56,9 @@ export default function SelectRegionPage() {
           </Button>
         ))}
       </Styled.ButtonContainer>
-      <NextButton disabled={!watch().region.length}>다음</NextButton>
+      <NextButton disabled={!regionArr.length} onClick={handleNextButton}>
+        다음
+      </NextButton>
     </Styled.Container>
   )
 }

@@ -1,3 +1,8 @@
+import { DevTool } from '@hookform/devtools'
+import { useFormContext } from 'react-hook-form'
+
+import { FormData } from '../register'
+
 import * as Styled from './styled'
 
 import NextButton from '@/components/user-interface/button'
@@ -26,20 +31,32 @@ const MAJOR = [
 ]
 
 export default function SelectMajorPage() {
+  const { control, watch } = useFormContext<FormData>()
+
+  const { abstractMajors } = watch()
+
   return (
-    <Styled.Container>
-      <Title>전공을 선택해주세요.</Title>
-      <Description>
-        전공에 꼭 맞는 봉사활동 및 대외활동 추천을 위해 필요해요.
-      </Description>
-      <Styled.ButtonContainer>
-        {MAJOR.map((major, index) => (
-          <Button key={`${major}-${index + 1}`} onClick={() => {}}>
-            {major}
-          </Button>
-        ))}
-      </Styled.ButtonContainer>
-      <NextButton disabled>다음</NextButton>
-    </Styled.Container>
+    <>
+      <Styled.Container>
+        <Title>전공을 선택해주세요.</Title>
+        <Description>
+          전공에 꼭 맞는 봉사활동 및 대외활동 추천을 위해 필요해요.
+        </Description>
+        <Styled.ButtonContainer>
+          {MAJOR.map((major, index) => (
+            <Button
+              key={`${major}-${index + 1}`}
+              chooseOne
+              control={control}
+              name="abstractMajors"
+            >
+              {major}
+            </Button>
+          ))}
+        </Styled.ButtonContainer>
+        <NextButton disabled={abstractMajors.length !== 1}>다음</NextButton>
+      </Styled.Container>
+      <DevTool control={control} />
+    </>
   )
 }

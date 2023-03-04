@@ -10,8 +10,24 @@ export enum Step {
   'univInfo',
 }
 
+const defaultValues = {
+  abstractMajors: [],
+  birth: undefined,
+  email: undefined,
+  gender: undefined,
+  grade: undefined,
+  major: undefined,
+  name: undefined,
+  nickname: undefined,
+  region: [],
+  studentNumber: undefined,
+  university: undefined,
+}
+
 export default function Register() {
-  const methods = useForm<FormData>()
+  const methods = useForm<FormData>({
+    defaultValues,
+  })
 
   return (
     <FormProvider {...methods}>

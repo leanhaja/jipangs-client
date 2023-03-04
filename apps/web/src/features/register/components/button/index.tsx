@@ -3,13 +3,18 @@ import { useController, UseControllerProps } from 'react-hook-form'
 
 import * as Styled from './styled'
 
-import { MajorData } from '@/views/register/register'
+import { FormData } from '@/views/register/register'
 
-interface ButtonProps extends UseControllerProps<MajorData> {
+interface ButtonProps extends UseControllerProps<FormData> {
   children: string
+  chooseOne?: boolean
 }
 
-export default function Button({ children, ...controllerProps }: ButtonProps) {
+export default function Button({
+  children,
+  chooseOne,
+  ...controllerProps
+}: ButtonProps) {
   const {
     field: { onChange, value },
   } = useController(controllerProps)
@@ -17,6 +22,11 @@ export default function Button({ children, ...controllerProps }: ButtonProps) {
   const isSelected = Array.isArray(value) && value.includes(children)
 
   const handleClick = (e: MouseEvent<HTMLButtonElement>) => {
+    if (chooseOne) {
+      onChange([children])
+      return
+    }
+
     if (!Array.isArray(value)) {
       onChange([children])
       return
@@ -31,7 +41,7 @@ export default function Button({ children, ...controllerProps }: ButtonProps) {
   }
 
   return (
-    <Styled.Button id={children} isSelected={isSelected} onClick={handleClick}>
+    <Styled.Button isSelected={isSelected} onClick={handleClick}>
       {children}
     </Styled.Button>
   )

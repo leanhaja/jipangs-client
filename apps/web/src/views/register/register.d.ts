@@ -1,5 +1,5 @@
 export type MajorData = {
-  abstractMajors: string
+  abstractMajors: string[]
 }
 
 export type RegionData = {

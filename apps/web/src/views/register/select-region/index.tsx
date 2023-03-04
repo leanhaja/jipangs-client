@@ -1,3 +1,7 @@
+import { useFormContext } from 'react-hook-form'
+
+import { FormData } from '../register'
+
 import * as Styled from './styled'
 
 import NextButton from '@/components/user-interface/button'
@@ -25,18 +29,24 @@ const REGION = [
 ]
 
 export default function SelectRegionPage() {
+  const { control, watch } = useFormContext<FormData>()
+
   return (
     <Styled.Container>
       <Title>관심 지역을 선택해주세요.</Title>
       <Description>관심 지역의 활동을 큐레이션 해드려요.</Description>
       <Styled.ButtonContainer>
         {REGION.map((region, index) => (
-          <Button key={`${region}-${index + 1}`} onClick={() => {}}>
+          <Button
+            key={`${region}-${index + 1}`}
+            control={control}
+            name="region"
+          >
             {region}
           </Button>
         ))}
       </Styled.ButtonContainer>
-      <NextButton disabled>다음</NextButton>
+      <NextButton disabled={!watch().region.length}>다음</NextButton>
     </Styled.Container>
   )
 }

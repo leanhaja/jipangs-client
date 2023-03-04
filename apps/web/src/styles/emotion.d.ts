@@ -18,6 +18,10 @@ declare module '@emotion/react' {
       fontSize: string
       fontWeight: string
     }
+    chip: {
+      fontSize: string
+      fontWeight: string
+    }
     colors: {
       BLACK: string
       BOOKMARK_PURPLE: string

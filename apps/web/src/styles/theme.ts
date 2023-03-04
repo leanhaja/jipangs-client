@@ -17,6 +17,10 @@ const theme: Theme = {
     fontSize: '9px',
     fontWeight: '400',
   },
+  chip: {
+    fontSize: '12px',
+    fontWeight: '500',
+  },
   colors: {
     BLACK: '#000000',
     BOOKMARK_PURPLE: '#778bf7',

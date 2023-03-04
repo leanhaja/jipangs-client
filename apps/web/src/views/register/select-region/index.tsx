@@ -1,8 +1,7 @@
 import { Dispatch, SetStateAction } from 'react'
 import { useFormContext } from 'react-hook-form'
 
-import { Step } from '../enums'
-import { FormData } from '../register'
+import type { Step, FormData } from '../register'
 
 import * as Styled from './styled'
 
@@ -39,7 +38,7 @@ export default function SelectRegionPage({ setStep }: SelectMajorPageProps) {
 
   const { region: regionArr } = watch()
 
-  const handleNextButton = () => setStep(2)
+  const handleNextButton = () => setStep(3)
 
   return (
     <Styled.Container>

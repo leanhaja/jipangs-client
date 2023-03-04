@@ -22,4 +22,6 @@ export type UnivData = {
   university: string
 }
 
+export type Step = 1 | 2 | 3 | 4
+
 export type FormData = RegionData & UserData & UnivData & MajorData

@@ -1,8 +1,7 @@
 import { Dispatch, SetStateAction } from 'react'
 import { useFormContext } from 'react-hook-form'
 
-import { Step } from '../enums'
-import { FormData } from '../register'
+import type { Step, FormData } from '../register'
 
 import * as Styled from './styled'
 
@@ -40,7 +39,7 @@ export default function SelectMajorPage({ setStep }: SelectMajorPageProps) {
 
   const { abstractMajors } = watch()
 
-  const handleNextButton = () => setStep(1)
+  const handleNextButton = () => setStep(2)
 
   return (
     <Styled.Container>

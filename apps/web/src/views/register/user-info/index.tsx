@@ -2,7 +2,7 @@ import { DevTool } from '@hookform/devtools'
 import { Dispatch, SetStateAction } from 'react'
 import { Controller, useForm } from 'react-hook-form'
 
-import { Step } from '../enums'
+import { Step } from '../register'
 
 import * as Styled from './styled'
 import type { FormData } from './userInfo'
@@ -38,7 +38,7 @@ export default function UserInfoPage({ setStep }: UserInfoPageProps) {
   const isEmailValid = emailRegex.test(watch('email'))
   const isBirthValid = /^\d{6}$/.test(watch('birth'))
 
-  const handleNextButton = () => setStep(3)
+  const handleNextButton = () => setStep(4)
 
   return (
     <>

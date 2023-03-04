@@ -10,6 +10,7 @@ export interface CardProps {
   onScrapClick?: VoidFunction
   onShareClick?: VoidFunction
   size?: 'big' | 'small'
+  style?: React.CSSProperties
   tags: [leftTagName: string, rightTagName: string]
   title: string
 }
@@ -20,6 +21,7 @@ function Card({
   onScrapClick,
   onShareClick,
   size = 'big',
+  style,
   tags,
   title,
 }: CardProps) {
@@ -31,7 +33,7 @@ function Card({
   }
 
   return (
-    <Styled.Article className={size}>
+    <Styled.Article className={size} style={style}>
       <Styled.Figure>
         <Styled.Image alt={title} src={imageSrc} />
         <Styled.ShareButton

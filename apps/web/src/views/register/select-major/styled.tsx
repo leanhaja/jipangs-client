@@ -1,9 +1,7 @@
 import styled from '@emotion/styled'
 
 export const Container = styled.div`
-  padding: 0 16px;
-  width: var(--device-max-width);
-
+  margin-top: 54px;
   & > h1 {
     margin-bottom: 11px;
   }

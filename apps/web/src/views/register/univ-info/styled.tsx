@@ -1,14 +1,13 @@
 import styled from '@emotion/styled'
 
 export const Container = styled.div`
-  padding: 0 16px;
-  width: var(--device-max-width);
+  margin-top: 36px;
 
-  & > button + h1 {
+  > button + h1 {
     margin-top: 24px;
   }
 
-  & > button:last-child {
+  > button:last-child {
     margin-top: 132px;
   }
 `

@@ -3,7 +3,7 @@ import { useController, UseControllerProps } from 'react-hook-form'
 
 import * as Styled from './styled'
 
-import { FormData } from '@/views/register/register'
+import { FormData } from '@/views/register/types'
 
 interface ButtonProps extends UseControllerProps<FormData> {
   children: string

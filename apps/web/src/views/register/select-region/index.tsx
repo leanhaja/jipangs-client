@@ -1,7 +1,7 @@
 import { Dispatch, SetStateAction } from 'react'
 import { useFormContext } from 'react-hook-form'
 
-import type { Step, FormData } from '../register'
+import type { Step, FormData } from '../types'
 
 import * as Styled from './styled'
 

@@ -1,7 +1,7 @@
 import { FormProvider, useForm } from 'react-hook-form'
 
 import RegisterPage from '@/views/register'
-import { FormData } from '@/views/register/register'
+import { FormData } from '@/views/register/types'
 
 export enum Step {
   'selectMajor',

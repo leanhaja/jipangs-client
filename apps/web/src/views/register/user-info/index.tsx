@@ -2,7 +2,7 @@ import { DevTool } from '@hookform/devtools'
 import { Dispatch, SetStateAction } from 'react'
 import { Controller, useForm } from 'react-hook-form'
 
-import { Step } from '../register'
+import { Step } from '../types'
 
 import * as Styled from './styled'
 import type { FormData } from './userInfo'

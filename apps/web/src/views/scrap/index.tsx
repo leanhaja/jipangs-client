@@ -6,6 +6,14 @@ import * as Styled from './styled'
 import Card from '@/components/card'
 import Filters from '@/components/filters'
 
+declare global {
+  interface Window {
+    ReactNativeWebView: {
+      postMessage: (data: string) => void
+    }
+  }
+}
+
 const images = Array.from({ length: 8 }, () => ({
   category: '학술/행사',
   deadLine: 'D-8',
@@ -38,16 +46,31 @@ function Save() {
           style={{ marginBottom: 11, marginTop: 25 }}
         />
         <Styled.CardList>
-          {images.map(({ category, deadLine, img, source, title }, index) => (
-            <Card
-              key={`${title}-${index + 1}`}
-              imageSrc={img}
-              location={source}
-              size="small"
-              tags={[category, deadLine]}
-              title={title}
-            />
-          ))}
+          {images.map(
+            ({ category, deadLine, img, link, source, title }, index) => (
+              <div
+                key={`${title}-${index + 1}`}
+                onClick={() => {
+                  window.ReactNativeWebView.postMessage(
+                    JSON.stringify({ link, title })
+                  )
+                }}
+                onKeyUp={() => {
+                  console.log('hi')
+                }}
+                role="button"
+                tabIndex={0}
+              >
+                <Card
+                  imageSrc={img}
+                  location={source}
+                  size="small"
+                  tags={[category, deadLine]}
+                  title={title}
+                />
+              </div>
+            )
+          )}
         </Styled.CardList>
       </Styled.Main>
     </Styled.Container>

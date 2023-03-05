@@ -1,30 +1,16 @@
-import styled from '@emotion/native'
-import { Button } from 'ui'
+import { NavigationContainer } from '@react-navigation/native'
+import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context'
 
-const Container = styled.View`
-  align-items: center;
-  background-color: #fff;
-  flex: 1;
-  justify-content: center;
-`
-
-const Header = styled.Text`
-  font-size: 36px;
-  font-weight: bold;
-  margin-bottom: 20px;
-`
+import Routes from './Routes'
 
 export default function Native() {
   return (
-    <Container>
-      <Header>Native With Emotion</Header>
-      <Button
-        onClick={() => {
-          console.log('Pressed!')
-          alert('Pressed!')
-        }}
-        text="Boop"
-      />
-    </Container>
+    <NavigationContainer>
+      <SafeAreaProvider>
+        <SafeAreaView style={{ flex: 1 }}>
+          <Routes />
+        </SafeAreaView>
+      </SafeAreaProvider>
+    </NavigationContainer>
   )
 }

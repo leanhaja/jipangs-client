@@ -1,4 +1,4 @@
-import { Text } from 'react-native'
+import { Share } from 'react-native'
 import WebView from 'react-native-webview'
 
 import * as Styled from './styled'
@@ -9,21 +9,26 @@ function ExternalLink({
   navigation,
   route: { params },
 }: StackScreenProps<'ExternalLink'>) {
+  const onBackButtonClick = () => {
+    navigation.goBack()
+  }
+
   const { link, title } = params
   return (
     <Styled.Container>
       <Styled.Header>
+        <Styled.Button iconName="before_arrow" onClick={onBackButtonClick} />
+        <Styled.Title numberOfLines={1}>{title}</Styled.Title>
         <Styled.Button
-          onPress={() => {
-            navigation.goBack()
+          onClick={() => {
+            Share.share({
+              message: link,
+              title,
+              url: link,
+            }).catch(console.error)
           }}
-        >
-          <Text>버튼1</Text>
-        </Styled.Button>
-        <Styled.Title>{title}</Styled.Title>
-        <Styled.Button>
-          <Text>버튼2</Text>
-        </Styled.Button>
+          iconName="share"
+        />
       </Styled.Header>
       <WebView source={{ uri: link }} />
     </Styled.Container>

@@ -43,8 +43,9 @@ const theme: Theme = {
     WHITE: '#FFFFFF',
   },
   flexCenter: {
-    'align-items': 'center',
-    'justify-content': 'center',
+    alignItems: 'center',
+    display: 'flex',
+    justifyContent: 'center',
   },
   h1: {
     fontSize: '24px',

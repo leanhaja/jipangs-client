@@ -12,16 +12,16 @@ export enum Step {
 
 const defaultValues = {
   abstractMajors: [],
-  birth: undefined,
-  email: undefined,
-  gender: undefined,
+  birth: '',
+  email: '',
+  gender: '',
   grade: undefined,
-  major: undefined,
-  name: undefined,
-  nickname: undefined,
+  major: '',
+  name: '',
+  nickname: '',
   region: [],
-  studentNumber: undefined,
-  university: undefined,
+  studentNumber: '',
+  university: '',
 }
 
 export default function Register() {

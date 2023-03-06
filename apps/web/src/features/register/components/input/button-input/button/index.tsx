@@ -4,7 +4,7 @@ import { useController, UseControllerProps } from 'react-hook-form'
 import * as Styled from './styled'
 import { StyleProps } from './styled'
 
-import { FormData } from '@/views/register/userInfo/userInfo'
+import { FormData } from '@/views/register/user-info/userInfo'
 
 type ButtonProps = StyleProps & UseControllerProps<FormData>
 

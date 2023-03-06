@@ -24,6 +24,7 @@ declare module '@emotion/react' {
       GREY4: string
       GREY5: string
       GREY6: string
+      GREY7: string
       POINT_RED: string
       PRIMARYCONTAINER_BLUE: string
       PRIMARY_BLUE: string
@@ -48,6 +49,11 @@ declare module '@emotion/react' {
       overflow: string
       textAlign: 'left'
       textOverflow: string
+    }
+    singlelineEllipsis: {
+      overflow: string
+      textOverflow: string
+      'white-space': string
     }
     typographies: {
       btn1: {

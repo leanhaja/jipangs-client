@@ -1,5 +1,8 @@
 import { DevTool } from '@hookform/devtools'
+import { Dispatch, SetStateAction } from 'react'
 import { Controller, useForm } from 'react-hook-form'
+
+import { Step } from '../types'
 
 import * as Styled from './styled'
 import type { FormData } from './userInfo'
@@ -16,7 +19,11 @@ const BIRTH_FORMAT_LEN = 6
 const emailRegex =
   /^[_A-Za-z0-9-\\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$/
 
-export default function RegisterPage() {
+interface UserInfoPageProps {
+  setStep: Dispatch<SetStateAction<Step>>
+}
+
+export default function UserInfoPage({ setStep }: UserInfoPageProps) {
   const {
     control,
     formState: { touchedFields },
@@ -30,6 +37,8 @@ export default function RegisterPage() {
     watch('nickname')?.length >= MINIMUM_NICKNAME_LEN
   const isEmailValid = emailRegex.test(watch('email'))
   const isBirthValid = /^\d{6}$/.test(watch('birth'))
+
+  const handleNextButton = () => setStep(4)
 
   return (
     <>
@@ -92,7 +101,7 @@ export default function RegisterPage() {
               !!watch('gender')
             )
           }
-          type="submit"
+          onClick={handleNextButton}
         >
           다음
         </Button>

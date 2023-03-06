@@ -1,10 +1,11 @@
+import { Pressable, Text } from 'react-native'
+
 import Icon from '../../../../components/icon'
-import { styles } from '../../../../styles/globalStyles'
 
-import { StyleProps } from './styled'
-import * as Styled from './styled'
+import { styles } from './styles'
 
-interface LoginButtonProps extends StyleProps {
+interface LoginButtonProps {
+  oauthProvider: 'kakao' | 'apple'
   onPress: () => void
 }
 
@@ -13,15 +14,23 @@ export default function LoginButton({
   onPress,
 }: LoginButtonProps) {
   return (
-    <Styled.Button
-      oauthProvider={oauthProvider}
+    <Pressable
+      style={({ pressed }) => [
+        styles.button,
+        oauthProvider === 'kakao' ? styles.kakao : styles.apple,
+        pressed && styles.pressed,
+      ]}
       onPress={onPress}
-      style={({ pressed }) => pressed && styles.pressed}
     >
       <Icon iconName={oauthProvider} />
-      <Styled.Text>
+      <Text
+        style={[
+          styles.text,
+          oauthProvider === 'kakao' ? styles.kakao : styles.apple,
+        ]}
+      >
         {oauthProvider === 'kakao' ? '카카오로 계속하기' : '애플로 계속하기'}
-      </Styled.Text>
-    </Styled.Button>
+      </Text>
+    </Pressable>
   )
 }

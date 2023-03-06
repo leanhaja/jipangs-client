@@ -24,6 +24,8 @@ declare module '@emotion/react' {
       GREY4: string
       GREY5: string
       GREY6: string
+      GREY7: string
+      GREY8: string
       POINT_RED: string
       PRIMARYCONTAINER_BLUE: string
       PRIMARY_BLUE: string
@@ -33,22 +35,11 @@ declare module '@emotion/react' {
       YELLOW_KAKAO: string
     }
     flexCenter: {
-      'align-items': 'center'
-      'justify-content': 'center'
+      alignItems: 'center'
+      display: 'flex'
+      justifyContent: 'center'
     }
-    levels: {
-      BACKGROUND: number
-      BASE: number
-      FOREGROUND: number
-    }
-    multilineEllipsis: {
-      WebkitBoxOrient: 'vertical'
-      WebkitLineClamp: string
-      display: string
-      overflow: string
-      textAlign: 'left'
-      textOverflow: string
-    }
+
     typographies: {
       btn1: {
         fontSize: string

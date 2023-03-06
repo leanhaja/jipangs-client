@@ -10,7 +10,7 @@ export interface LayoutProps {
 function Layout({ children }: LayoutProps) {
   const router = useRouter()
 
-  const getOnButtonClick = (routeName: string) => () => {
+  const createRouteClickHandler = (routeName: string) => () => {
     router.push(routeName).catch(() => {
       throw new Error('routing error occurred!')
     })
@@ -22,7 +22,7 @@ function Layout({ children }: LayoutProps) {
         buttons={BUTTONS.map(({ iconName, label, route }) => ({
           iconName,
           label,
-          onClick: getOnButtonClick(route),
+          onClick: createRouteClickHandler(route),
           route,
         }))}
         selectedRouteName={router.pathname}

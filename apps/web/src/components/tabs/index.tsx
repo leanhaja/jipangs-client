@@ -8,20 +8,25 @@ export interface TabButton {
 }
 
 export interface TabsProps {
-  as?: React.ElementType
   buttons: TabButton[]
+  containerType?: React.ElementType
   onTabChange?: (index: number) => void
   selectedTabIndex?: number
 }
 
-function Tabs({ as, buttons, onTabChange, selectedTabIndex = 0 }: TabsProps) {
+function Tabs({
+  buttons,
+  containerType,
+  onTabChange,
+  selectedTabIndex = 0,
+}: TabsProps) {
   const onTabClick = (index: number, onClick?: VoidFunction) => {
     onClick?.()
     onTabChange?.(index)
   }
 
   return (
-    <Styled.Container as={as}>
+    <Styled.Container as={containerType}>
       {buttons.map(({ label, onClick }, index) => (
         <Styled.Button
           key={`${label}-${index + 1}`}

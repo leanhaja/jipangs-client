@@ -23,6 +23,8 @@ const theme: Theme = {
     GREY4: '#7F7F7F',
     GREY5: '#2F2F2F',
     GREY6: '#EEEEEE',
+    GREY7: '#A6A6A6',
+    GREY8: '#4D4D4D',
     POINT_RED: '#EB4D3D',
     PRIMARY_BLUE: '#476BFF',
     PRIMARYCONTAINER_BLUE: '#F3F4FF',
@@ -32,21 +34,9 @@ const theme: Theme = {
     YELLOW_KAKAO: '#FEE500',
   },
   flexCenter: {
-    'align-items': 'center',
-    'justify-content': 'center',
-  },
-  levels: {
-    BACKGROUND: -100,
-    BASE: 0,
-    FOREGROUND: 100,
-  },
-  multilineEllipsis: {
-    WebkitBoxOrient: 'vertical',
-    WebkitLineClamp: '2',
-    display: '-webkit-box',
-    overflow: 'hidden',
-    textAlign: 'left',
-    textOverflow: 'ellipsis',
+    alignItems: 'center',
+    display: 'flex',
+    justifyContent: 'center',
   },
   typographies: {
     btn1: {

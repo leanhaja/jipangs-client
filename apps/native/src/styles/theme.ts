@@ -2,24 +2,11 @@ import { type Theme } from '@emotion/react'
 
 const theme: Theme = {
   bottomNavigationHeight: '88px',
-  btn1: {
-    fontSize: '16px',
-    fontWeight: '600',
-    lineHeight: '100%',
-  },
   buttonSizes: {
     large: {
       height: '44px',
       width: '44px',
     },
-  },
-  c1: {
-    fontSize: '9px',
-    fontWeight: '400',
-  },
-  chip: {
-    fontSize: '12px',
-    fontWeight: '500',
   },
   colors: {
     BLACK: '#000000',
@@ -35,70 +22,81 @@ const theme: Theme = {
     GREY3: '#BDBDBD',
     GREY4: '#7F7F7F',
     GREY5: '#2F2F2F',
+    GREY6: '#EEEEEE',
+    GREY7: '#A6A6A6',
+    GREY8: '#4D4D4D',
     POINT_RED: '#EB4D3D',
     PRIMARY_BLUE: '#476BFF',
     PRIMARYCONTAINER_BLUE: '#F3F4FF',
     SCRIM: '#808080',
     TRANSPARENT_GRAY: '#F7F7F7',
     WHITE: '#FFFFFF',
+    YELLOW_KAKAO: '#FEE500',
   },
   flexCenter: {
     alignItems: 'center',
     display: 'flex',
     justifyContent: 'center',
   },
-  h1: {
-    fontSize: '24px',
-    fontWeight: '600',
-    lineHeight: '100%',
-  },
-  h2: {
-    fontSize: '20px',
-    fontWeight: '600',
-    lineHeight: '130%',
-  },
-  h3: {
-    fontSize: '18px',
-    fontWeight: '600',
-    lineHeight: '130%',
-  },
-  h4: {
-    fontSize: '18px',
-    fontWeight: '500',
-    lineHeight: '100%',
-  },
-  multilineEllipsis: {
-    WebkitBoxOrient: 'vertical',
-    WebkitLineClamp: '2',
-    display: '-webkit-box',
-    overflow: 'hidden',
-    textAlign: 'left',
-    textOverflow: 'ellipsis',
-  },
-  p1: {
-    fontSize: '16px',
-    fontWeight: '500',
-    lineHeight: '100%',
-  },
-  p2: {
-    fontSize: '14px',
-    fontWeight: '500',
-    lineHeight: '140%',
-  },
-  p3: {
-    fontSize: '12px',
-    fontWeight: '600',
-    lineHeight: '140%',
-  },
-  p4: {
-    fontSize: '12px',
-    fontWeight: '400',
-    lineHeight: '140%',
-  },
-  p5: {
-    fontSize: '11px',
-    fontWeight: '400',
-    lineHeight: '100%',
+  typographies: {
+    btn1: {
+      fontSize: '16px',
+      fontWeight: '600',
+      lineHeight: '100%',
+    },
+    c1: {
+      fontSize: '9px',
+      fontWeight: '400',
+    },
+    chip: {
+      fontSize: '12px',
+      fontWeight: '500',
+    },
+    h1: {
+      fontSize: '24px',
+      fontWeight: '600',
+      lineHeight: '100%',
+    },
+    h2: {
+      fontSize: '20px',
+      fontWeight: '600',
+      lineHeight: '130%',
+    },
+    h3: {
+      fontSize: '18px',
+      fontWeight: '600',
+      lineHeight: '130%',
+    },
+    h4: {
+      fontSize: '18px',
+      fontWeight: '500',
+      lineHeight: '100%',
+    },
+    p1: {
+      fontSize: '16px',
+      fontWeight: '500',
+      lineHeight: '100%',
+    },
+    p2: {
+      fontSize: '14px',
+      fontWeight: '500',
+      lineHeight: '140%',
+    },
+    p3: {
+      fontSize: '12px',
+      fontWeight: '600',
+      lineHeight: '140%',
+    },
+    p4: {
+      fontSize: '12px',
+      fontWeight: '400',
+      lineHeight: '140%',
+    },
+    p5: {
+      fontSize: '11px',
+      fontWeight: '400',
+      lineHeight: '100%',
+    },
   },
 }
 

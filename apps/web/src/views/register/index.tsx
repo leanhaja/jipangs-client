@@ -1,8 +1,8 @@
 import { useState } from 'react'
 
-import type { Step } from './types'
 import SelectMajorPage from './select-major'
 import SelectRegionPage from './select-region'
+import type { Step } from './types'
 import UnivInfoPage from './univ-info'
 import UserInfoPage from './user-info'
 

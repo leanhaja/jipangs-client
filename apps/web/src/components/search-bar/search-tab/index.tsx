@@ -9,11 +9,15 @@ export interface SearchTabProps {
 }
 
 function SearchTab({ className, onSearchButtonClick, tabs }: SearchTabProps) {
-  const { as, buttons, onTabChange } = tabs
+  const { buttons, containerType, onTabChange } = tabs
 
   return (
     <Styled.SearchTabContainer className={className}>
-      <Tabs as={as} buttons={buttons} onTabChange={onTabChange} />
+      <Tabs
+        buttons={buttons}
+        containerType={containerType}
+        onTabChange={onTabChange}
+      />
       <Styled.SearchButton
         ariaLabel="검색 돋보기"
         iconName="search"

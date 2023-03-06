@@ -2,7 +2,7 @@ import styled from '@emotion/styled'
 
 export const BackDrop = styled.div`
   align-items: center;
-  background-color: ${(props) => props.theme.colors.BLACK}0C;
+  background-color: ${({ theme }) => theme.colors.BLACK}0C;
   bottom: 0;
   display: flex;
   justify-content: center;
@@ -14,9 +14,9 @@ export const BackDrop = styled.div`
 
 export const Modal = styled.div`
   align-items: center;
-  background-color: ${(props) => props.theme.colors.WHITE};
+  background-color: ${({ theme }) => theme.colors.WHITE};
   border-radius: 16px;
-  box-shadow: 0 2px 10px ${(props) => props.theme.colors.BLACK}19;
+  box-shadow: 0 2px 10px ${({ theme }) => theme.colors.BLACK}19;
   display: flex;
   flex-direction: column;
   height: 161px;
@@ -25,7 +25,7 @@ export const Modal = styled.div`
   width: 314px;
 `
 export const Message = styled.p`
-  ${(props) => props.theme.h4}
+  ${({ theme }) => theme.typographies.h4}
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;

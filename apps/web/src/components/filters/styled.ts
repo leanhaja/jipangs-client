@@ -5,7 +5,7 @@ export const Container = styled.div``
 export const Button = styled.button`
   --padding-inline: 12px;
 
-  ${({ theme }) => theme.btn1};
+  ${({ theme }) => theme.typographies.btn1};
   color: ${({ theme }) => theme.colors.GREY3};
   height: 44px;
   padding: 9.5px var(--padding-inline);

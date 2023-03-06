@@ -98,7 +98,7 @@ export const Tag = styled.li`
   }
 
   .small & {
-    ${({ theme }) => theme.c1};
+    ${({ theme }) => theme.typographies.c1};
     margin-left: 8px;
 
     &:last-child {
@@ -111,12 +111,12 @@ export const Title = styled.h3`
   ${({ theme }) => theme.multilineEllipsis};
 
   .big & {
-    ${({ theme }) => theme.h3};
+    ${({ theme }) => theme.typographies.h3};
     margin-top: 16px;
   }
 
   .small & {
-    ${({ theme }) => theme.p3};
+    ${({ theme }) => theme.typographies.p3};
     margin-top: 12px;
   }
 `
@@ -131,14 +131,14 @@ export const Footer = styled.footer`
   }
 
   .big & {
-    ${({ theme }) => theme.p2};
+    ${({ theme }) => theme.typographies.p2};
     margin-top: 6px;
     padding-right: 11px;
   }
 
   .small & {
     height: 36px;
-    ${({ theme }) => theme.p5};
+    ${({ theme }) => theme.typographies.p5};
 
     button {
       transform: scale(0.9);

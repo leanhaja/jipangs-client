@@ -55,9 +55,7 @@ function Save() {
                     JSON.stringify({ link, title })
                   )
                 }}
-                onKeyUp={() => {
-                  console.log('hi')
-                }}
+                onKeyUp={() => {}}
                 role="button"
                 tabIndex={0}
               >

@@ -14,30 +14,27 @@ export const Button = styled.button<{ isNotChecked?: boolean }>`
 `
 
 export const Title = styled.h1`
-  font-size: ${(props) => props.theme.btn1.fontSize};
-  font-weight: ${(props) => props.theme.btn1.fontWeight};
+  ${({ theme }) => theme.typographies.btn1};
   margin-bottom: 6px;
 `
 
 export const Description = styled.p`
+  ${({ theme }) => theme.typographies.p4};
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
   display: -webkit-box;
-  font-size: ${(props) => props.theme.p4.fontSize};
-  font-weight: ${(props) => props.theme.p4.fontWeight};
   overflow: hidden;
 `
 
 export const ProfileImage = styled.img`
-  background-color: ${(props) => props.theme.colors.GREY2};
+  background-color: ${({ theme }) => theme.colors.GREY2};
   border-radius: 28px;
   height: 56px;
   width: 56px;
 `
 export const Date = styled.time`
+  ${({ theme }) => theme.typographies.p4};
   bottom: 0;
-  font-size: ${(props) => props.theme.p4.fontSize};
-  font-weight: ${(props) => props.theme.p4.fontWeight};
   left: 0;
   position: absolute;
 `
@@ -50,7 +47,7 @@ export const ContentContainer = styled.div`
 `
 
 export const RedDot = styled.div`
-  background-color: ${(props) => props.theme.colors.POINT_RED};
+  background-color: ${({ theme }) => theme.colors.POINT_RED};
   border-radius: 5px;
   height: 10px;
   left: 16px;

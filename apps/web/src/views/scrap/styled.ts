@@ -10,7 +10,7 @@ export const Header = styled.header`
   padding: 34.3px 27px 19px;
 
   & > h1 {
-    ${({ theme }) => theme.h1};
+    ${({ theme }) => theme.typographies.h1};
   }
 `
 

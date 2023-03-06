@@ -5,7 +5,7 @@ export const Container = styled.div``
 export const Button = styled.button`
   --bottom-line-width: 2px;
   color: ${({ theme }) => theme.colors.GREY3};
-  ${({ theme }) => theme.h3};
+  ${({ theme }) => theme.typographies.h3};
   height: 44px;
   padding: 9.5px 12px;
   position: relative;

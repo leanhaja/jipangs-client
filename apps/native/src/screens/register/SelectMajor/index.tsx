@@ -2,10 +2,12 @@ import NextButton from '../../../components/button'
 import Button from '../../../features/register/components/Button'
 import Description from '../../../features/register/components/Description'
 import Title from '../../../features/register/components/Title'
+import { useAppDispatch, useAppSelector } from '../../../redux/hooks'
+import { addMajor, MajorType } from '../../../redux/reducers/registerReducer'
 
 import * as Styled from './styled'
 
-const MAJOR = [
+const MAJOR: NonNullable<MajorType['major']>[] = [
   '간호학',
   '의학',
   '치의학',
@@ -26,6 +28,13 @@ const MAJOR = [
 ]
 
 export default function SelectMajorScreen() {
+  const dispatch = useAppDispatch()
+  const { major: selectedMajor } = useAppSelector((state) => state.register)
+
+  const handleButtonPress = (value: MajorType['major']) => {
+    dispatch(addMajor({ major: value }))
+  }
+
   return (
     <Styled.Screen>
       <Title>전공을 선택해주세요.</Title>
@@ -36,7 +45,13 @@ export default function SelectMajorScreen() {
       <Styled.GapMedium />
       <Styled.ButtonContainer>
         {MAJOR.map((major, index) => (
-          <Button key={`${major}-${index + 1}`}>{major}</Button>
+          <Button
+            key={`${major}-${index + 1}`}
+            isSelected={major === selectedMajor}
+            onPress={handleButtonPress}
+          >
+            {major}
+          </Button>
         ))}
       </Styled.ButtonContainer>
       <Styled.GapWide />

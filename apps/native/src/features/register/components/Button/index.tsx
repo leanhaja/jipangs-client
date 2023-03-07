@@ -1,14 +1,16 @@
-import { MajorType } from '../../../../redux/reducers/registerReducer'
-
 import { StyleProps } from './styled'
 import * as Styled from './styled'
 
-interface ButtonProps extends StyleProps {
-  children: MajorType['major']
-  onPress: (value: MajorType['major']) => void
+interface ButtonProps<T> extends StyleProps {
+  children: T
+  onPress: (value: T) => void
 }
 
-export default function Button({ children, isSelected, onPress }: ButtonProps) {
+export default function Button<T extends string>({
+  children,
+  isSelected,
+  onPress,
+}: ButtonProps<T>) {
   const handlePress = () => {
     onPress(children)
   }

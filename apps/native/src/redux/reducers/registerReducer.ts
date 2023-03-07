@@ -23,25 +23,26 @@ export type MajorType = {
     | undefined
     | null
 }
-type RegionType = {
-  region:
-    | '서울'
-    | '경기'
-    | '인천'
-    | '대전'
-    | '충북'
-    | '충남'
-    | '대구'
-    | '경북'
-    | '부산'
-    | '울산'
-    | '경남'
-    | '광주'
-    | '전북'
-    | '전남'
-    | '강원'
-    | '제주'
-    | undefined
+export type Region =
+  | '서울'
+  | '경기'
+  | '인천'
+  | '대전'
+  | '충북'
+  | '충남'
+  | '대구'
+  | '경북'
+  | '부산'
+  | '울산'
+  | '경남'
+  | '광주'
+  | '전북'
+  | '전남'
+  | '강원'
+  | '제주'
+
+export type RegionType = {
+  region: Region[] | undefined
 }
 type BirthType = {
   birth: number | undefined
@@ -92,8 +93,21 @@ export const registerSlice = createSlice({
       }
       state.major = action.payload.major
     },
+    addRegion: (state, action: PayloadAction<Region>) => {
+      if (!state.region) {
+        state.region = [action.payload]
+        return
+      }
+      if (state.region.includes(action.payload)) {
+        state.region = state.region.filter(
+          (region) => region !== action.payload
+        )
+        return
+      }
+      state.region.push(action.payload)
+    },
   },
 })
 
-export const { addMajor } = registerSlice.actions
+export const { addMajor, addRegion } = registerSlice.actions
 export default registerSlice.reducer

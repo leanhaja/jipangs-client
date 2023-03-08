@@ -37,6 +37,24 @@ export type Region =
 
 export type Gender = '남성' | '여성'
 
+export type Grade = '1학년' | '2학년' | '3학년' | '4학년' | '5학년'
+
+export type University = string
+
+export type YearOfAdmission = string
+
+export type GradeType = {
+  grade: Grade | undefined
+}
+
+export type YearOfAdmissionType = {
+  yearOfAdmission: YearOfAdmission
+}
+
+export type UniversityType = {
+  university: University
+}
+
 export type MajorType = {
   major: Major | undefined | null
 }

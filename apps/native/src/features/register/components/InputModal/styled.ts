@@ -12,7 +12,7 @@ export const Backdrop = styled(Animated.View)`
   z-index: 100;
 `
 
-export const Modal = styled.View`
+export const Modal = styled(Animated.View)`
   background-color: ${({ theme }) => theme.colors.WHITE};
   border-radius: 16px 16px 0 0;
   bottom: 0;

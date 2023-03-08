@@ -13,6 +13,11 @@ import {
   Region,
   RegionType,
   Gender,
+  UniversityType,
+  GradeType,
+  Grade,
+  YearOfAdmission,
+  YearOfAdmissionType,
 } from '../types'
 
 type RegisterType = MajorType &
@@ -22,7 +27,10 @@ type RegisterType = MajorType &
   RegionType &
   MajorSpecificType &
   GenderType &
-  EmailType
+  EmailType &
+  UniversityType &
+  YearOfAdmissionType &
+  GradeType
 
 const emailRegex =
   /^[_A-Za-z0-9-\\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$/
@@ -33,11 +41,14 @@ const initialState: RegisterType = {
   birth: { isTouched: false, isValid: false, value: '' },
   email: { isTouched: false, isValid: false, value: '' },
   gender: undefined,
+  grade: undefined,
   major: undefined,
   majorSpecific: '',
   name: { isTouched: false, isValid: false, value: '' },
   nickname: { isTouched: false, isValid: false, value: '' },
   region: undefined,
+  university: '',
+  yearOfAdmission: '',
 }
 
 export const inputName = createAction<NameType['name']['value']>(
@@ -124,8 +135,20 @@ export const registerSlice = createSlice({
       }
       state.region.push(action.payload)
     },
+    selectGrade: (state, action: PayloadAction<Grade>) => {
+      state.grade = action.payload
+    },
+    selectYearOfAdmission: (state, action: PayloadAction<YearOfAdmission>) => {
+      state.yearOfAdmission = action.payload
+    },
   },
 })
 
-export const { addGender, addMajor, addRegion } = registerSlice.actions
+export const {
+  addGender,
+  addMajor,
+  addRegion,
+  selectGrade,
+  selectYearOfAdmission,
+} = registerSlice.actions
 export default registerSlice.reducer

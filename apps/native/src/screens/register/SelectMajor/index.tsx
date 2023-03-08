@@ -3,11 +3,12 @@ import Button from '../../../features/register/components/Button'
 import Description from '../../../features/register/components/Description'
 import Title from '../../../features/register/components/Title'
 import { useAppDispatch, useAppSelector } from '../../../redux/hooks'
-import { addMajor, MajorType } from '../../../redux/reducers/registerReducer'
+import { addMajor } from '../../../redux/reducers/registerReducer'
+import type { Major } from '../../../redux/types'
 
 import * as Styled from './styled'
 
-const MAJOR: NonNullable<MajorType['major']>[] = [
+const MAJOR: Major[] = [
   '간호학',
   '의학',
   '치의학',
@@ -31,8 +32,8 @@ export default function SelectMajorScreen() {
   const dispatch = useAppDispatch()
   const { major: selectedMajor } = useAppSelector((state) => state.register)
 
-  const handleButtonPress = (value: MajorType['major']) => {
-    dispatch(addMajor({ major: value }))
+  const handleButtonPress = (value: Major) => {
+    dispatch(addMajor(value))
   }
 
   return (

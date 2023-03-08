@@ -13,11 +13,11 @@ import {
   blurBirth,
   addGender,
 } from '../../../redux/reducers/registerReducer'
-import type { GenderType } from '../../../redux/reducers/registerReducer'
+import type { Gender } from '../../../redux/types'
 
 import * as Styled from './styled'
 
-const GENDER: NonNullable<GenderType['gender']>[] = ['남성', '여성']
+const GENDER: Gender[] = ['남성', '여성']
 
 export default function UserInfoPage() {
   const dispatch = useAppDispatch()
@@ -51,13 +51,14 @@ export default function UserInfoPage() {
     dispatch(blurBirth())
   }
 
-  const handleGenderPress = (value: GenderType['gender']) => {
-    dispatch(addGender({ gender: value }))
+  const handleGenderPress = (value: Gender) => {
+    dispatch(addGender(value))
   }
 
   return (
     <Styled.Screen>
       <Input
+        autoComplete="name"
         errorMessage="형식에 맞지 않는 이름이에요!"
         isInvalid={name.isTouched && !name.isValid}
         isValid={name.isValid}
@@ -76,6 +77,7 @@ export default function UserInfoPage() {
       />
       <Styled.GapNarrow />
       <Input
+        autoComplete="email"
         errorMessage="형식에 맞지 않는 이메일이에요!"
         isInvalid={email.isTouched && !email.isValid}
         isValid={email.isValid}
@@ -100,9 +102,11 @@ export default function UserInfoPage() {
       <Styled.GapNarrow />
       <Input
         errorMessage="형식에 맞지 않는 생년월일이에요!"
+        inputMode="numeric"
         isInvalid={birth.isTouched && !birth.isValid}
         isValid={birth.isValid}
         keyboardType="number-pad"
+        maxLength={6}
         onBlur={handleBirthBlur}
         onChangeText={handleBirth}
         title="생년월일"

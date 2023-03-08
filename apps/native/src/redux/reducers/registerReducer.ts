@@ -1,83 +1,20 @@
 /* eslint-disable no-param-reassign */
 import { createAction, createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-export type MajorType = {
-  major:
-    | '간호학'
-    | '의학'
-    | '치의학'
-    | '약학'
-    | '물리치료'
-    | '작업치료'
-    | '임상병리'
-    | '재활관련'
-    | '방사선'
-    | '응급구조'
-    | '치위생'
-    | '보건의료행정'
-    | '의공.의과학'
-    | '환경,보건 관련'
-    | '의료정보학'
-    | '치기공'
-    | '한의학'
-    | undefined
-    | null
-}
-export type Region =
-  | '서울'
-  | '경기'
-  | '인천'
-  | '대전'
-  | '충북'
-  | '충남'
-  | '대구'
-  | '경북'
-  | '부산'
-  | '울산'
-  | '경남'
-  | '광주'
-  | '전북'
-  | '전남'
-  | '강원'
-  | '제주'
+import {
+  BirthType,
+  EmailType,
+  GenderType,
+  Major,
+  MajorSpecificType,
+  MajorType,
+  NameType,
+  NicknameType,
+  Region,
+  RegionType,
+  Gender,
+} from '../types'
 
-export type RegionType = {
-  region: Region[] | undefined
-}
-type BirthType = {
-  birth: {
-    isTouched: boolean
-    isValid: boolean
-    value: string
-  }
-}
-export type GenderType = {
-  gender: '남성' | '여성' | undefined
-}
-type NameType = {
-  name: {
-    isTouched: boolean
-    isValid: boolean
-    value: string
-  }
-}
-type NicknameType = {
-  nickname: {
-    isTouched: boolean
-    isValid: boolean
-    value: string
-  }
-}
-type MajorSpecificType = {
-  majorSpecific: string
-}
-type EmailType = {
-  email: {
-    isTouched: boolean
-    isValid: boolean
-    value: string
-  }
-}
 type RegisterType = MajorType &
   BirthType &
   NameType &
@@ -89,6 +26,8 @@ type RegisterType = MajorType &
 
 const emailRegex =
   /^[_A-Za-z0-9-\\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$/
+
+const numberRegex = /^[0-9]{6}$/
 
 const initialState: RegisterType = {
   birth: { isTouched: false, isValid: false, value: '' },
@@ -150,7 +89,8 @@ export const registerSlice = createSlice({
       })
     builder
       .addCase(inputBirth, (state, action) => {
-        if (action.payload.length !== 6) state.birth.isValid = false
+        if (!numberRegex.test(state.birth.value) || action.payload.length !== 6)
+          state.birth.isValid = false
         else state.birth.isValid = true
         state.birth.value = action.payload
       })
@@ -161,15 +101,15 @@ export const registerSlice = createSlice({
   initialState,
   name: 'register',
   reducers: {
-    addGender: (state, action: PayloadAction<GenderType>) => {
-      state.gender = action.payload.gender
+    addGender: (state, action: PayloadAction<Gender>) => {
+      state.gender = action.payload
     },
-    addMajor: (state, action: PayloadAction<MajorType>) => {
-      if (state.major === action.payload.major) {
+    addMajor: (state, action: PayloadAction<Major>) => {
+      if (state.major === action.payload) {
         state.major = null
         return
       }
-      state.major = action.payload.major
+      state.major = action.payload
     },
     addRegion: (state, action: PayloadAction<Region>) => {
       if (!state.region) {

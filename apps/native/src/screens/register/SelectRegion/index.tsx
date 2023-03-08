@@ -3,7 +3,8 @@ import Button from '../../../features/register/components/Button'
 import Description from '../../../features/register/components/Description'
 import Title from '../../../features/register/components/Title'
 import { useAppDispatch, useAppSelector } from '../../../redux/hooks'
-import { Region, addRegion } from '../../../redux/reducers/registerReducer'
+import { addRegion } from '../../../redux/reducers/registerReducer'
+import type { Region } from '../../../redux/types'
 
 import * as Styled from './styled'
 

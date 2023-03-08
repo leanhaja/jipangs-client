@@ -1,13 +1,15 @@
 import Button from '../../../components/button'
+import Modal from '../../../features/register/components/InputModal'
 import InputShapeButton from '../../../features/register/components/InputShapeButton'
-import Modal from '../../../features/register/components/Modal'
 
 import * as Styled from './styled'
+
+const GRADE = ['23학번', '22학번', '21학번', '20학번']
 
 export default function UnivInfoScreen() {
   return (
     <Styled.Screen>
-      <Modal />
+      <Modal options={GRADE} title="학번 선택" />
       <InputShapeButton title="대학교">
         대학교를 선택해 주세요.
       </InputShapeButton>

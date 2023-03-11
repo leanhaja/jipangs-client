@@ -25,6 +25,7 @@ const theme: Theme = {
     GREY6: '#EEEEEE',
     GREY7: '#A6A6A6',
     GREY8: '#4D4D4D',
+    GREY9: '#9E9E9E',
     POINT_RED: '#EB4D3D',
     PRIMARY_BLUE: '#476BFF',
     PRIMARYCONTAINER_BLUE: '#F3F4FF',

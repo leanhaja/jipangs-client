@@ -15,8 +15,10 @@
     "@emotion/react": "^11.10.5",
     "@react-navigation/native": "^6.1.6",
     "@react-navigation/native-stack": "^6.9.12",
+    "@reduxjs/toolkit": "^1.9.3",
     "expo": "^48.0.5",
     "expo-font": "^11.1.1",
+    "expo-image": "^1.0.0",
     "expo-sharing": "^11.2.2",
     "expo-status-bar": "~1.4.4",
     "react": "18.2.0",
@@ -26,6 +28,7 @@
     "react-native-svg": "13.4.0",
     "react-native-svg-transformer": "^1.0.0",
     "react-native-webview": "11.26.0",
+    "react-redux": "^8.0.5",
     "ui": "*"
   },
   "devDependencies": {
@@ -33,6 +36,7 @@
     "@react-native-community/eslint-config": "^3.2.0",
     "@types/react": "~18.0.24",
     "@types/react-native": "~0.70.6",
+    "@types/react-redux": "^7.1.25",
     "babel-plugin-module-resolver": "^5.0.0",
     "eslint-config-custom": "*",
     "tsconfig": "*"

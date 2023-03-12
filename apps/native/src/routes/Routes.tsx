@@ -12,8 +12,11 @@ const STACK = createNativeStackNavigator<RootStackParamList>()
 function Routes() {
   return (
     <STACK.Navigator
-      initialRouteName="Login"
-      screenOptions={{ headerShown: false }}
+      screenOptions={{
+        contentStyle: { backgroundColor: '#ffffff' },
+        headerShown: false,
+      }}
+      initialRouteName="Register"
     >
       <STACK.Screen component={Login} name="Login" />
       <STACK.Screen component={Register} name="Register" />

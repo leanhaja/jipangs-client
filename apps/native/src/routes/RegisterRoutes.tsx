@@ -12,8 +12,11 @@ const STACK = createNativeStackNavigator<RegisterStackParamList>()
 export default function RegisterRoutes() {
   return (
     <STACK.Navigator
+      screenOptions={{
+        contentStyle: { backgroundColor: '#ffffff' },
+        headerShown: false,
+      }}
       initialRouteName="SelectMajor"
-      screenOptions={{ headerShown: false }}
     >
       <STACK.Screen component={SelectMajor} name="SelectMajor" />
       <STACK.Screen component={SelectRegion} name="SelectRegion" />

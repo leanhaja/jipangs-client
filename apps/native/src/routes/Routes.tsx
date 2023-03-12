@@ -16,7 +16,7 @@ function Routes() {
         contentStyle: { backgroundColor: '#ffffff' },
         headerShown: false,
       }}
-      initialRouteName="Register"
+      initialRouteName="Main"
     >
       <STACK.Screen component={Login} name="Login" />
       <STACK.Screen component={Register} name="Register" />

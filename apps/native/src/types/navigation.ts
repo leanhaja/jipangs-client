@@ -24,5 +24,8 @@ export type HomeTabParamList = {
   [ROUTE_NAMES.MYPAGE]: undefined
 }
 
+export type RegisterStackProps<T extends keyof RegisterStackParamList> =
+  NativeStackScreenProps<RegisterStackParamList, T>
+
 export type StackScreenProps<T extends keyof RootStackParamList> =
   NativeStackScreenProps<RootStackParamList, T>

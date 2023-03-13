@@ -14,12 +14,15 @@ import {
   addGender,
 } from '../../../redux/reducers/registerReducer'
 import type { Gender } from '../../../redux/types'
+import { RegisterStackProps } from '../../../types/navigation'
 
 import * as Styled from './styled'
 
 const GENDER: Gender[] = ['남성', '여성']
 
-export default function UserInfoPage() {
+export default function UserInfoPage({
+  navigation,
+}: RegisterStackProps<'UserInfo'>) {
   const dispatch = useAppDispatch()
   const {
     birth,
@@ -54,6 +57,17 @@ export default function UserInfoPage() {
   const handleGenderPress = (value: Gender) => {
     dispatch(addGender(value))
   }
+
+  const handleNextButton = () => {
+    navigation.navigate('UnivInfo')
+  }
+
+  const isFormValid =
+    name.isValid &&
+    nickname.isValid &&
+    email.isValid &&
+    !!selectedGender &&
+    birth.isValid
 
   return (
     <Styled.Screen>
@@ -112,7 +126,9 @@ export default function UserInfoPage() {
         title="생년월일"
       />
       <Styled.GapWide />
-      <NextButton onPress={() => {}}>다음</NextButton>
+      <NextButton disabled={!isFormValid} onPress={handleNextButton}>
+        다음
+      </NextButton>
     </Styled.Screen>
   )
 }

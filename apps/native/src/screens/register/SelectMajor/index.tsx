@@ -5,6 +5,7 @@ import Title from '../../../features/register/components/Title'
 import { useAppDispatch, useAppSelector } from '../../../redux/hooks'
 import { addMajor } from '../../../redux/reducers/registerReducer'
 import type { Major } from '../../../redux/types'
+import { RegisterStackProps } from '../../../types/navigation'
 
 import * as Styled from './styled'
 
@@ -28,12 +29,18 @@ const MAJOR: Major[] = [
   '한의학',
 ]
 
-export default function SelectMajorScreen() {
+export default function SelectMajorScreen({
+  navigation,
+}: RegisterStackProps<'SelectMajor'>) {
   const dispatch = useAppDispatch()
   const { major: selectedMajor } = useAppSelector((state) => state.register)
 
   const handleButtonPress = (value: Major) => {
     dispatch(addMajor(value))
+  }
+
+  const handleNextButton = () => {
+    navigation.navigate('SelectRegion')
   }
 
   return (
@@ -56,7 +63,9 @@ export default function SelectMajorScreen() {
         ))}
       </Styled.ButtonContainer>
       <Styled.GapWide />
-      <NextButton onPress={() => {}}>다음</NextButton>
+      <NextButton disabled={!selectedMajor} onPress={handleNextButton}>
+        다음
+      </NextButton>
     </Styled.Screen>
   )
 }

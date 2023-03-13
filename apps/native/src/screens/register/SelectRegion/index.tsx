@@ -5,6 +5,7 @@ import Title from '../../../features/register/components/Title'
 import { useAppDispatch, useAppSelector } from '../../../redux/hooks'
 import { addRegion } from '../../../redux/reducers/registerReducer'
 import type { Region } from '../../../redux/types'
+import { RegisterStackProps } from '../../../types/navigation'
 
 import * as Styled from './styled'
 
@@ -27,12 +28,18 @@ const REGION: Region[] = [
   '제주',
 ]
 
-export default function SelectRegionScreen() {
+export default function SelectRegionScreen({
+  navigation,
+}: RegisterStackProps<'SelectRegion'>) {
   const dispatch = useAppDispatch()
   const { region: selectedRegion } = useAppSelector((state) => state.register)
 
   const handleButtonPress = (value: Region) => {
     dispatch(addRegion(value))
+  }
+
+  const handleNextButton = () => {
+    navigation.navigate('UserInfo')
   }
 
   return (
@@ -53,7 +60,9 @@ export default function SelectRegionScreen() {
         ))}
       </Styled.ButtonContainer>
       <Styled.GapWide />
-      <NextButton onPress={() => {}}>다음</NextButton>
+      <NextButton disabled={!selectedRegion?.length} onPress={handleNextButton}>
+        다음
+      </NextButton>
     </Styled.Screen>
   )
 }

@@ -100,8 +100,7 @@ export const registerSlice = createSlice({
       })
     builder
       .addCase(inputBirth, (state, action) => {
-        if (!numberRegex.test(state.birth.value) || action.payload.length !== 6)
-          state.birth.isValid = false
+        if (!numberRegex.test(action.payload)) state.birth.isValid = false
         else state.birth.isValid = true
         state.birth.value = action.payload
       })

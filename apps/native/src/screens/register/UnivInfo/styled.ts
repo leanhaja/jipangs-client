@@ -5,7 +5,6 @@ export const Screen = styled.View`
   align-self: stretch;
   flex: 1;
   justify-content: center;
-  padding: 0 16px;
 `
 export const ButtonContainer = styled.View`
   flex-direction: row;

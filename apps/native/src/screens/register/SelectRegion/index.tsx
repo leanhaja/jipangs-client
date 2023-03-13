@@ -1,10 +1,12 @@
 import NextButton from '../../../components/button'
+import ProgressBar from '../../../components/progress-bar'
 import Button from '../../../features/register/components/Button'
 import Description from '../../../features/register/components/Description'
 import Title from '../../../features/register/components/Title'
 import { useAppDispatch, useAppSelector } from '../../../redux/hooks'
 import { addRegion } from '../../../redux/reducers/registerReducer'
 import type { Region } from '../../../redux/types'
+import { RegisterStackProps } from '../../../types/navigation'
 
 import * as Styled from './styled'
 
@@ -27,7 +29,9 @@ const REGION: Region[] = [
   '제주',
 ]
 
-export default function SelectRegionScreen() {
+export default function SelectRegionScreen({
+  navigation,
+}: RegisterStackProps<'SelectRegion'>) {
   const dispatch = useAppDispatch()
   const { region: selectedRegion } = useAppSelector((state) => state.register)
 
@@ -35,8 +39,13 @@ export default function SelectRegionScreen() {
     dispatch(addRegion(value))
   }
 
+  const handleNextButton = () => {
+    navigation.navigate('UserInfo')
+  }
+
   return (
     <Styled.Screen>
+      <ProgressBar currentStep={2} totalStep={4} />
       <Title>관심 지역을 선택해주세요.</Title>
       <Styled.GapNarrow />
       <Description>관심 지역의 활동을 규레이션 해드려요.</Description>
@@ -53,7 +62,9 @@ export default function SelectRegionScreen() {
         ))}
       </Styled.ButtonContainer>
       <Styled.GapWide />
-      <NextButton onPress={() => {}}>다음</NextButton>
+      <NextButton disabled={!selectedRegion?.length} onPress={handleNextButton}>
+        다음
+      </NextButton>
     </Styled.Screen>
   )
 }

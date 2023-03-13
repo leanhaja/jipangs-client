@@ -1,4 +1,5 @@
 import NextButton from '../../../components/button'
+import ProgressBar from '../../../components/progress-bar'
 import Button from '../../../features/register/components/Button'
 import { Input } from '../../../features/register/components/Input'
 import { useAppDispatch, useAppSelector } from '../../../redux/hooks'
@@ -71,6 +72,8 @@ export default function UserInfoPage({
 
   return (
     <Styled.Screen>
+      <ProgressBar currentStep={3} totalStep={4} />
+
       <Input
         autoComplete="name"
         errorMessage="형식에 맞지 않는 이름이에요!"

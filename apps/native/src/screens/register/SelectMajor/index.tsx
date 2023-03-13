@@ -1,4 +1,5 @@
 import NextButton from '../../../components/button'
+import ProgressBar from '../../../components/progress-bar'
 import Button from '../../../features/register/components/Button'
 import Description from '../../../features/register/components/Description'
 import Title from '../../../features/register/components/Title'
@@ -45,6 +46,7 @@ export default function SelectMajorScreen({
 
   return (
     <Styled.Screen>
+      <ProgressBar currentStep={1} totalStep={4} />
       <Title>전공을 선택해주세요.</Title>
       <Styled.GapNarrow />
       <Description>

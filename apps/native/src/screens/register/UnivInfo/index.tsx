@@ -1,6 +1,7 @@
 import { useState } from 'react'
 
 import Button from '../../../components/button'
+import ProgressBar from '../../../components/progress-bar'
 import Modal from '../../../features/register/components/InputModal'
 import InputShapeButton from '../../../features/register/components/InputShapeButton'
 import SearchModal from '../../../features/register/components/SearchModal'
@@ -40,6 +41,7 @@ export default function UnivInfoScreen() {
     <>
       <SearchModal isVisible={isSearchModalOpen} />
       <Styled.Screen>
+        <ProgressBar currentStep={4} totalStep={4} />
         {isAdmissionModalOpen && (
           <Modal
             onCloseModal={setIsAdmissionModalOpen}

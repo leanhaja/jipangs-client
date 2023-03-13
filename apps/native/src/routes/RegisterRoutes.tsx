@@ -13,15 +13,32 @@ export default function RegisterRoutes() {
   return (
     <STACK.Navigator
       screenOptions={{
+        animation: 'none',
         contentStyle: { backgroundColor: '#ffffff' },
-        headerShown: false,
+        headerShown: true,
       }}
       initialRouteName="SelectMajor"
     >
-      <STACK.Screen component={SelectMajor} name="SelectMajor" />
-      <STACK.Screen component={SelectRegion} name="SelectRegion" />
-      <STACK.Screen component={Userinfo} name="UserInfo" />
-      <STACK.Screen component={UnivInfo} name="UnivInfo" />
+      <STACK.Screen
+        component={SelectMajor}
+        name="SelectMajor"
+        options={{ title: '전공 선택' }}
+      />
+      <STACK.Screen
+        component={SelectRegion}
+        name="SelectRegion"
+        options={{ title: '관심 지역' }}
+      />
+      <STACK.Screen
+        component={Userinfo}
+        name="UserInfo"
+        options={{ title: '회원 정보' }}
+      />
+      <STACK.Screen
+        component={UnivInfo}
+        name="UnivInfo"
+        options={{ title: '대학 정보' }}
+      />
     </STACK.Navigator>
   )
 }

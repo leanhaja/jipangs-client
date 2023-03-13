@@ -1,4 +1,5 @@
 import NextButton from '../../../components/button'
+import ProgressBar from '../../../components/progress-bar'
 import Button from '../../../features/register/components/Button'
 import Description from '../../../features/register/components/Description'
 import Title from '../../../features/register/components/Title'
@@ -44,6 +45,7 @@ export default function SelectRegionScreen({
 
   return (
     <Styled.Screen>
+      <ProgressBar currentStep={2} totalStep={4} />
       <Title>관심 지역을 선택해주세요.</Title>
       <Styled.GapNarrow />
       <Description>관심 지역의 활동을 규레이션 해드려요.</Description>

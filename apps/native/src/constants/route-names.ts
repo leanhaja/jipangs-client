@@ -2,6 +2,7 @@ export const ROUTE_NAMES = {
   EXTERNAL_LINK: 'ExternalLink',
   HOME: 'Home',
   LOGIN: 'Login',
+  LOGIN_WEBVIEW: 'LoginWebView',
   MAIN: 'Main',
   MYPAGE: 'Mypage',
   REGISTER: 'Register',

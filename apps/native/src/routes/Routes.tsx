@@ -2,6 +2,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
 import ExternalLink from '../screens/external-link'
 import Login from '../screens/login'
+import LoginWebView from '../screens/login/WebView'
 import { RootStackParamList } from '../types'
 
 import Main from './HomeRoutes'
@@ -16,7 +17,7 @@ function Routes() {
         contentStyle: { backgroundColor: '#ffffff' },
         headerShown: false,
       }}
-      initialRouteName="Main"
+      initialRouteName="Login"
     >
       <STACK.Screen component={Login} name="Login" />
       <STACK.Screen component={Register} name="Register" />
@@ -26,6 +27,7 @@ function Routes() {
         options={{ headerTitleAlign: 'center' }}
       />
       <STACK.Screen component={ExternalLink} name="ExternalLink" />
+      <STACK.Screen component={LoginWebView} name="LoginWebView" />
     </STACK.Navigator>
   )
 }

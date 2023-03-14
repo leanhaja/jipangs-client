@@ -9,6 +9,7 @@ export type RootStackParamList = {
   [ROUTE_NAMES.MAIN]: undefined
   [ROUTE_NAMES.LOGIN]: undefined
   [ROUTE_NAMES.REGISTER]: undefined
+  [ROUTE_NAMES.LOGIN_WEBVIEW]: undefined
 }
 
 export type RegisterStackParamList = {

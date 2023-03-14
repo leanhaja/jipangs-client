@@ -1,43 +1,42 @@
-import { Text } from 'react-native'
+import { BottomTabBarProps } from '@react-navigation/bottom-tabs'
 
-import { type IconButtonProps } from '../icon-button'
+import theme from '../../styles/theme'
+import IconButton, { type IconButtonProps } from '../icon-button'
 
 import * as Styled from './styled'
 
 export interface Button extends IconButtonProps {
-  label: string
   route: string
 }
 
-export interface BottomNavigationProps {
+export interface BottomNavigationProps extends BottomTabBarProps {
   buttons: Button[]
-  onNavigationChange?: (routeName: string) => void
-  // selectedRouteName?: string
 }
 
 function BottomNavigation({
   buttons,
-  onNavigationChange,
-}: // selectedRouteName,
-BottomNavigationProps) {
-  const onButtonClick = (route: string, onClick?: VoidFunction) => {
-    onNavigationChange?.(route)
-    onClick?.()
+  navigation,
+  state,
+}: BottomNavigationProps) {
+  const { colors } = theme
+
+  const onButtonClick = (route: string) => {
+    navigation.navigate(route)
   }
 
   return (
     <Styled.Nav>
-      {buttons.map(({ iconName, label, onClick, route }, index) => (
-        <Styled.Button
-          key={`${label}-${index + 1}`}
+      {buttons.map(({ iconName, route }, index) => (
+        <IconButton
+          key={`${route}-${index + 1}`}
           onClick={() => {
-            onButtonClick(route, onClick)
+            onButtonClick(route)
           }}
-          // className={classNames({ selected: route === selectedRouteName })}
+          iconColor={index === state?.index ? colors.BLACK : colors.GREY3}
           iconName={iconName}
         >
-          <Text>{label}</Text>
-        </Styled.Button>
+          <Styled.Text selected={index === state?.index}>{route}</Styled.Text>
+        </IconButton>
       ))}
     </Styled.Nav>
   )

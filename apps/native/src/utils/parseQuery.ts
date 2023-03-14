@@ -1,9 +1,7 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable @typescript-eslint/naming-convention */
 export const parseQueryString = (
   url: string
 ): null | { [key: string]: string } => {
-  const [_, queryString] = url.split('?')
+  const [, queryString] = url.split('?')
   if (!queryString) return null
   const keyValuePairStringsArray = queryString.split('&')
   const keyValuePairObject = keyValuePairStringsArray.reduce(

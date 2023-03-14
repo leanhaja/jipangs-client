@@ -12,9 +12,7 @@ import { setAuthInfo, getAuthInfo } from './utils/asyncStorage'
 
 store.subscribe(() => {
   const { auth } = store.getState()
-  ;(async () => {
-    await setAuthInfo(auth)
-  })()
+  setAuthInfo(auth)
 })
 
 export default function Native() {

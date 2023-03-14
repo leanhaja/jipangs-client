@@ -1,7 +1,7 @@
 /* eslint-disable no-param-reassign */
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-type Auth = { hasInfo: boolean; token: string }
+import { Auth } from '../types'
 
 const initialState = {
   hasInfo: false,

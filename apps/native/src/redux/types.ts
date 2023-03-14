@@ -102,3 +102,5 @@ export type EmailType = {
 export type MajorSpecificType = {
   majorSpecific: string
 }
+
+export type Auth = { hasInfo: boolean; token: string }

@@ -6,7 +6,6 @@ import { login } from '../../redux/reducers/authReducer'
 import { parseQueryString } from '../../utils/parseQuery'
 
 export default function LoginWebView() {
-  console.log(OAUTH_KAKAO_URI)
   const dispatch = useAppDispatch()
   const handleNavigationStateChange = (navigationState: WebViewNavigation) => {
     const queryObject = parseQueryString(navigationState.url)

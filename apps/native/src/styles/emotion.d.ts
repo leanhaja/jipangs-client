@@ -39,65 +39,64 @@ declare module '@emotion/react' {
       display: 'flex'
       justifyContent: 'center'
     }
-
     typographies: {
       btn1: {
-        fontSize: string
-        fontWeight: string
-        lineHeight: string
+        fontSize: number
+        fontWeight: '600'
+        lineHeight: number
       }
       c1: {
-        fontSize: string
-        fontWeight: string
+        fontSize: number
+        fontWeight: '500'
+        lineHeight: number
       }
       chip: {
-        fontSize: string
-        fontWeight: string
+        fontSize: number
+        fontWeight: '500'
+        lineHeight: number
       }
       h1: {
-        fontSize: string
-        fontWeight: string
-        lineHeight: string
+        fontSize: number
+        fontWeight: '600'
+        lineHeight: number
       }
       h2: {
-        fontSize: string
-        fontWeight: string
-        lineHeight: string
+        fontSize: number
+        fontWeight: '600'
+        lineHeight: number
       }
       h3: {
-        fontSize: string
-        fontWeight: string
-        lineHeight: string
+        fontSize: number
+        fontWeight: '600'
+        lineHeight: number
       }
       h4: {
-        fontSize: string
-        fontWeight: string
-        lineHeight: string
+        fontSize: number
+        fontWeight: '500'
       }
       p1: {
-        fontSize: string
-        fontWeight: string
-        lineHeight: string
+        fontSize: number
+        fontWeight: '400'
+        lineHeight: number
       }
       p2: {
-        fontSize: string
-        fontWeight: string
-        lineHeight: string
+        fontSize: number
+        fontWeight: '500'
+        lineHeight: number
       }
       p3: {
-        fontSize: string
-        fontWeight: string
-        lineHeight: string
+        fontSize: number
+        fontWeight: '600'
+        lineHeight: number
       }
       p4: {
-        fontSize: string
-        fontWeight: string
-        lineHeight: string
+        fontSize: number
+        fontWeight: '400'
+        lineHeight: number
       }
       p5: {
-        fontSize: string
-        fontWeight: string
-        lineHeight: string
+        fontSize: number
+        fontWeight: '400'
       }
     }
   }

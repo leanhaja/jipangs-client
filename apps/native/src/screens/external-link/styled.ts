@@ -21,5 +21,5 @@ export const Button = styled(IconButton)`
 
 export const Title = styled.Text`
   flex-shrink: 1;
-  font-size: 18px;
+  ${({ theme }) => theme.typographies.h4};
 `

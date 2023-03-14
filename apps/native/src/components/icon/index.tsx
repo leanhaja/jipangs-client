@@ -1,3 +1,5 @@
+import { type SvgProps } from 'react-native-svg'
+
 import Alarm from './assets/alarm.svg'
 import AlarmNew from './assets/alarm_new.svg'
 import AlarmNewInActive from './assets/alarm_new_inactive.svg'
@@ -29,28 +31,28 @@ export type IconName =
   | 'user'
   | 'x'
 
-export interface IconProps {
+export interface IconProps extends SvgProps {
   iconName: IconName
 }
 
-const icons: Record<IconName, React.ReactElement> = {
-  alarm: <Alarm />,
-  alarm_new: <AlarmNew />,
-  alarm_new_inactive: <AlarmNewInActive />,
-  before_arrow: <BeforeArrow />,
-  bookmark: <BookMark />,
-  bookmark_filled: <BookmarkFilled />,
-  bookmark_navigation: <BookmarkNavigation />,
-  check: <Check />,
-  community: <Community />,
-  home: <Home />,
-  search: <Search />,
-  share: <Share />,
-  user: <User />,
-  x: <X />,
-}
+function Icon({ iconName, ...restProps }: IconProps) {
+  const icons: Record<IconName, React.ReactElement> = {
+    alarm: <Alarm {...restProps} />,
+    alarm_new: <AlarmNew {...restProps} />,
+    alarm_new_inactive: <AlarmNewInActive {...restProps} />,
+    before_arrow: <BeforeArrow {...restProps} />,
+    bookmark: <BookMark {...restProps} />,
+    bookmark_filled: <BookmarkFilled {...restProps} />,
+    bookmark_navigation: <BookmarkNavigation {...restProps} />,
+    check: <Check {...restProps} />,
+    community: <Community {...restProps} />,
+    home: <Home {...restProps} />,
+    search: <Search {...restProps} />,
+    share: <Share {...restProps} />,
+    user: <User {...restProps} />,
+    x: <X {...restProps} />,
+  }
 
-function Icon({ iconName }: IconProps) {
   return icons[iconName]
 }
 

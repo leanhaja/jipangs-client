@@ -11,3 +11,7 @@ declare module '*.png' {
 }
 
 declare module '*.ttf'
+
+declare module 'react-native-dotenv' {
+  export const OAUTH_KAKAO_URI: string
+}

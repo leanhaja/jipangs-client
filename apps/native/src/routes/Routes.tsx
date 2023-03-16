@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-no-useless-fragment */
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
 import { useAppSelector } from '../redux/hooks'
@@ -7,7 +6,7 @@ import Login from '../screens/login'
 import LoginWebView from '../screens/login/WebView'
 import { RootStackParamList } from '../types'
 
-import Main from './HomeRoutes'
+import Main from './MainRoutes'
 import Register from './RegisterRoutes'
 import Setting from './SettingRoutes'
 
@@ -17,6 +16,8 @@ function Routes() {
   const { hasInfo, token } = useAppSelector((state) => state.auth)
 
   const screenWhenUserLoggedIn = hasInfo ? (
+    <STACK.Screen component={Register} name="Register" />
+  ) : (
     <>
       <STACK.Screen
         component={Main}
@@ -26,8 +27,6 @@ function Routes() {
       <STACK.Screen component={Setting} name="Setting" />
       <STACK.Screen component={ExternalLink} name="ExternalLink" />
     </>
-  ) : (
-    <STACK.Screen component={Register} name="Register" />
   )
 
   return (

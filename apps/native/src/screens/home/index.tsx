@@ -1,65 +1,51 @@
-import WebView, { type WebViewMessageEvent } from 'react-native-webview'
-
-import BottomNavigation from '../../components/bottom-navigation'
-import { JIPANGS_ADDRESS } from '../../constants'
-import type { StackScreenProps } from '../../types'
-import { isExternalLinkBridgeResponse } from '../../utils'
+import Card from '../../components/card'
+import Filters from '../../components/filters'
+// import { ROUTE_PATHS } from '../../constants'
 
 import * as Styled from './styled'
 
-const LOCAL_JIPANGS = 'http://192.168.0.2:3000/'
+// export type Route = (typeof ROUTE_PATHS)[0]
 
-export const BUTTONS = [
-  {
-    iconName: 'home',
-    label: '홈',
-    route: '/',
-  },
-  {
-    iconName: 'bookmark_navigation',
-    label: '스크랩',
-    route: '/scrap',
-  },
-  {
-    iconName: 'community',
-    label: '커뮤니티',
-    route: '/community',
-  },
-  {
-    iconName: 'alarm',
-    label: '알림',
-    route: '/alarm',
-  },
-  {
-    iconName: 'user',
-    label: '마이페이지',
-    route: '/user',
-  },
-] as const
+// const LOCAL_JIPANGS = 'http://192.168.0.2:3000/'
 
-function Home({ navigation }: StackScreenProps<'Home'>) {
-  const onMessage = ({ nativeEvent: { data } }: WebViewMessageEvent) => {
-    const parsedData: unknown = JSON.parse(data)
+const images = Array.from({ length: 1 }, () => ({
+  category: '학술/행사',
+  deadLine: 'D-8',
+  img: 'https://cdn.pixabay.com/photo/2023/02/14/22/12/birds-7790506_1280.jpg',
+  link: 'https://www.naver.com/',
+  major: '',
+  source: '사회복지법인 서울시의사회',
+  title: '서울시 의사회 의료봉사단 약사 자원봉사자 모집 공고',
+  typeName: '',
+}))
 
-    if (!isExternalLinkBridgeResponse(parsedData)) return
+function Home() {
+  // const [selectedRouteName, setSelectedRouteName] = useState<Route>('/')
 
-    navigation.navigate('ExternalLink', parsedData)
-  }
+  // const onMessage = ({ nativeEvent: { data } }: WebViewMessageEvent) => {
+  //   // const parsedData: unknown = JSON.parse(data)
+  //   // if (!isExternalLinkBridgeResponse(parsedData)) return
+  //   // navigation.navigate('ExternalLink', parsedData)
+  // }
 
   return (
     <Styled.Container>
-      <BottomNavigation
-        buttons={BUTTONS.map(({ iconName, label, route }) => ({
-          iconName,
-          label,
-          // onClick: createRouteClickHandler(route),
-          route,
-        }))}
+      <Filters
+        buttons={[
+          { key: 'external-activity', label: '대외활동' },
+          { key: 'volunteer-activity', label: '봉사활동' },
+        ]}
+        selectedFilterKey="external-activity"
       />
-      <WebView
-        onMessage={onMessage}
-        source={{ uri: __DEV__ ? LOCAL_JIPANGS : JIPANGS_ADDRESS }}
-      />
+      {images.map(({ category, deadLine, img, source, title }, index) => (
+        <Card
+          key={`card-${index + 1}`}
+          imageSrc={img}
+          location={source}
+          tags={[category, deadLine]}
+          title={title}
+        />
+      ))}
     </Styled.Container>
   )
 }

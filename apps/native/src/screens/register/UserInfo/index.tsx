@@ -82,6 +82,7 @@ export default function UserInfoPage({
         onBlur={handleNameBlur}
         onChangeText={handleName}
         title="이름"
+        value={name.value}
       />
       <Styled.GapNarrow />
       <Input
@@ -91,6 +92,7 @@ export default function UserInfoPage({
         onBlur={handleNicknameBlur}
         onChangeText={handleNickname}
         title="닉네임"
+        value={nickname.value}
       />
       <Styled.GapNarrow />
       <Input
@@ -101,6 +103,7 @@ export default function UserInfoPage({
         onBlur={handleEmailBlur}
         onChangeText={handleEmail}
         title="이메일"
+        value={email.value}
       />
       <Styled.GapNarrow />
       <Styled.ButtonContainer>
@@ -127,6 +130,7 @@ export default function UserInfoPage({
         onBlur={handleBirthBlur}
         onChangeText={handleBirth}
         title="생년월일"
+        value={birth.value}
       />
       <Styled.GapWide />
       <NextButton disabled={!isFormValid} onPress={handleNextButton}>

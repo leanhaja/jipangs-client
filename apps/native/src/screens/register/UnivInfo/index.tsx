@@ -5,7 +5,9 @@ import ProgressBar from '../../../components/progress-bar'
 import Modal from '../../../features/register/components/InputModal'
 import InputShapeButton from '../../../features/register/components/InputShapeButton'
 import SearchModal from '../../../features/register/components/SearchModal'
+import useMutateUserInfo from '../../../features/register/hooks/useMutateUserInfo'
 import { useAppDispatch, useAppSelector } from '../../../redux/hooks'
+import { setUserInfo } from '../../../redux/reducers/authReducer'
 import {
   selectGrade,
   selectYearOfAdmission,
@@ -19,8 +21,18 @@ const YEAR_OF_ADMISSION = ['23학번', '22학번', '21학번', '20학번']
 const GRADE: Grade[] = ['1학년', '2학년', '3학년', '4학년', '5학년']
 
 export default function UnivInfoScreen() {
+  const mutation = useMutateUserInfo()
+  const {
+    birth,
+    email,
+    gender,
+    grade,
+    major,
+    name,
+    nickname,
+    yearOfAdmission,
+  } = useAppSelector((state) => state.register)
   const dispatch = useAppDispatch()
-  const { grade, yearOfAdmission } = useAppSelector((state) => state.register)
   const [isAdmissionModalOpen, setIsAdmissionModalOpen] = useState(false)
   const [isGradeModalOpen, setIsGradeModalOpen] = useState(false)
   const [isSearchModalOpen, setIsSearchModalOpen] = useState(false)
@@ -77,7 +89,34 @@ export default function UnivInfoScreen() {
           {grade || '학년를 선택해 주세요.'}
         </InputShapeButton>
         <Styled.GapWide />
-        <Button onPress={() => {}}>회원가입 완료</Button>
+        <Button
+          onPress={() => {
+            if (!gender || !grade || !major) return
+
+            mutation.mutate(
+              {
+                birthDay: birth.value,
+                email: email.value,
+                gender,
+                grade,
+                major: '지팡스학과',
+                marketingPolicy: true,
+                name: name.value,
+                nickname: nickname.value,
+                privacyPolicy: true,
+                studentId: yearOfAdmission,
+                university: '지팡스대학교',
+              },
+              {
+                onSuccess: () => {
+                  dispatch(setUserInfo())
+                },
+              }
+            )
+          }}
+        >
+          회원가입 완료
+        </Button>
       </Styled.Screen>
     </>
   )

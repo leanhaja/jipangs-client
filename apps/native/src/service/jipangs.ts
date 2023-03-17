@@ -1,6 +1,10 @@
 import { AxiosPromise } from 'axios'
 
-import { PostUserAlarm, PostUserInfo } from '../types/axios'
+import {
+  PostUserAlarmReponse,
+  PostUserInfoResponse,
+  UserInfo,
+} from '../types/axios'
 import Axios from '../utils/axios'
 
 export default {
@@ -29,7 +33,7 @@ export default {
    * 개인별 동의 여부를 수정하는 api
    * @returns
    */
-  postUserAlarm(): AxiosPromise<PostUserAlarm> {
+  postUserAlarm(): AxiosPromise<PostUserAlarmReponse> {
     return Axios({
       method: 'post',
       url: '/api/v1/user/alarm',
@@ -40,8 +44,9 @@ export default {
    * 유저 추가 정보를 입력하는 api
    * @returns
    */
-  postUserInfo(): AxiosPromise<PostUserInfo> {
+  postUserInfo(data: UserInfo): AxiosPromise<PostUserInfoResponse> {
     return Axios({
+      data: { ...data },
       method: 'post',
       url: '/api/v1/user',
     })

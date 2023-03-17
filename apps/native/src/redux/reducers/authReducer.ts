@@ -20,8 +20,11 @@ export const authSlice = createSlice({
       state.token = ''
       state.hasInfo = false
     },
+    setUserInfo: (state) => {
+      state.hasInfo = true
+    },
   },
 })
 
-export const { login, logout } = authSlice.actions
+export const { login, logout, setUserInfo } = authSlice.actions
 export default authSlice.reducer

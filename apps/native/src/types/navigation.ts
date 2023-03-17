@@ -25,8 +25,22 @@ export type HomeTabParamList = {
   [ROUTE_NAMES.MYPAGE]: undefined
 }
 
+export type MypageStackParamList = {
+  [ROUTE_NAMES.MY_INFO]: undefined
+  [ROUTE_NAMES.LOGIN_INFO]: undefined
+  [ROUTE_NAMES.ALARM_SETTING]: undefined
+  [ROUTE_NAMES.INFO_AGREEMENT_SETTING]: undefined
+  [ROUTE_NAMES.TERM_OF_USE]: undefined
+  [ROUTE_NAMES.PRIVACY_POLICY]: undefined
+  [ROUTE_NAMES.INQUIRY]: undefined
+  [ROUTE_NAMES.ANNOUNCEMENT]: undefined
+}
+
 export type RegisterStackProps<T extends keyof RegisterStackParamList> =
   NativeStackScreenProps<RegisterStackParamList, T>
 
 export type StackScreenProps<T extends keyof RootStackParamList> =
   NativeStackScreenProps<RootStackParamList, T>
+
+export type MypageStackProps<T extends keyof MypageStackParamList> =
+  NativeStackScreenProps<MypageStackParamList, T>

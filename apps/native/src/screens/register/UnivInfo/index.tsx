@@ -9,6 +9,7 @@ import useMutateUserInfo from '../../../features/register/hooks/useMutateUserInf
 import { useAppDispatch, useAppSelector } from '../../../redux/hooks'
 import { setUserInfo } from '../../../redux/reducers/authReducer'
 import {
+  reset,
   selectGrade,
   selectYearOfAdmission,
 } from '../../../redux/reducers/registerReducer'
@@ -110,6 +111,7 @@ export default function UnivInfoScreen() {
               {
                 onSuccess: () => {
                   dispatch(setUserInfo())
+                  dispatch(reset())
                 },
               }
             )

@@ -1,6 +1,7 @@
 import { AxiosPromise } from 'axios'
 
 import {
+  GetUserInfoResponse,
   PostUserAlarmReponse,
   PostUserInfoResponse,
   UserInfo,
@@ -22,7 +23,7 @@ export default {
    * 유저 정보를 가저오는 api
    * @returns 유저 정보
    */
-  getUserInfo() {
+  getUserInfo(): AxiosPromise<GetUserInfoResponse> {
     return Axios({
       method: 'get',
       url: '/api/v1/user',

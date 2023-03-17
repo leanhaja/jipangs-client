@@ -1,6 +1,10 @@
+import { useQuery } from '@tanstack/react-query'
+
 import CompleteButton from '../../../components/button'
 import Button from '../../../features/register/components/Button'
 import { Input } from '../../../features/register/components/Input'
+import useMutateUserInfo from '../../../features/register/hooks/useMutateUserInfo'
+import { queryKeys } from '../../../react-query/constants'
 import { useAppDispatch, useAppSelector } from '../../../redux/hooks'
 import {
   inputName,
@@ -12,21 +16,67 @@ import {
   inputBirth,
   blurBirth,
   addGender,
+  setValue,
 } from '../../../redux/reducers/registerReducer'
-import type { Gender } from '../../../redux/types'
+import type { Gender, Grade, Major } from '../../../redux/types'
+import jipangs from '../../../service/jipangs'
 
 import * as Styled from './styled'
 
 const GENDER: Gender[] = ['남성', '여성']
 
+const getUserInfo = async () => {
+  const { data } = await jipangs.getUserInfo()
+  return data
+}
+
 export default function UserInfoPage() {
   const dispatch = useAppDispatch()
+  const mutation = useMutateUserInfo()
+  useQuery([queryKeys.userInfo], () => getUserInfo(), {
+    onSuccess: (data) => {
+      dispatch(
+        setValue({
+          birth: {
+            isTouched: false,
+            isValid: true,
+            value: data.body.user.birthDay,
+          },
+          email: {
+            isTouched: false,
+            isValid: true,
+            value: data.body.user.email,
+          },
+          gender: data.body.user.gender as Gender,
+          grade: data.body.user.grade as Grade,
+          major: data.body.user.major as Major,
+          majorSpecific: data.body.user.major,
+          name: {
+            isTouched: false,
+            isValid: true,
+            value: data.body.user.name,
+          },
+          nickname: {
+            isTouched: false,
+            isValid: true,
+            value: data.body.user.nickName,
+          },
+          region: [],
+          university: data.body.user.nickName,
+          yearOfAdmission: data.body.user.grade,
+        })
+      )
+    },
+  })
   const {
     birth,
     email,
     gender: selectedGender,
+    grade,
+    major,
     name,
     nickname,
+    yearOfAdmission,
   } = useAppSelector((state) => state.register)
 
   const handleName = (value: string) => {
@@ -55,7 +105,26 @@ export default function UserInfoPage() {
     dispatch(addGender(value))
   }
 
-  const CompleteButtonButton = () => {}
+  const CompleteButtonButton = () => {
+    mutation.mutate(
+      {
+        birthDay: birth.value,
+        email: email.value,
+        gender: selectedGender!,
+        grade: grade!,
+        major: major!,
+        marketingPolicy: true,
+        name: name.value,
+        nickname: nickname.value,
+        privacyPolicy: true,
+        studentId: yearOfAdmission,
+        university: '지팡스대학교',
+      },
+      {
+        onSuccess: () => {},
+      }
+    )
+  }
 
   const isFormValid =
     name.isValid &&
@@ -63,6 +132,8 @@ export default function UserInfoPage() {
     email.isValid &&
     !!selectedGender &&
     birth.isValid
+
+  console.log('name', name.value)
 
   return (
     <Styled.Screen>

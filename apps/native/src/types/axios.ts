@@ -46,3 +46,41 @@ export interface Alarm {
   usefulInfoEmailAlarm: boolean
   usefulInfoPushAlarm: boolean
 }
+
+export interface GetUserInfoResponse {
+  body: {
+    user: {
+      alarm: {
+        careerInfoEmailAlarm: boolean
+        careerInfoPushAlarm: boolean
+        personalEmailAlarm: boolean
+        personalPushAlarm: boolean
+        usefulInfoEmailAlarm: boolean
+        usefulInfoPushAlarm: boolean
+      }
+      birthDay: string
+      createdAt: string
+      email: string
+      emailVerifiedYn: null
+      gender: string | null
+      grade: string
+      major: string
+      marketingPolicy: boolean
+      modifiedAt: string
+      name: string
+      nickName: string
+      privacyPolicy: boolean
+      profileImageUrl: string
+      providerType: string
+      roleType: string
+      studentId: string | null
+      university: string
+      userId: string
+      username: string
+    }
+  }
+  header: {
+    code: number
+    message: string
+  }
+}

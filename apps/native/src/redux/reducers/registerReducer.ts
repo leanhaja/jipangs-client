@@ -134,11 +134,24 @@ export const registerSlice = createSlice({
       }
       state.region.push(action.payload)
     },
+    reset: () => initialState,
     selectGrade: (state, action: PayloadAction<Grade>) => {
       state.grade = action.payload
     },
     selectYearOfAdmission: (state, action: PayloadAction<YearOfAdmission>) => {
       state.yearOfAdmission = action.payload
+    },
+    setValue: (state, action: PayloadAction<RegisterType>) => {
+      state.birth = action.payload.birth
+      state.email = action.payload.email
+      state.gender = action.payload.gender
+      state.grade = action.payload.grade
+      state.major = action.payload.major
+      state.name = action.payload.name
+      state.nickname = action.payload.nickname
+      state.region = action.payload.region
+      state.university = action.payload.university
+      state.yearOfAdmission = action.payload.yearOfAdmission
     },
   },
 })
@@ -147,7 +160,9 @@ export const {
   addGender,
   addMajor,
   addRegion,
+  reset,
   selectGrade,
   selectYearOfAdmission,
+  setValue,
 } = registerSlice.actions
 export default registerSlice.reducer

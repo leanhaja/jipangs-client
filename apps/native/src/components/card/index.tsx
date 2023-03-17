@@ -8,6 +8,7 @@ import * as Styled from './styled'
 
 export interface CardProps {
   imageSrc: string
+  isBookMarked?: boolean
   location: string
   onScrapClick?: VoidFunction
   onShareClick?: VoidFunction
@@ -21,15 +22,16 @@ const { colors } = theme
 
 function Card({
   imageSrc,
+  isBookMarked: initialIsBookMarked = false,
   location,
   onScrapClick,
   onShareClick,
-  size = 'small',
+  size = 'big',
   style,
   tags,
   title,
 }: CardProps) {
-  const [isBookMarked, setIsBookMarked] = useState(false)
+  const [isBookMarked, setIsBookMarked] = useState(initialIsBookMarked)
   const bigSize = size === 'big'
 
   const onClick = () => {

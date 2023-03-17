@@ -3,6 +3,7 @@ import { BottomTabBarProps } from '@react-navigation/bottom-tabs'
 import theme from '../../styles/theme'
 import IconButton, { type IconButtonProps } from '../icon-button'
 
+import { LABEL_DISPLAY } from './constants'
 import * as Styled from './styled'
 
 export interface Button extends IconButtonProps {
@@ -35,7 +36,9 @@ function BottomNavigation({
           iconColor={index === state?.index ? colors.BLACK : colors.GREY3}
           iconName={iconName}
         >
-          <Styled.Text selected={index === state?.index}>{route}</Styled.Text>
+          <Styled.Text selected={index === state?.index}>
+            {LABEL_DISPLAY[route]}
+          </Styled.Text>
         </IconButton>
       ))}
     </Styled.Nav>

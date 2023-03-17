@@ -1,27 +1,30 @@
-import axios, { AxiosError } from 'axios'
-import { useEffect, useState } from 'react'
-import { FlatList, View } from 'react-native'
+import { useQueryClient } from '@tanstack/react-query'
+import { useState } from 'react'
+import { ScrollView, Share } from 'react-native'
 
-import Card from '../../components/card'
 import Filters from '../../components/filters'
-import { useAppSelector, useAppDispatch } from '../../redux/hooks'
-import { logout } from '../../redux/reducers/authReducer'
+import CardGrid, {
+  LinkCardProps,
+} from '../../features/home/components/card-grid/index'
+import Empty from '../../features/home/components/empty'
+import useBookMark from '../../hooks/useBookMark'
+import useScrap from '../../hooks/useScrap'
 import theme from '../../styles/theme'
 import { transformPixelToDp } from '../../utils'
 
 import { FILTER_BUTTONS } from './constants'
 import * as Styled from './styled'
 
-const images = Array.from({ length: 8 }, () => ({
-  category: '학술/행사',
-  deadLine: 'D-8',
-  img: 'https://cdn.pixabay.com/photo/2023/02/14/22/12/birds-7790506_1280.jpg',
-  link: 'https://www.naver.com/',
-  major: '',
-  source: '사회복지법인 서울시의사회',
-  title: '서울시 의사회 의료봉사단 약사 자원봉사자 모집 공고',
-  typeName: '',
-}))
+// const images = Array.from({ length: 8 }, () => ({
+//   category: '학술/행사',
+//   deadLine: 'D-8',
+//   img: 'https://cdn.pixabay.com/photo/2023/02/14/22/12/birds-7790506_1280.jpg',
+//   link: 'https://www.naver.com/',
+//   major: '',
+//   source: '사회복지법인 서울시의사회',
+//   title: '서울시 의사회 의료봉사단 약사 자원봉사자 모집 공고',
+//   typeName: '',
+// }))
 
 export interface GetCardManagement {
   error: {
@@ -72,7 +75,6 @@ export interface GetCardManagement {
 }
 
 function Save() {
-  const dispatch = useAppDispatch()
   const [filter, setFilter] = useState(FILTER_BUTTONS[0].key)
 
   const filterButtons = FILTER_BUTTONS.map(({ key, label }) => ({
@@ -83,50 +85,48 @@ function Save() {
     },
   }))
 
+  const queryClient = useQueryClient()
+
+  const refetch = async () => {
+    try {
+      await queryClient.invalidateQueries()
+
+      await queryClient.refetchQueries()
+      console.log('success')
+    } catch (e) {
+      console.error(e)
+    }
+  }
+
   const flatListBottomPadding = transformPixelToDp(theme.bottomNavigationHeight)
 
-  const { token } = useAppSelector((state) => state.auth)
+  const { scarp } = useScrap()
 
-  useEffect(() => {
-    const testRequest = async () => {
-      const instance = axios.create({
-        baseURL: 'https://dev-single-server.jipangs.com',
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-        timeout: 3000,
-      })
+  const scrapCards = scarp?.pages[0]?.content || []
 
-      // console.log('start', token)
+  // const { popularCard } = usePopularActivities('대외활동')
 
-      console.log(
-        encodeURIComponent('/api/v1/card-management/card/봉사활동/popular')
-      )
+  // console.log(popularCard?.pages[0]?.content)
 
-      try {
-        const response = await instance.get(
-          '/api/v1/card-management/card/봉사활동/popular'
-        )
-        console.log(response.data)
-      } catch (e) {
-        if (e instanceof AxiosError && e.response?.status === 401) {
-          console.log('redirection')
-          dispatch(logout())
-        }
-      }
-    }
-    testRequest().then(console.log).catch(console.error)
-  }, [dispatch, token])
+  const { mutate: requestBookMark } = useBookMark()
 
-  // useEffect(() => {
-  //   console.log('hi')
-  //   axios
-  //     .get(
-  //       'https://dev-single-server.jipangs.com/api/v1/card-management/card/scrap?page=0&size=1&sort=string'
-  //     )
-  //     .then(console.log)
-  //     .catch(console.error)
-  // }, [])
+  // const [innerWidth, setInnerWidth] = useState(0)
+
+  // const onLayout = (event: LayoutChangeEvent) => {
+  //   const { width } = event.nativeEvent.layout
+
+  //   setInnerWidth(width)
+  // }
+
+  const onShareClick = (link: string, title: string) => {
+    Share.share({
+      message: link,
+      title,
+      url: link,
+    }).catch(console.error)
+  }
+
+  // const width = (innerWidth - 9) / 2
 
   return (
     <Styled.Container>
@@ -134,38 +134,52 @@ function Save() {
         <Styled.Title>내 스크랩</Styled.Title>
       </Styled.Header>
       <Styled.Main>
-        <Filters
-          buttons={filterButtons}
-          selectedFilterKey={filter}
-          style={{ marginBottom: 11, marginTop: 25 }}
-        />
-        <View style={{ flex: 1 }}>
-          <FlatList
+        {!!scrapCards.length && (
+          <Filters
+            buttons={filterButtons}
+            selectedFilterKey={filter}
+            style={{ marginBottom: 11, marginTop: 25 }}
+          />
+        )}
+        <ScrollView style={{ flex: 1 }}>
+          {!scrapCards.length && (
+            <Empty
+              iconName="bookmark"
+              message={`아직 스크랩 한 활동이 없습니다.\n관심있는 활동을 스크랩 해보세요!`}
+            />
+          )}
+          <CardGrid
             contentContainerStyle={{
               paddingBottom: flatListBottomPadding,
             }}
-            renderItem={({
-              index,
-              item: { category, deadLine, img, source, title },
-            }) => (
-              <Card
-                style={{
-                  flex: 1,
-                  marginBottom: 25,
-                  marginRight: index % 2 ? 0 : 9,
-                }}
-                imageSrc={img}
-                location={source}
-                size="small"
-                tags={[category, deadLine]}
-                title={title}
-              />
+            items={scrapCards.map<LinkCardProps>(
+              ({
+                category,
+                deadLine,
+                id,
+                img,
+                link,
+                scrap,
+                source,
+                title,
+              }) => ({
+                imageSrc: img,
+                isBookMarked: scrap,
+                link,
+                location: source,
+                onScrapClick: () => {
+                  requestBookMark(id)
+                  refetch().catch(console.error)
+                },
+                onShareClick: () => {
+                  onShareClick(link, title)
+                },
+                tags: [category, deadLine],
+                title,
+              })
             )}
-            data={images}
-            numColumns={2}
-            style={{ flex: 1 }}
           />
-        </View>
+        </ScrollView>
       </Styled.Main>
     </Styled.Container>
   )

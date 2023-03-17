@@ -53,32 +53,30 @@ export interface GetScrapCardResponse {
   success: boolean
 }
 
-const getScrapCard = async (token: string, page?: number) => {
+const getScrapCard = async (token: string, keyword: string, page?: number) => {
   const queryParams = page ? `?page=${page}&size=10` : '?page=0&size=10'
 
   const { data } = await axiosInstance.get<GetScrapCardResponse>(
-    `/api/v1/card-management/card/scrap${queryParams}`,
+    `/api/v1/card-management/card/keyword/${keyword}${queryParams}`,
     { headers: getJwtHeader(token) }
   )
 
   return data.response
 }
 
-const useScrap = () => {
+const useSearchingCards = (keyword: string) => {
   const { jwtToken } = useAuth()
   const {
-    data: scarp,
-    fetchNextPage: fetchNextScrap,
-    hasNextPage: hasNextScrap,
+    data: result,
+    fetchNextPage: fetchNextResult,
+    hasNextPage: hasNextResult,
     isSuccess,
-    refetch,
-    remove,
   } = useInfiniteQuery(
-    [queryKeys.scrapCard],
+    [queryKeys.searchingResultCard, keyword],
     ({ pageParam = 0 }: { pageParam?: number }) =>
-      getScrapCard(jwtToken, pageParam),
-
+      getScrapCard(jwtToken, keyword, pageParam),
     {
+      enabled: !!keyword,
       getNextPageParam: (lastPage) => {
         if (!lastPage) return null
         if (lastPage.last) return null
@@ -86,20 +84,15 @@ const useScrap = () => {
         const nextPage = lastPage.pageable.pageNumber + 1
         return nextPage
       },
-      refetchOnMount: true,
-      refetchOnReconnect: true,
-      refetchOnWindowFocus: true,
     }
   )
 
   return {
-    fetchNextScrap,
-    hasNextScrap,
+    fetchNextResult,
+    hasNextResult,
     isSuccess,
-    refetch,
-    remove,
-    scarp,
+    result,
   }
 }
 
-export default useScrap
+export default useSearchingCards

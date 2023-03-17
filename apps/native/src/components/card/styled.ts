@@ -51,9 +51,10 @@ export const Tag = styled.Text<StyledProps>`
 `
 
 export const Title = styled.Text<StyledProps>`
-  margin-top: ${({ bigSize }) => (bigSize ? '16px' : '12px')};
+  height: ${({ bigSize }) => (bigSize ? '50px' : '34px')};
   ${({ bigSize, theme: { typographies } }) =>
     bigSize ? typographies.h3 : typographies.p3};
+  margin-top: ${({ bigSize }) => (bigSize ? '16px' : '12px')};
 `
 
 export const Footer = styled.View<StyledProps>`

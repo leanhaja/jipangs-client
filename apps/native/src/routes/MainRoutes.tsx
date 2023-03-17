@@ -39,7 +39,7 @@ function BottomNavigator() {
           {...bottomTabBarProps}
         />
       )}
-      initialRouteName="Scrap"
+      initialRouteName="Home"
     >
       <BOTTOM_TAB.Screen
         component={Home}

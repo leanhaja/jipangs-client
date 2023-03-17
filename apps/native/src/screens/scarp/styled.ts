@@ -8,7 +8,7 @@ export const Container = styled.View`
 export const Header = styled.View`
   border-bottom-color: ${({ theme }) => theme.colors.GREY1};
   border-bottom-width: 2px;
-  padding: 34.3px 27px 19px;
+  padding: 34.33px 27px 19px;
 `
 
 export const Title = styled.Text`

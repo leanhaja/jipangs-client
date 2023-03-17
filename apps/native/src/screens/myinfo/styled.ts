@@ -2,6 +2,7 @@ import styled from '@emotion/native'
 
 export const Screen = styled.View`
   align-self: stretch;
+  background-color: ${({ theme }) => theme.colors.WHITE};
   flex: 1;
   padding: 0 16px;
 `

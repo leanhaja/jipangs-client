@@ -5,6 +5,7 @@ import BookmarkIcon from '../components/icon/assets/bookmark.svg'
 import HomeIcon from '../components/icon/assets/home.svg'
 import UserIcon from '../components/icon/assets/user.svg'
 import Home from '../screens/home'
+import Mypage from '../screens/mypage'
 import { COLORS } from '../styles/colors'
 import { HomeTabParamList } from '../types'
 
@@ -48,13 +49,28 @@ export default function HomeTabRoutes() {
         },
         tabBarLabelStyle: { fontSize: 10, marginTop: 10 },
       })}
-      initialRouteName="Home"
+      // FIXME: 커밋 전에 HOME으로 변경 필요
+      initialRouteName="Mypage"
     >
       <TAB.Screen component={Home} name="Home" />
+      <TAB.Screen
+        options={{
+          headerShown: true,
+          headerTitleAlign: 'left',
+          headerTitleContainerStyle: { paddingStart: 27 },
+          headerTitleStyle: {
+            alignSelf: 'flex-start',
+            fontFamily: 'Pretendard-Medium',
+            fontSize: 16,
+          },
+          title: '마이페이지',
+        }}
+        component={Mypage}
+        name="Mypage"
+      />
       {
         // TODO: 스크린 컴포넌트 삽입 필요
-        /* <TAB.Screen component={} name="Scrap" />
-      <TAB.Screen component={} name="Mypage" /> */
+        //  <TAB.Screen component={} name="Scrap" />
       }
     </TAB.Navigator>
   )

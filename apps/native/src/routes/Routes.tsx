@@ -9,6 +9,7 @@ import { RootStackParamList } from '../types'
 
 import Main from './HomeRoutes'
 import Register from './RegisterRoutes'
+import Setting from './SettingRoutes'
 
 const STACK = createNativeStackNavigator<RootStackParamList>()
 
@@ -22,6 +23,7 @@ function Routes() {
         name="Main"
         options={{ headerTitleAlign: 'center' }}
       />
+      <STACK.Screen component={Setting} name="Setting" />
       <STACK.Screen component={ExternalLink} name="ExternalLink" />
     </>
   ) : (

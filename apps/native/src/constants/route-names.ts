@@ -16,6 +16,7 @@ export const ROUTE_NAMES = {
   SCRAP: 'Scrap',
   SELECT_MAJOR: 'SelectMajor',
   SELECT_REGION: 'SelectRegion',
+  SETTING: 'Setting',
   TERM_OF_USE: 'TermOfUse',
   UNIV_INFO: 'UnivInfo',
   USER_INFO: 'UserInfo',

@@ -1,3 +1,4 @@
+import Icon from '../../components/icon'
 import { useAppDispatch } from '../../redux/hooks'
 import { logout } from '../../redux/reducers/authReducer'
 
@@ -8,8 +9,13 @@ export default function LoginInfo() {
 
   return (
     <Styled.Screen>
+      <Styled.GapWide />
       <Styled.Label>로그인 계정</Styled.Label>
-      <Styled.IdWrapper />
+      <Styled.GapNarrow />
+      <Styled.IdWrapper>
+        <Icon iconName="kakao_square" />
+      </Styled.IdWrapper>
+      <Styled.GapMedium />
       <Styled.Button>
         <Styled.Text onPress={() => dispatch(logout())}>로그아웃</Styled.Text>
       </Styled.Button>

@@ -1,3 +1,4 @@
+import AfterArrow from './assets/after_arrow.svg'
 import Alarm from './assets/alarm.svg'
 import AlarmNew from './assets/alarm_new.svg'
 import AlarmNewInActive from './assets/alarm_new_inactive.svg'
@@ -32,12 +33,14 @@ export type IconName =
   | 'x'
   | 'apple'
   | 'kakao'
+  | 'after_arrow'
 
 export interface IconProps {
   iconName: IconName
 }
 
 const icons: Record<IconName, React.ReactElement> = {
+  after_arrow: <AfterArrow />,
   alarm: <Alarm />,
   alarm_new: <AlarmNew />,
   alarm_new_inactive: <AlarmNewInActive />,

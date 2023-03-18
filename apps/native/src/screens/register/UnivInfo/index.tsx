@@ -103,7 +103,7 @@ export default function UnivInfoScreen() {
                 major: '지팡스학과',
                 marketingPolicy: true,
                 name: name.value,
-                nickname: nickname.value,
+                nickName: nickname.value,
                 privacyPolicy: true,
                 studentId: yearOfAdmission,
                 university: '지팡스대학교',

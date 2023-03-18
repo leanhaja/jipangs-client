@@ -115,7 +115,7 @@ export default function UserInfoPage() {
         major: major!,
         marketingPolicy: true,
         name: name.value,
-        nickname: nickname.value,
+        nickName: nickname.value,
         privacyPolicy: true,
         studentId: yearOfAdmission,
         university: '지팡스대학교',
@@ -132,8 +132,6 @@ export default function UserInfoPage() {
     email.isValid &&
     !!selectedGender &&
     birth.isValid
-
-  console.log('name', name.value)
 
   return (
     <Styled.Screen>

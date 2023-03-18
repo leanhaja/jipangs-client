@@ -32,7 +32,7 @@ export interface UserInfo {
   major: string
   marketingPolicy: boolean
   name: string
-  nickname: string
+  nickName: string
   privacyPolicy: boolean
   studentId: string
   university: string
@@ -73,7 +73,7 @@ export interface GetUserInfoResponse {
       profileImageUrl: string
       providerType: string
       roleType: string
-      studentId: string | null
+      studentId: string
       university: string
       userId: string
       username: string

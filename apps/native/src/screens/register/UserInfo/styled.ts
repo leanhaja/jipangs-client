@@ -1,6 +1,7 @@
 import styled from '@emotion/native'
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 
-export const Screen = styled.View`
+export const Screen = styled(KeyboardAwareScrollView)`
   align-items: center;
   align-self: stretch;
   flex: 1;

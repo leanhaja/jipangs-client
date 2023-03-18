@@ -1,21 +1,13 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
-import { Text, View } from 'react-native'
 
 import BottomNavigation from '../components/bottom-navigation'
 import { ROUTE_NAMES } from '../constants'
 import Home from '../screens/home'
+import Mypage from '../screens/mypage'
 import Scrap from '../screens/scarp'
 import type { MainTabParamList } from '../types'
 
 const BOTTOM_TAB = createBottomTabNavigator<MainTabParamList>()
-
-function MyPage() {
-  return (
-    <View>
-      <Text>마이페이지</Text>
-    </View>
-  )
-}
 
 function BottomNavigator() {
   return (
@@ -52,9 +44,21 @@ function BottomNavigator() {
         options={{ headerShown: false }}
       />
       <BOTTOM_TAB.Screen
-        component={MyPage}
+        options={{
+          headerShown: true,
+          headerTitleAlign: 'left',
+          // headerTitleContainerStyle: { paddingStart: 27 },
+          headerTitleStyle: {
+            alignSelf: 'flex-start',
+            color: '#424242',
+            fontFamily: 'Pretendard-Medium',
+            fontSize: 24,
+            fontWeight: '600',
+          },
+          title: '마이페이지',
+        }}
+        component={Mypage}
         name="Mypage"
-        options={{ headerShown: false }}
       />
     </BOTTOM_TAB.Navigator>
   )

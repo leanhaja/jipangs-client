@@ -14,7 +14,7 @@ const getScrapCard = async (
   type: '대외활동' | '봉사활동',
   page?: number
 ) => {
-  const queryParams = page ? `?page=${page}&size=10` : '?page=0&size=10'
+  const queryParams = page ? `?page=${page}&size=4` : '?page=0&size=4'
 
   const { data } = await axiosInstance.get<GetLatestCardResponse>(
     `/api/v1/card-management/card/${type}/new${queryParams}`,

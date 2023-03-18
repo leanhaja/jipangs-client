@@ -18,6 +18,8 @@ export interface CardProps {
   title: string
 }
 
+const DEFAULT =
+  'https://jipangs-backend.s3.ap-northeast-2.amazonaws.com/test/f3c6fb2d-2ce1-4535-9245-5ef5051d47fcno-image-icon-6.png'
 const { colors } = theme
 
 function Card({
@@ -43,7 +45,13 @@ function Card({
     <Styled.Article style={[style, { borderRadius: bigSize ? 8 : 4 }]}>
       <Styled.Figure bigSize={bigSize}>
         <Styled.Image
-          source={{ uri: imageSrc }}
+          source={
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+            imageSrc === DEFAULT
+              ? // eslint-disable-next-line global-require
+                require('../../../assets/images/default_card.png')
+              : { uri: imageSrc }
+          }
           style={{ borderRadius: bigSize ? 8 : 4 }}
         />
         <Styled.ShareButton

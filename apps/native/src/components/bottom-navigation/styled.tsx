@@ -7,8 +7,8 @@ export const Nav = styled.View`
   box-shadow: 0px -2px 9px rgba(0, 0, 0, 0.1);
   flex-direction: row;
   height: ${({ theme }) => theme.bottomNavigationHeight};
-  justify-content: space-around;
-  padding: 3px 11px 0;
+  justify-content: space-between;
+  padding: 17px 43px 0;
   position: absolute;
   width: 100%;
   z-index: 1;

@@ -44,11 +44,8 @@ export type RootScreenProps<T extends keyof RootStackParamList> =
 export type RegisterStackProps<T extends keyof RegisterStackParamList> =
   NativeStackScreenProps<RegisterStackParamList, T>
 
-export type StackScreenProps<T extends keyof RootStackParamList> =
-  NativeStackScreenProps<RootStackParamList, T>
-
 export type SettingStackProps<T extends keyof SettingStackParamList> =
   NativeStackScreenProps<SettingStackParamList, T>
 
-export type HomeTabScreenProps<T extends keyof MainTabParamList> =
+export type MainTabScreenProps<T extends keyof MainTabParamList> =
   BottomTabScreenProps<MainTabParamList, T>

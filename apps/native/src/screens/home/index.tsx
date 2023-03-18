@@ -1,3 +1,6 @@
+import { BottomTabScreenProps } from '@react-navigation/bottom-tabs'
+import { CompositeScreenProps } from '@react-navigation/native'
+import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import { useQueryClient } from '@tanstack/react-query'
 import axios, { AxiosError } from 'axios'
 import React, { useEffect, useMemo, useState } from 'react'
@@ -26,7 +29,11 @@ import useSearchingCards from '../../hooks/useSearchingCards'
 import { useAppDispatch, useAppSelector } from '../../redux/hooks'
 import { logout } from '../../redux/reducers/authReducer'
 import theme from '../../styles/theme'
-import { Card as CardInfo, RootScreenProps } from '../../types'
+import {
+  Card as CardInfo,
+  MainTabParamList,
+  RootStackParamList,
+} from '../../types'
 import { transformPixelToDp } from '../../utils'
 
 import * as Styled from './styled'
@@ -54,7 +61,12 @@ type PageItem =
   | TitleItem
   | CardGridItem
 
-function Home({ navigation }: RootScreenProps<'Main'>) {
+type HomeScreenProps = CompositeScreenProps<
+  BottomTabScreenProps<MainTabParamList, 'Home'>,
+  NativeStackScreenProps<RootStackParamList>
+>
+
+function Home({ navigation }: HomeScreenProps) {
   const queryClient = useQueryClient()
 
   const [isSearchDone, setIsSearchDone] = useState(false)
@@ -65,9 +77,11 @@ function Home({ navigation }: RootScreenProps<'Main'>) {
     usePopularActivities('대외활동')
   const { popularCard: popularVolunteerCardPageInfo } =
     usePopularActivities('봉사활동')
-  const { latestCard: latestCardPageInfo } = useLatestActivities(
-    tabIndex === 1 ? '대외활동' : '봉사활동'
-  )
+  const {
+    fetchNextLatestCard,
+    hasNextLatestCard,
+    latestCard: latestCardPageInfo,
+  } = useLatestActivities(tabIndex === 1 ? '대외활동' : '봉사활동')
   const [resultCards, setResultCards] = useState<CardInfo[]>([])
 
   const refetchScrap = async () => {
@@ -91,7 +105,8 @@ function Home({ navigation }: RootScreenProps<'Main'>) {
     popularExternalCardPageInfo?.pages[0]?.content || []
   const popularVolunteerCards =
     popularVolunteerCardPageInfo?.pages[0]?.content || []
-  const latestCards = latestCardPageInfo?.pages[0]?.content || []
+  const latestCards =
+    latestCardPageInfo?.pages.flatMap((page) => page?.content || []) || []
 
   const searchingCards = useMemo(
     () => result?.pages[0]?.content || [],
@@ -369,6 +384,18 @@ function Home({ navigation }: RootScreenProps<'Main'>) {
 
   const { token } = useAppSelector((state) => state.auth)
 
+  // const isCloseToBottom = ({
+  //   contentOffset,
+  //   contentSize,
+  //   layoutMeasurement,
+  // }) => {
+  //   const paddingToBottom = 34
+  //   return (
+  //     layoutMeasurement.height + contentOffset.y >=
+  //     contentSize.height - paddingToBottom
+  //   )
+  // }
+
   useEffect(() => {
     const testRequest = async () => {
       const instance = axios.create({
@@ -483,7 +510,23 @@ function Home({ navigation }: RootScreenProps<'Main'>) {
             )}
           </>
         ) : (
-          <ScrollView onLayout={onLayout} style={{ flex: 1 }}>
+          <ScrollView
+            onScrollEndDrag={({
+              nativeEvent: { contentOffset, contentSize, layoutMeasurement },
+            }) => {
+              const isCloseToBottom =
+                layoutMeasurement.height + contentOffset.y >=
+                contentSize.height - mainBottomPadding
+
+              if (isCloseToBottom && tabIndex !== 0) {
+                if (hasNextLatestCard) {
+                  fetchNextLatestCard().catch(console.error)
+                }
+              }
+            }}
+            onLayout={onLayout}
+            style={{ flex: 1 }}
+          >
             {createMain(getPageItems())}
           </ScrollView>
         )}

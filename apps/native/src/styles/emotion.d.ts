@@ -18,6 +18,7 @@ declare module '@emotion/react' {
       CONTAINER_RED: string
       CONTAINER_YELLOW: string
       DISABLED: string
+      DIVIDER: string
       GREY1: string
       GREY2: string
       GREY3: string
@@ -26,7 +27,6 @@ declare module '@emotion/react' {
       GREY6: string
       GREY7: string
       GREY8: string
-      GREY9: string
       POINT_RED: string
       PRIMARYCONTAINER_BLUE: string
       PRIMARY_BLUE: string

@@ -1,11 +1,11 @@
 import { ThemeProvider } from '@emotion/react'
+import { QueryClientProvider } from '@tanstack/react-query'
 import { registerRootComponent } from 'expo'
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context'
 import { Provider } from 'react-redux'
+import { queryClient } from './src/react-query/query-client'
 import { store } from './src/redux/store'
 import theme from './src/styles/theme'
-import { queryClient } from './src/react-query/query-client'
-import { QueryClientProvider } from '@tanstack/react-query'
 
 import App from './src/App'
 

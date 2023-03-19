@@ -61,7 +61,7 @@ export default function HomeTabRoutes() {
           headerTitleStyle: {
             alignSelf: 'flex-start',
             fontFamily: 'Pretendard-Medium',
-            fontSize: 24,
+            fontSize: 16,
           },
           title: '마이페이지',
         }}

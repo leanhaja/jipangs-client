@@ -8,7 +8,7 @@ import { ROUTE_NAMES } from 'src/constants'
 
 export type RootStackParamList = {
   [ROUTE_NAMES.EXTERNAL_LINK]: ExternalLink
-  [ROUTE_NAMES.MAIN]: NavigatorScreenParams<HomeTabParamList>
+  [ROUTE_NAMES.MAIN]: NavigatorScreenParams<MainTabParamList>
   [ROUTE_NAMES.LOGIN]: undefined
   [ROUTE_NAMES.REGISTER]: undefined
   [ROUTE_NAMES.LOGIN_WEBVIEW]: undefined
@@ -22,7 +22,7 @@ export type RegisterStackParamList = {
   [ROUTE_NAMES.UNIV_INFO]: undefined
 }
 
-export type HomeTabParamList = {
+export type MainTabParamList = {
   [ROUTE_NAMES.HOME]: undefined
   [ROUTE_NAMES.SCRAP]: undefined
   [ROUTE_NAMES.MYPAGE]: undefined
@@ -38,15 +38,14 @@ export type SettingStackParamList = {
   [ROUTE_NAMES.INQUIRY]: undefined
   [ROUTE_NAMES.ANNOUNCEMENT]: undefined
 }
+export type RootScreenProps<T extends keyof RootStackParamList> =
+  NativeStackScreenProps<RootStackParamList, T>
 
 export type RegisterStackProps<T extends keyof RegisterStackParamList> =
   NativeStackScreenProps<RegisterStackParamList, T>
 
-export type StackScreenProps<T extends keyof RootStackParamList> =
-  NativeStackScreenProps<RootStackParamList, T>
-
 export type SettingStackProps<T extends keyof SettingStackParamList> =
   NativeStackScreenProps<SettingStackParamList, T>
 
-export type HomeTabScreenProps<T extends keyof HomeTabParamList> =
-  BottomTabScreenProps<HomeTabParamList, T>
+export type MainTabScreenProps<T extends keyof MainTabParamList> =
+  BottomTabScreenProps<MainTabParamList, T>

@@ -1,3 +1,5 @@
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
+
 import NextButton from '../../../components/button'
 import ProgressBar from '../../../components/progress-bar'
 import Button from '../../../features/register/components/Button'
@@ -71,9 +73,9 @@ export default function UserInfoPage({
     birth.isValid
 
   return (
+    <KeyboardAwareScrollView>
     <Styled.Screen>
       <ProgressBar currentStep={3} totalStep={4} />
-
       <Input
         autoComplete="name"
         errorMessage="형식에 맞지 않는 이름이에요!"
@@ -83,7 +85,7 @@ export default function UserInfoPage({
         onChangeText={handleName}
         title="이름"
         value={name.value}
-      />
+        />
       <Styled.GapNarrow />
       <Input
         errorMessage="형식에 맞지 않는 닉네임이에요!"
@@ -93,7 +95,7 @@ export default function UserInfoPage({
         onChangeText={handleNickname}
         title="닉네임"
         value={nickname.value}
-      />
+        />
       <Styled.GapNarrow />
       <Input
         autoComplete="email"
@@ -104,16 +106,16 @@ export default function UserInfoPage({
         onChangeText={handleEmail}
         title="이메일"
         value={email.value}
-      />
+        />
       <Styled.GapNarrow />
       <Styled.ButtonContainer>
         {GENDER.map((gender, index) => (
           <Button
-            key={`${gender}-${index + 1}`}
-            isSelected={gender === selectedGender}
-            onPress={handleGenderPress}
-            textStyle={{ fontSize: 16 }}
-            viewStyle={{ height: 44, width: 164 }}
+          key={`${gender}-${index + 1}`}
+          isSelected={gender === selectedGender}
+          onPress={handleGenderPress}
+          textStyle={{ fontSize: 16 }}
+          viewStyle={{ height: 44, width: 164 }}
           >
             {gender}
           </Button>
@@ -131,11 +133,12 @@ export default function UserInfoPage({
         onChangeText={handleBirth}
         title="생년월일"
         value={birth.value}
-      />
+        />
       <Styled.GapWide />
       <NextButton disabled={!isFormValid} onPress={handleNextButton}>
         다음
       </NextButton>
     </Styled.Screen>
+        </KeyboardAwareScrollView>
   )
 }

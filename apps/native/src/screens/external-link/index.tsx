@@ -1,14 +1,14 @@
 import { Share } from 'react-native'
 import WebView from 'react-native-webview'
 
-import * as Styled from './styled'
+import { RootScreenProps } from '../../types'
 
-import { StackScreenProps } from 'src/types'
+import * as Styled from './styled'
 
 function ExternalLink({
   navigation,
   route: { params },
-}: StackScreenProps<'ExternalLink'>) {
+}: RootScreenProps<'ExternalLink'>) {
   const onBackButtonClick = () => {
     navigation.goBack()
   }

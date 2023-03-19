@@ -1,37 +1,20 @@
 import styled from '@emotion/native'
 
-import IconButton from '../icon-button'
-
 export const Nav = styled.View`
   align-items: baseline;
-
-  background-color: #fff;
+  background-color: ${({ theme }) => theme.colors.WHITE};
   bottom: 0;
   box-shadow: 0px -2px 9px rgba(0, 0, 0, 0.1);
   flex-direction: row;
-  height: 88px;
-  /* position: fixed; */
+  height: ${({ theme }) => theme.bottomNavigationHeight};
   justify-content: space-between;
-  padding: 3px 11px 0;
+  padding: 17px 43px 0;
+  position: absolute;
   width: 100%;
   z-index: 1;
 `
 
-export const Button = styled(IconButton)`
-  /* align-items: center; */
-  /* color: #bdbdbd; */
-  /* display: flex; */
-  /* flex-direction: column; */
-
-  &.selected {
-    color: initial;
-  }
-
-  path {
-    fill: #bdbdbd;
-  }
-
-  &.selected path {
-    fill: initial;
-  }
+export const Text = styled.Text<{ selected?: boolean }>`
+  color: ${({ selected, theme: { colors } }) =>
+    selected ? colors.BLACK : colors.GREY3};
 `

@@ -1,5 +1,5 @@
 import { useQueryClient } from '@tanstack/react-query'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { ScrollView, Share } from 'react-native'
 
 import Filters from '../../components/filters'
@@ -10,6 +10,7 @@ import Empty from '../../features/home/components/empty'
 import useBookMark from '../../hooks/useBookMark'
 import useScrap from '../../hooks/useScrap'
 import theme from '../../styles/theme'
+import { MainTabScreenProps } from '../../types/navigation'
 import { transformPixelToDp } from '../../utils'
 
 import { FILTER_BUTTONS } from './constants'
@@ -74,7 +75,7 @@ export interface GetCardManagement {
   success: true
 }
 
-function Save() {
+function Save({ navigation }: MainTabScreenProps<'Scrap'>) {
   const [filter, setFilter] = useState(FILTER_BUTTONS[0].key)
 
   const filterButtons = FILTER_BUTTONS.map(({ key, label }) => ({
@@ -97,6 +98,28 @@ function Save() {
       console.error(e)
     }
   }
+
+  const isFocus = navigation.isFocused()
+
+  useEffect(() => {
+    if (!isFocus) return
+
+    // console.log('focus')
+    console.log('focus')
+
+    const refetchScrap = async () => {
+      try {
+        await queryClient.invalidateQueries()
+
+        await queryClient.refetchQueries()
+        console.log('success')
+      } catch (e) {
+        console.error(e)
+      }
+    }
+
+    refetchScrap().catch(console.error)
+  }, [isFocus, queryClient])
 
   const flatListBottomPadding = transformPixelToDp(theme.bottomNavigationHeight)
 

@@ -1,7 +1,7 @@
 import { BottomTabScreenProps } from '@react-navigation/bottom-tabs'
 import { CompositeScreenProps } from '@react-navigation/native'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
-import { useQueryClient } from '@tanstack/react-query'
+import { useQueryClient, useIsFetching } from '@tanstack/react-query'
 import axios, { AxiosError } from 'axios'
 import React, { useEffect, useMemo, useState } from 'react'
 import { FlatList, LayoutChangeEvent, ScrollView, Share } from 'react-native'
@@ -67,6 +67,7 @@ type HomeScreenProps = CompositeScreenProps<
 >
 
 function Home({ navigation }: HomeScreenProps) {
+  console.log(useIsFetching())
   const queryClient = useQueryClient()
 
   const [isSearchDone, setIsSearchDone] = useState(false)
@@ -85,9 +86,20 @@ function Home({ navigation }: HomeScreenProps) {
   const [resultCards, setResultCards] = useState<CardInfo[]>([])
 
   const refetchScrap = async () => {
-    await queryClient.invalidateQueries()
-    await queryClient.refetchQueries()
+    // await queryClient.invalidateQueries()
+    // await queryClient.refetchQueries()
   }
+
+  useEffect(() => {
+    if (!navigation.isFocused) return
+
+    const refetch = async () => {
+      await queryClient.invalidateQueries()
+      await queryClient.refetchQueries()
+    }
+
+    refetch().catch(console.error)
+  }, [navigation.isFocused, queryClient, tabIndex])
 
   const { result } = useSearchingCards(keyword)
 

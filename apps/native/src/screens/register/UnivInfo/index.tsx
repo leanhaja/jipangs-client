@@ -29,8 +29,10 @@ export default function UnivInfoScreen() {
     gender,
     grade,
     major,
+    marketingPolicy,
     name,
     nickname,
+    privacyPolicy,
     yearOfAdmission,
   } = useAppSelector((state) => state.register)
   const dispatch = useAppDispatch()
@@ -101,10 +103,10 @@ export default function UnivInfoScreen() {
                 gender,
                 grade,
                 major: '지팡스학과',
-                marketingPolicy: true,
+                marketingPolicy,
                 name: name.value,
                 nickName: nickname.value,
-                privacyPolicy: true,
+                privacyPolicy,
                 studentId: yearOfAdmission,
                 university: '지팡스대학교',
               },

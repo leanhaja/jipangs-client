@@ -22,6 +22,7 @@ import CardGrid, {
   CardGridProps,
 } from '../../features/home/components/card-grid'
 import Empty from '../../features/home/components/empty'
+import CompleteModal from '../../features/register/components/CompleteModal'
 import useBookMark from '../../hooks/useBookMark'
 import useLatestActivities from '../../hooks/useLatestActivities'
 import usePopularActivities from '../../hooks/usePopularActivities'
@@ -66,7 +67,7 @@ type HomeScreenProps = CompositeScreenProps<
   NativeStackScreenProps<RootStackParamList>
 >
 
-function Home({ navigation }: HomeScreenProps) {
+function Home({ navigation, route }: HomeScreenProps) {
   console.log(useIsFetching())
   const queryClient = useQueryClient()
 
@@ -394,7 +395,7 @@ function Home({ navigation }: HomeScreenProps) {
 
   const dispatch = useAppDispatch()
 
-  const { token } = useAppSelector((state) => state.auth)
+  const { hasInfo, token } = useAppSelector((state) => state.auth)
 
   // const isCloseToBottom = ({
   //   contentOffset,
@@ -439,111 +440,125 @@ function Home({ navigation }: HomeScreenProps) {
     testRequest().then(console.log).catch(console.error)
   }, [dispatch, token])
 
-  return (
-    <Styled.Container>
-      <Styled.Header isSearching={isSearching}>
-        <SearchBar
-          onCancelButtonClick={() => {
-            setResultCards([])
-            setKeyword('')
-            setIsSearchDone(false)
-          }}
-          onSearchButtonClick={() => {
-            setResultCards([])
-            setKeyword('')
-            setIsSearchDone(false)
-          }}
-          onSubmitEditing={(e) => {
-            setKeyword(e.nativeEvent.text)
-            setIsSearchDone(true)
-          }}
-          tabs={{
-            buttons: [
-              { label: '홈' },
-              { label: '대외활동' },
-              { label: '봉사활동' },
-            ],
-            onTabChange: setTabIndex,
-            selectedTabIndex: tabIndex,
-          }}
-          onModeChange={setIsSearching}
-        />
-      </Styled.Header>
-      <Styled.Main style={{ paddingBottom: mainBottomPadding }}>
-        {isSearching ? (
-          // eslint-disable-next-line react/jsx-no-useless-fragment
-          <>
-            {resultCards.length ? (
-              <FlatList
-                renderItem={({
-                  index,
-                  item: {
-                    category,
-                    deadLine,
-                    id,
-                    img,
-                    scrap: isBookMarked,
-                    source,
-                    title,
-                  },
-                }) => (
-                  <Card
-                    onScrapClick={() => {
-                      requestBookMark(id)
-                    }}
-                    style={{
-                      marginBottom: 25,
-                      marginRight: index % 2 ? 0 : 9,
-                      width: gridWidth,
-                    }}
-                    imageSrc={img}
-                    isBookMarked={isBookMarked}
-                    location={source}
-                    size="small"
-                    tags={[category, deadLine]}
-                    title={title}
-                  />
-                )}
-                contentContainerStyle={{ marginTop: 16 }}
-                data={resultCards}
-                numColumns={2}
-                style={{ flex: 1 }}
-              />
-            ) : (
-              // eslint-disable-next-line react/jsx-no-useless-fragment
-              <>
-                {isSearchDone && (
-                  <Empty
-                    iconName="search"
-                    message={`검색 결과가 없습니다.\n다른 검색어를 입력해보세요!`}
-                  />
-                )}
-              </>
-            )}
-          </>
-        ) : (
-          <ScrollView
-            onScrollEndDrag={({
-              nativeEvent: { contentOffset, contentSize, layoutMeasurement },
-            }) => {
-              const isCloseToBottom =
-                layoutMeasurement.height + contentOffset.y >=
-                contentSize.height - mainBottomPadding
+  if (!hasInfo) {
+    navigation.setParams({ isNewUser: true })
+    navigation.replace('Register')
+  }
 
-              if (isCloseToBottom && tabIndex !== 0) {
-                if (hasNextLatestCard) {
-                  fetchNextLatestCard().catch(console.error)
-                }
-              }
+  return (
+    <>
+      {route.params.isNewUser && (
+        <CompleteModal
+          onClose={() => {
+            navigation.setParams({ isNewUser: false })
+          }}
+        />
+      )}
+      <Styled.Container>
+        <Styled.Header isSearching={isSearching}>
+          <SearchBar
+            onCancelButtonClick={() => {
+              setResultCards([])
+              setKeyword('')
+              setIsSearchDone(false)
             }}
-            onLayout={onLayout}
-            style={{ flex: 1 }}
-          >
-            {createMain(getPageItems())}
-          </ScrollView>
-        )}
-      </Styled.Main>
-    </Styled.Container>
+            onSearchButtonClick={() => {
+              setResultCards([])
+              setKeyword('')
+              setIsSearchDone(false)
+            }}
+            onSubmitEditing={(e) => {
+              setKeyword(e.nativeEvent.text)
+              setIsSearchDone(true)
+            }}
+            tabs={{
+              buttons: [
+                { label: '홈' },
+                { label: '대외활동' },
+                { label: '봉사활동' },
+              ],
+              onTabChange: setTabIndex,
+              selectedTabIndex: tabIndex,
+            }}
+            onModeChange={setIsSearching}
+          />
+        </Styled.Header>
+        <Styled.Main style={{ paddingBottom: mainBottomPadding }}>
+          {isSearching ? (
+            // eslint-disable-next-line react/jsx-no-useless-fragment
+            <>
+              {resultCards.length ? (
+                <FlatList
+                  renderItem={({
+                    index,
+                    item: {
+                      category,
+                      deadLine,
+                      id,
+                      img,
+                      scrap: isBookMarked,
+                      source,
+                      title,
+                    },
+                  }) => (
+                    <Card
+                      onScrapClick={() => {
+                        requestBookMark(id)
+                      }}
+                      style={{
+                        marginBottom: 25,
+                        marginRight: index % 2 ? 0 : 9,
+                        width: gridWidth,
+                      }}
+                      imageSrc={img}
+                      isBookMarked={isBookMarked}
+                      location={source}
+                      size="small"
+                      tags={[category, deadLine]}
+                      title={title}
+                    />
+                  )}
+                  contentContainerStyle={{ marginTop: 16 }}
+                  data={resultCards}
+                  numColumns={2}
+                  style={{ flex: 1 }}
+                />
+              ) : (
+                // eslint-disable-next-line react/jsx-no-useless-fragment
+                <>
+                  {isSearchDone && (
+                    <Empty
+                      iconName="search"
+                      message={`검색 결과가 없습니다.\n다른 검색어를 입력해보세요!`}
+                    />
+                  )}
+                </>
+              )}
+            </>
+          ) : (
+            <ScrollView
+              onScrollEndDrag={({
+                nativeEvent: { contentOffset, contentSize, layoutMeasurement },
+              }) => {
+                const isCloseToBottom =
+                  layoutMeasurement.height + contentOffset.y >=
+                  contentSize.height - mainBottomPadding
+
+                if (isCloseToBottom && tabIndex !== 0) {
+                  if (hasNextLatestCard) {
+                    fetchNextLatestCard().catch(console.error)
+                  }
+                }
+              }}
+              onLayout={onLayout}
+              style={{ flex: 1 }}
+            >
+              {createMain(getPageItems())}
+            </ScrollView>
+          )}
+        </Styled.Main>
+      </Styled.Container>
+    </>
   )
 }
 

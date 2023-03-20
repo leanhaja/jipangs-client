@@ -1,3 +1,5 @@
+import { CompositeScreenProps } from '@react-navigation/native'
+import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import { useState } from 'react'
 
 import Button from '../../../components/button'
@@ -17,11 +19,18 @@ import { Grade } from '../../../redux/types'
 
 import * as Styled from './styled'
 
+import { RegisterStackProps, RootStackParamList } from 'src/types'
+
 const YEAR_OF_ADMISSION = ['23학번', '22학번', '21학번', '20학번']
 
 const GRADE: Grade[] = ['1학년', '2학년', '3학년', '4학년', '5학년']
 
-export default function UnivInfoScreen() {
+type UniversityScreenProps = CompositeScreenProps<
+  RegisterStackProps<'UnivInfo'>,
+  NativeStackScreenProps<RootStackParamList>
+>
+
+export default function UnivInfoScreen({ navigation }: UniversityScreenProps) {
   const mutation = useMutateUserInfo()
   const {
     birth,
@@ -112,8 +121,12 @@ export default function UnivInfoScreen() {
               },
               {
                 onSuccess: () => {
-                  dispatch(setUserInfo())
                   dispatch(reset())
+                  dispatch(setUserInfo())
+                  navigation.replace('Main', {
+                    params: { isNewUser: true },
+                    screen: 'Home',
+                  })
                 },
               }
             )

@@ -35,6 +35,7 @@ function BottomNavigator() {
     >
       <BOTTOM_TAB.Screen
         component={Home}
+        initialParams={{ isNewUser: false }}
         name="Home"
         options={{ headerShown: false }}
       />

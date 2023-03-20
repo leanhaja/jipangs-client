@@ -20,10 +20,11 @@ export type RegisterStackParamList = {
   [ROUTE_NAMES.SELECT_REGION]: undefined
   [ROUTE_NAMES.USER_INFO]: undefined
   [ROUTE_NAMES.UNIV_INFO]: undefined
+  [ROUTE_NAMES.INFO_AGREEMENT]: undefined
 }
 
 export type MainTabParamList = {
-  [ROUTE_NAMES.HOME]: undefined
+  [ROUTE_NAMES.HOME]: { isNewUser: boolean }
   [ROUTE_NAMES.SCRAP]: undefined
   [ROUTE_NAMES.MYPAGE]: undefined
 }

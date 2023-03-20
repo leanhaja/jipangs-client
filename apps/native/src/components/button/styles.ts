@@ -5,12 +5,12 @@ import { COLORS } from '../../styles/colors'
 export const styles = StyleSheet.create({
   button: {
     alignItems: 'center',
+    alignSelf: 'stretch',
     backgroundColor: COLORS.PRIMARY_BLUE,
     borderRadius: 8,
     display: 'flex',
     height: 59,
     justifyContent: 'center',
-    width: 343,
   },
   disabled: {
     backgroundColor: COLORS.GREY2,

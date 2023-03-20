@@ -17,6 +17,7 @@ const theme: Theme = {
     CONTAINER_RED: '#FBE6E5',
     CONTAINER_YELLOW: '#F3F3DE',
     DISABLED: '#D9D9D9',
+    DIVIDER: '#E0E1EB',
     GREY1: '#F5F5F5',
     GREY2: '#E0E0E0',
     GREY3: '#BDBDBD',

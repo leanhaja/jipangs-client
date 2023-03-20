@@ -1,5 +1,6 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
+import InfoAgreement from '../screens/register/InfoAgreement'
 import SelectMajor from '../screens/register/SelectMajor'
 import SelectRegion from '../screens/register/SelectRegion'
 import UnivInfo from '../screens/register/UnivInfo'
@@ -17,8 +18,13 @@ export default function RegisterRoutes() {
         contentStyle: { backgroundColor: '#ffffff' },
         headerShown: true,
       }}
-      initialRouteName="SelectMajor"
+      initialRouteName="InfoAgreement"
     >
+      <STACK.Screen
+        component={InfoAgreement}
+        name="InfoAgreement"
+        options={{ headerShown: false }}
+      />
       <STACK.Screen
         component={SelectMajor}
         name="SelectMajor"

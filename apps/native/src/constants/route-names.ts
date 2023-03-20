@@ -3,6 +3,7 @@ export const ROUTE_NAMES = {
   ANNOUNCEMENT: 'Announcement',
   EXTERNAL_LINK: 'ExternalLink',
   HOME: 'Home',
+  INFO_AGREEMENT: 'InfoAgreement',
   INFO_AGREEMENT_SETTING: 'InfoAgreementSetting',
   INQUIRY: 'Inquiry',
   LOGIN: 'Login',

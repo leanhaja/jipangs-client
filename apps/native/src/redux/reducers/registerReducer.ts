@@ -18,6 +18,9 @@ import {
   Grade,
   YearOfAdmission,
   YearOfAdmissionType,
+  PrivacyPolicy,
+  MarketingPolicy,
+  AllPolicy,
 } from '../types'
 
 type RegisterType = MajorType &
@@ -30,7 +33,10 @@ type RegisterType = MajorType &
   EmailType &
   UniversityType &
   YearOfAdmissionType &
-  GradeType
+  GradeType &
+  PrivacyPolicy &
+  MarketingPolicy &
+  AllPolicy
 
 const emailRegex =
   /^[_A-Za-z0-9-\\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$/
@@ -38,14 +44,17 @@ const emailRegex =
 const numberRegex = /^[0-9]{6}$/
 
 const initialState: RegisterType = {
+  allPolicy: false,
   birth: { isTouched: false, isValid: false, value: '' },
   email: { isTouched: false, isValid: false, value: '' },
   gender: undefined,
   grade: undefined,
   major: undefined,
   majorSpecific: '',
+  marketingPolicy: false,
   name: { isTouched: false, isValid: false, value: '' },
   nickname: { isTouched: false, isValid: false, value: '' },
+  privacyPolicy: false,
   region: undefined,
   university: '',
   yearOfAdmission: '',
@@ -153,6 +162,27 @@ export const registerSlice = createSlice({
       state.university = action.payload.university
       state.yearOfAdmission = action.payload.yearOfAdmission
     },
+    toggleAllPolicy: (state) => {
+      if (!state.allPolicy) {
+        state.allPolicy = true
+        state.privacyPolicy = true
+        state.marketingPolicy = true
+      } else {
+        state.allPolicy = false
+        state.privacyPolicy = false
+        state.marketingPolicy = false
+      }
+    },
+    toggleMarketingPolicy: (state) => {
+      state.marketingPolicy = !state.marketingPolicy
+      if (state.marketingPolicy && state.privacyPolicy) state.allPolicy = true
+      else state.allPolicy = false
+    },
+    togglePrivacyPolicy: (state) => {
+      state.privacyPolicy = !state.privacyPolicy
+      if (state.marketingPolicy && state.privacyPolicy) state.allPolicy = true
+      else state.allPolicy = false
+    },
   },
 })
 
@@ -164,5 +194,8 @@ export const {
   selectGrade,
   selectYearOfAdmission,
   setValue,
+  toggleAllPolicy,
+  toggleMarketingPolicy,
+  togglePrivacyPolicy,
 } = registerSlice.actions
 export default registerSlice.reducer

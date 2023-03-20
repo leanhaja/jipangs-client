@@ -13,21 +13,7 @@ import Setting from './SettingRoutes'
 const STACK = createNativeStackNavigator<RootStackParamList>()
 
 function Routes() {
-  const { hasInfo, token } = useAppSelector((state) => state.auth)
-
-  const screenWhenUserLoggedIn = hasInfo ? (
-    <>
-      <STACK.Screen
-        component={Main}
-        name="Main"
-        options={{ headerTitleAlign: 'center' }}
-      />
-      <STACK.Screen component={Setting} name="Setting" />
-      <STACK.Screen component={ExternalLink} name="ExternalLink" />
-    </>
-  ) : (
-    <STACK.Screen component={Register} name="Register" />
-  )
+  const { token } = useAppSelector((state) => state.auth)
 
   return (
     <STACK.Navigator
@@ -38,7 +24,16 @@ function Routes() {
       initialRouteName="Login"
     >
       {token ? (
-        screenWhenUserLoggedIn
+        <>
+          <STACK.Screen
+            component={Main}
+            name="Main"
+            options={{ headerTitleAlign: 'center' }}
+          />
+          <STACK.Screen component={Register} name="Register" />
+          <STACK.Screen component={Setting} name="Setting" />
+          <STACK.Screen component={ExternalLink} name="ExternalLink" />
+        </>
       ) : (
         <>
           <STACK.Screen component={LoginWebView} name="LoginWebView" />

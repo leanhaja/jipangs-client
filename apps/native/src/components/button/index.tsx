@@ -26,8 +26,11 @@ export default function Button({
 }: ButtonProps) {
   return (
     <Pressable
+      style={({ pressed }) => [
+        { alignSelf: 'stretch' },
+        pressed && styles.pressed,
+      ]}
       onPress={onPress}
-      style={({ pressed }) => [pressed && styles.pressed]}
     >
       <View style={[styles.button, disabled && styles.disabled, viewStyle]}>
         <Text style={[styles.text, disabled && styles.disabled, textStyle]}>

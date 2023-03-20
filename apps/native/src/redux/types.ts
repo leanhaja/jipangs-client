@@ -103,4 +103,10 @@ export type MajorSpecificType = {
   majorSpecific: string
 }
 
+export type PrivacyPolicy = { privacyPolicy: boolean }
+
+export type MarketingPolicy = { marketingPolicy: boolean }
+
+export type AllPolicy = { allPolicy: boolean }
+
 export type Auth = { hasInfo: boolean; token: string }

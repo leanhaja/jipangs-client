@@ -32,11 +32,14 @@ const getUserInfo = async () => {
 
 export default function UserInfoPage() {
   const dispatch = useAppDispatch()
+  const { allPolicy, marketingPolicy, privacyPolicy, termOfUse } =
+    useAppSelector((state) => state.register)
   const mutation = useMutateUserInfo()
   useQuery([queryKeys.userInfo], () => getUserInfo(), {
     onSuccess: (data) => {
       dispatch(
         setValue({
+          allPolicy,
           birth: {
             isTouched: false,
             isValid: true,
@@ -51,6 +54,7 @@ export default function UserInfoPage() {
           grade: data.body.user.grade as Grade,
           major: data.body.user.major as Major,
           majorSpecific: data.body.user.major,
+          marketingPolicy,
           name: {
             isTouched: false,
             isValid: true,
@@ -61,7 +65,9 @@ export default function UserInfoPage() {
             isValid: true,
             value: data.body.user.nickName,
           },
+          privacyPolicy,
           region: [],
+          termOfUse,
           university: data.body.user.nickName,
           yearOfAdmission: data.body.user.grade,
         })

@@ -175,7 +175,7 @@ export const registerSlice = createSlice({
         state.allPolicy = false
         state.privacyPolicy = false
         state.marketingPolicy = false
-        state.termOfUse = true
+        state.termOfUse = false
       }
     },
     toggleMarketingPolicy: (state) => {

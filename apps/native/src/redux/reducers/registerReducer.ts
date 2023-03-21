@@ -20,6 +20,7 @@ import {
   YearOfAdmissionType,
   PrivacyPolicy,
   MarketingPolicy,
+  TermOfUse,
   AllPolicy,
 } from '../types'
 
@@ -36,6 +37,7 @@ type RegisterType = MajorType &
   GradeType &
   PrivacyPolicy &
   MarketingPolicy &
+  TermOfUse &
   AllPolicy
 
 const emailRegex =
@@ -56,6 +58,7 @@ const initialState: RegisterType = {
   nickname: { isTouched: false, isValid: false, value: '' },
   privacyPolicy: false,
   region: undefined,
+  termOfUse: false,
   university: '',
   yearOfAdmission: '',
 }
@@ -167,20 +170,30 @@ export const registerSlice = createSlice({
         state.allPolicy = true
         state.privacyPolicy = true
         state.marketingPolicy = true
+        state.termOfUse = true
       } else {
         state.allPolicy = false
         state.privacyPolicy = false
         state.marketingPolicy = false
+        state.termOfUse = true
       }
     },
     toggleMarketingPolicy: (state) => {
       state.marketingPolicy = !state.marketingPolicy
-      if (state.marketingPolicy && state.privacyPolicy) state.allPolicy = true
+      if (state.marketingPolicy && state.privacyPolicy && state.termOfUse)
+        state.allPolicy = true
       else state.allPolicy = false
     },
     togglePrivacyPolicy: (state) => {
       state.privacyPolicy = !state.privacyPolicy
-      if (state.marketingPolicy && state.privacyPolicy) state.allPolicy = true
+      if (state.marketingPolicy && state.privacyPolicy && state.termOfUse)
+        state.allPolicy = true
+      else state.allPolicy = false
+    },
+    toggleTermOfUse: (state) => {
+      state.termOfUse = !state.termOfUse
+      if (state.marketingPolicy && state.privacyPolicy && state.termOfUse)
+        state.allPolicy = true
       else state.allPolicy = false
     },
   },
@@ -197,5 +210,6 @@ export const {
   toggleAllPolicy,
   toggleMarketingPolicy,
   togglePrivacyPolicy,
+  toggleTermOfUse,
 } = registerSlice.actions
 export default registerSlice.reducer

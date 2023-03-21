@@ -19,6 +19,17 @@ type MypageScreenProps = CompositeScreenProps<
 const bottomMargin = transformPixelToDp(theme.bottomNavigationHeight)
 
 export default function MypageScreen({ navigation }: MypageScreenProps) {
+  const handleTermOfUseButton = () =>
+    navigation.navigate('ExternalLink', {
+      link: 'https://twilight-snow-7e6.notion.site/05409d44c8244908a754967f443c3b8a',
+      title: '이용약관 동의',
+    })
+  const handlePressPrivacyPolicyButton = () =>
+    navigation.navigate('ExternalLink', {
+      link: 'https://twilight-snow-7e6.notion.site/05409d44c8244908a754967f443c3b8a',
+      title: '이용약관 동의',
+    })
+
   return (
     <Styled.Screen style={{ marginBottom: bottomMargin }}>
       <Styled.CardWrapper>
@@ -39,11 +50,12 @@ export default function MypageScreen({ navigation }: MypageScreenProps) {
       >
         로그인 정보
       </CategoryButton>
-      <CategoryButton onPress={() => {}}>알림 설정</CategoryButton>
       <CategoryButton onPress={() => {}}>정보 동의 설정</CategoryButton>
       <Divider />
-      <CategoryButton onPress={() => {}}>이용약관</CategoryButton>
-      <CategoryButton onPress={() => {}}>개인정보 처리방침</CategoryButton>
+      <CategoryButton onPress={handleTermOfUseButton}>이용약관</CategoryButton>
+      <CategoryButton onPress={handlePressPrivacyPolicyButton}>
+        개인정보 처리방침
+      </CategoryButton>
       <Divider />
       <CategoryButton onPress={() => {}}>문의하기</CategoryButton>
       <CategoryButton onPress={() => {}}>공지사항</CategoryButton>

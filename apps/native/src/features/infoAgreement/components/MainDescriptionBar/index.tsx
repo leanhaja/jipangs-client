@@ -1,4 +1,3 @@
-import ArrowRightIcon from '../../../../components/icon/assets/after_arrow.svg'
 import AgreementCircleButton, {
   type AgreementCircleButtonProps,
 } from '../AgreementCircleButton'
@@ -17,13 +16,8 @@ export default function MainDescriptionBar({
 }: MainDescriptionBarProps) {
   return (
     <Styled.MainDescriptionBar>
-      <Styled.Wrapper>
-        <AgreementCircleButton checked={checked} onPress={onPress} />
-        <Styled.Text>{text}</Styled.Text>
-      </Styled.Wrapper>
-      <Styled.Button>
-        <ArrowRightIcon />
-      </Styled.Button>
+      <AgreementCircleButton checked={checked} onPress={onPress} />
+      <Styled.Text>{text}</Styled.Text>
     </Styled.MainDescriptionBar>
   )
 }

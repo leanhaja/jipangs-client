@@ -6,22 +6,24 @@ import AgreementFlatButton, {
 import * as Styled from './styled'
 
 interface SubDescriptionBarProps extends AgreementFlatButtonProps {
-  onPress: () => void
+  onPressButton: () => void
+  onPresslink: () => void
   text: string
 }
 
 export default function SubDescriptionBar({
   checked,
-  onPress,
+  onPressButton,
+  onPresslink,
   text,
 }: SubDescriptionBarProps) {
   return (
     <Styled.MainDescriptionBar>
       <Styled.Wrapper>
-        <AgreementFlatButton checked={checked} onPress={onPress} />
+        <AgreementFlatButton checked={checked} onPress={onPressButton} />
         <Styled.Text>{text}</Styled.Text>
       </Styled.Wrapper>
-      <Styled.Button>
+      <Styled.Button onPress={onPresslink}>
         <ArrowRightIcon />
       </Styled.Button>
     </Styled.MainDescriptionBar>

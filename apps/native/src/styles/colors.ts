@@ -1,4 +1,5 @@
 export const COLORS = {
+  BACK_BUTTON: '#161616',
   BLACK: '#000000',
   BOOKMARK_PURPLE: '#778bf7',
   BUTTON_GREEN: '#58B99D',

@@ -9,5 +9,5 @@ export const Screen = styled.ScrollView`
 
 export const CardWrapper = styled.View`
   align-items: center;
-  padding-top: 24px;
+  padding: 24px 0;
 `

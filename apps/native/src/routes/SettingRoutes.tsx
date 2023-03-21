@@ -12,16 +12,17 @@ import { Pressable } from 'react-native'
 import Icon from '../components/icon'
 import LoginInfo from '../screens/login-info'
 import Myinfo from '../screens/myinfo'
+import { COLORS } from '../styles/colors'
 
 import {
-  HomeTabParamList,
+  MainTabParamList,
   RootStackParamList,
   SettingStackParamList,
 } from 'src/types'
 
 type SettingScreenNavigationProp = CompositeNavigationProp<
   NativeStackNavigationProp<RootStackParamList, 'Setting'>,
-  BottomTabNavigationProp<HomeTabParamList>
+  BottomTabNavigationProp<MainTabParamList>
 >
 
 const STACK = createNativeStackNavigator<SettingStackParamList>()
@@ -41,7 +42,11 @@ export default function SettingRoutes() {
             <Pressable
               onPress={() => navigate.replace('Main', { screen: 'Mypage' })}
             >
-              <Icon iconName="before_arrow" {...props} />
+              <Icon
+                iconName="before_arrow"
+                {...props}
+                stroke={COLORS.BACK_BUTTON}
+              />
             </Pressable>
           ),
 
@@ -56,7 +61,11 @@ export default function SettingRoutes() {
             <Pressable
               onPress={() => navigate.replace('Main', { screen: 'Mypage' })}
             >
-              <Icon iconName="before_arrow" {...props} />
+              <Icon
+                iconName="before_arrow"
+                {...props}
+                stroke={COLORS.BACK_BUTTON}
+              />
             </Pressable>
           ),
           title: '로그인 정보',

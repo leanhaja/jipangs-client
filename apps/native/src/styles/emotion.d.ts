@@ -10,6 +10,7 @@ declare module '@emotion/react' {
       }
     }
     colors: {
+      BACK_BUTTON: string
       BLACK: string
       BOOKMARK_PURPLE: string
       BUTTON_GREEN: string

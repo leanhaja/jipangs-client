@@ -66,7 +66,13 @@ export default function MypageScreen({ navigation }: MypageScreenProps) {
       >
         로그인 정보
       </CategoryButton>
-      <CategoryButton onPress={() => {}}>정보 동의 설정</CategoryButton>
+      <CategoryButton
+        onPress={() => {
+          navigation.navigate('Setting', { screen: 'InfoAgreementSetting' })
+        }}
+      >
+        정보 동의 설정
+      </CategoryButton>
       <Divider />
       <CategoryButton onPress={handleTermOfUseButton}>이용약관</CategoryButton>
       <CategoryButton onPress={handlePressPrivacyPolicyButton}>

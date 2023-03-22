@@ -1,8 +1,6 @@
 import { BottomTabScreenProps } from '@react-navigation/bottom-tabs'
 import { CompositeScreenProps } from '@react-navigation/native'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
-import { useQueryClient, useIsFetching } from '@tanstack/react-query'
-import axios, { AxiosError } from 'axios'
 import React, { useEffect, useMemo, useState } from 'react'
 import { FlatList, LayoutChangeEvent, ScrollView, Share } from 'react-native'
 
@@ -10,6 +8,7 @@ import Banner, { BannerProps } from '../../components/banner'
 import Card from '../../components/card'
 import SearchBar from '../../components/search-bar'
 import Title, { TitleProps } from '../../components/title'
+import { CAROUSEL_BANNER_RESOURCES } from '../../constants'
 import BannerCarousel, {
   BannerCarouselProps,
   LinkBannerProps,
@@ -23,12 +22,10 @@ import CardGrid, {
 } from '../../features/home/components/card-grid'
 import Empty from '../../features/home/components/empty'
 import CompleteModal from '../../features/register/components/CompleteModal'
+import useActivities from '../../hooks/useActivities'
 import useBookMark from '../../hooks/useBookMark'
-import useLatestActivities from '../../hooks/useLatestActivities'
-import usePopularActivities from '../../hooks/usePopularActivities'
-import useSearchingCards from '../../hooks/useSearchingCards'
-import { useAppDispatch, useAppSelector } from '../../redux/hooks'
-import { logout } from '../../redux/reducers/authReducer'
+import useSearchingCards from '../../hooks/useSearchedCards'
+import { useAppSelector } from '../../redux/hooks'
 import theme from '../../styles/theme'
 import {
   Card as CardInfo,
@@ -68,39 +65,24 @@ type HomeScreenProps = CompositeScreenProps<
 >
 
 function Home({ navigation, route }: HomeScreenProps) {
-  console.log(useIsFetching())
-  const queryClient = useQueryClient()
-
   const [isSearchDone, setIsSearchDone] = useState(false)
   const [isSearching, setIsSearching] = useState(false)
   const [keyword, setKeyword] = useState('')
   const [tabIndex, setTabIndex] = useState(0)
-  const { popularCard: popularExternalCardPageInfo } =
-    usePopularActivities('대외활동')
-  const { popularCard: popularVolunteerCardPageInfo } =
-    usePopularActivities('봉사활동')
+  const { cardsResponse: popularExternalCardPageInfo } = useActivities(
+    '대외활동',
+    'popular'
+  )
+  const { cardsResponse: popularVolunteerCardPageInfo } = useActivities(
+    '봉사활동',
+    'popular'
+  )
   const {
-    fetchNextLatestCard,
-    hasNextLatestCard,
-    latestCard: latestCardPageInfo,
-  } = useLatestActivities(tabIndex === 1 ? '대외활동' : '봉사활동')
+    cardsResponse: latestCardPageInfo,
+    fetchNextCards: fetchNextLatestCards,
+    hasNextCards: hasNextLatestCard,
+  } = useActivities(tabIndex === 1 ? '대외활동' : '봉사활동', 'new')
   const [resultCards, setResultCards] = useState<CardInfo[]>([])
-
-  const refetchScrap = async () => {
-    // await queryClient.invalidateQueries()
-    // await queryClient.refetchQueries()
-  }
-
-  useEffect(() => {
-    if (!navigation.isFocused) return
-
-    const refetch = async () => {
-      await queryClient.invalidateQueries()
-      await queryClient.refetchQueries()
-    }
-
-    refetch().catch(console.error)
-  }, [navigation.isFocused, queryClient, tabIndex])
 
   const { result } = useSearchingCards(keyword)
 
@@ -139,7 +121,12 @@ function Home({ navigation, route }: HomeScreenProps) {
       message: link,
       title,
       url: link,
-    }).catch(console.error)
+    }).catch((e: unknown) => {
+      const errorMessage =
+        e instanceof Error ? e.message : '알 수 없는 에러가 발생했습니다.'
+
+      throw new Error(errorMessage)
+    })
   }
 
   const getBannerCarouselInfo = (
@@ -193,26 +180,7 @@ function Home({ navigation, route }: HomeScreenProps) {
   const getPageItems = (): PageItem[] => {
     if (tabIndex === 0) {
       return [
-        getBannerCarouselInfo(
-          [
-            {
-              link: 'https://twilight-snow-7e6.notion.site/1-3140b39702cd44948e31e50cde11c4df',
-              subTitle: '활동 모아보기',
-              title: `이번 주에 가장 핫했던\n활동 모음 Zip`,
-            },
-            {
-              link: 'https://twilight-snow-7e6.notion.site/2-2222253ce2a54753a7698eb742579e06',
-              subTitle: '지팡스 강력 추천!',
-              title: `지금 지원해야만 하는\n대외활동 모음 Zip`,
-            },
-            {
-              link: 'https://twilight-snow-7e6.notion.site/3-43458a6186694fb6b503cf9467b9f177',
-              subTitle: '지금까지 이런 봉사활동은 없었다..',
-              title: `봉사시간은 물론 실무역량까지!\n추천 봉사활동 모음 Zip`,
-            },
-          ],
-          { marginTop: 32 }
-        ),
+        getBannerCarouselInfo(CAROUSEL_BANNER_RESOURCES, { marginTop: 32 }),
         getTitleInfo('인기 대외활동', { marginTop: 40 }),
         getCardCarouselInfo(
           popularExternalCards.map<LinkCardProps>(
@@ -223,7 +191,6 @@ function Home({ navigation, route }: HomeScreenProps) {
               location: source,
               onScrapClick: () => {
                 requestBookMark(id)
-                refetchScrap().catch(console.error)
               },
               onShareClick: () => {
                 onShareClick(link, title)
@@ -258,7 +225,6 @@ function Home({ navigation, route }: HomeScreenProps) {
               location: source,
               onScrapClick: () => {
                 requestBookMark(id)
-                refetchScrap().catch(console.error)
               },
               onShareClick: () => {
                 onShareClick(link, title)
@@ -284,7 +250,6 @@ function Home({ navigation, route }: HomeScreenProps) {
               location: source,
               onScrapClick: () => {
                 requestBookMark(id)
-                refetchScrap().catch(console.error)
               },
               onShareClick: () => {
                 onShareClick(link, title)
@@ -305,7 +270,6 @@ function Home({ navigation, route }: HomeScreenProps) {
               location: source,
               onScrapClick: () => {
                 requestBookMark(id)
-                refetchScrap().catch(console.error)
               },
               onShareClick: () => {
                 onShareClick(link, title)
@@ -330,7 +294,6 @@ function Home({ navigation, route }: HomeScreenProps) {
             location: source,
             onScrapClick: () => {
               requestBookMark(id)
-              refetchScrap().catch(console.error)
             },
             onShareClick: () => {
               onShareClick(link, title)
@@ -351,7 +314,6 @@ function Home({ navigation, route }: HomeScreenProps) {
             location: source,
             onScrapClick: () => {
               requestBookMark(id)
-              refetchScrap().catch(console.error)
             },
             onShareClick: () => {
               onShareClick(link, title)
@@ -393,9 +355,7 @@ function Home({ navigation, route }: HomeScreenProps) {
 
   const gridWidth = (innerWidth - 9) / 2
 
-  const dispatch = useAppDispatch()
-
-  const { hasInfo, token } = useAppSelector((state) => state.auth)
+  const { hasInfo } = useAppSelector((state) => state.auth)
 
   // const isCloseToBottom = ({
   //   contentOffset,
@@ -408,37 +368,6 @@ function Home({ navigation, route }: HomeScreenProps) {
   //     contentSize.height - paddingToBottom
   //   )
   // }
-
-  useEffect(() => {
-    const testRequest = async () => {
-      const instance = axios.create({
-        baseURL: 'https://dev-single-server.jipangs.com',
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-        timeout: 3000,
-      })
-
-      // console.log('start', token)
-
-      console.log(
-        encodeURIComponent('/api/v1/card-management/card/봉사활동/popular')
-      )
-
-      try {
-        const response = await instance.get(
-          '/api/v1/card-management/card/봉사활동/popular'
-        )
-        console.log(response.data)
-      } catch (e) {
-        if (e instanceof AxiosError && e.response?.status === 401) {
-          console.log('redirection')
-          dispatch(logout())
-        }
-      }
-    }
-    testRequest().then(console.log).catch(console.error)
-  }, [dispatch, token])
 
   if (!hasInfo) {
     navigation.setParams({ isNewUser: true })
@@ -546,7 +475,14 @@ function Home({ navigation, route }: HomeScreenProps) {
 
                 if (isCloseToBottom && tabIndex !== 0) {
                   if (hasNextLatestCard) {
-                    fetchNextLatestCard().catch(console.error)
+                    fetchNextLatestCards().catch((e) => {
+                      const errorMessage =
+                        e instanceof Error
+                          ? e.message
+                          : '알 수 없는 에러가 발생했습니다.'
+
+                      throw new Error(errorMessage)
+                    })
                   }
                 }
               }}

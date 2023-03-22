@@ -1,2 +1,2 @@
-export * from './jipangs-address'
+export * from './banners'
 export * from './route-names'

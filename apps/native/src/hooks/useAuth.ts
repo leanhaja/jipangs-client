@@ -1,30 +1,27 @@
 import { useCallback } from 'react'
 
 import { useAppDispatch, useAppSelector } from '../redux/hooks'
-import {
-  login as setToken,
-  logout as clearToken,
-} from '../redux/reducers/authReducer'
+import { login, logout } from '../redux/reducers/authReducer'
 
 const useAuth = () => {
   const dispatch = useAppDispatch()
   const { token: jwtToken } = useAppSelector((state) => state.auth)
 
-  const login = useCallback(
+  const setToken = useCallback(
     ({ hasInfo, token }: { hasInfo: boolean; token: string }) => {
-      dispatch(setToken({ hasInfo, token }))
+      dispatch(login({ hasInfo, token }))
     },
     [dispatch]
   )
 
-  const logout = useCallback(() => {
-    dispatch(clearToken())
+  const clearToken = useCallback(() => {
+    dispatch(logout())
   }, [dispatch])
 
   return {
+    clearToken,
     jwtToken,
-    login,
-    logout,
+    setToken,
   }
 }
 

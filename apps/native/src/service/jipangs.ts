@@ -1,5 +1,7 @@
 import { AxiosPromise } from 'axios'
 
+import { instance as Axios } from '../axios'
+import { NonPageableResponse, PageableResponse } from '../axios/types'
 import {
   GetDeleteUserResponse,
   GetMajorsResponse,
@@ -8,8 +10,11 @@ import {
   PostUserAlarmReponse,
   PostUserInfoResponse,
   UserInfo,
+  GetCardParams,
 } from '../types/axios'
-import Axios from '../utils/axios'
+import { createQuery } from '../utils'
+
+import { Card } from 'src/types'
 
 export default {
   /**
@@ -23,7 +28,27 @@ export default {
   },
 
   /**
-   * name으로 검색한 학과를 가져오는 api
+   * 활동 정보를 얻어오는 api
+   * @returns 요청 완료된 pageable 카드(활동) 정보
+   */
+  getActivities({
+    activityType,
+    cardType,
+    page = 0,
+    size = 20,
+  }: GetCardParams): AxiosPromise<PageableResponse<Card[]>> {
+    const query = createQuery([
+      ['page', `${page}`],
+      ['size', `${size}`],
+    ])
+
+    return Axios({
+      method: 'get',
+      url: `/api/v1/card-management/card/${activityType}/${cardType}?${query}`,
+    })
+  },
+
+  /** name으로 검색한 학과를 가져오는 api
    * @param name 검색할 학과
    * @returns
    */
@@ -36,7 +61,26 @@ export default {
   },
 
   /**
-   * name으로 검색한 대학을 가져오는 api
+   * 검색된 활동 정보를 얻어오는 api
+   * @returns 요청 완료된 pageable 카드(활동) 정보
+   */
+  getSearchedCards(
+    keyword: string,
+    page = 0,
+    size = 20
+  ): AxiosPromise<PageableResponse<Card[]>> {
+    const query = createQuery([
+      ['page', `${page}`],
+      ['size', `${size}`],
+    ])
+
+    return Axios({
+      method: 'get',
+      url: `/api/v1/card-management/card/keyword/${keyword}?${query}`,
+    })
+  },
+
+  /** name으로 검색한 대학을 가져오는 api
    * @param name 검색할 대학
    * @returns
    */
@@ -66,6 +110,38 @@ export default {
     return Axios({
       method: 'get',
       url: '/api/v1/user',
+    })
+  },
+
+  /**
+   * 유저가 스크랩(북마크)한 정보를 가져오는 api
+   * @returns 요청 완료된 pageable 카드(활동) 정보
+   */
+  getUserScarp({
+    activityType,
+    page = 0,
+    size = 20,
+  }: Omit<GetCardParams, 'cardType'>): AxiosPromise<PageableResponse<Card[]>> {
+    const query = createQuery([
+      ['page', `${page}`],
+      ['size', `${size}`],
+    ])
+
+    return Axios({
+      method: 'get',
+      url: `/api/v1/card-management/card/${activityType}/scrap?${query}`,
+    })
+  },
+
+  /**
+   * 스크랩을 요청하는 api
+   * @returns 요청 완료된 카드 정보
+   */
+  postBookMark(cardId: number): AxiosPromise<NonPageableResponse<Card>> {
+    return Axios({
+      data: { cardId },
+      method: 'post',
+      url: '/api/v1/scrap-management/scrap',
     })
   },
 

@@ -2,9 +2,12 @@ import { BottomTabScreenProps } from '@react-navigation/bottom-tabs'
 import { NavigatorScreenParams } from '@react-navigation/native'
 import { type NativeStackScreenProps } from '@react-navigation/native-stack'
 
-import { type ExternalLink } from './bridge'
-
 import { ROUTE_NAMES } from 'src/constants'
+
+export type ExternalLink = {
+  link: string
+  title: string
+}
 
 export type RootStackParamList = {
   [ROUTE_NAMES.EXTERNAL_LINK]: ExternalLink

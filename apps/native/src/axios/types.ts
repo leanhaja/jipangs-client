@@ -3,7 +3,7 @@ export interface ApiError {
   status: number
 }
 
-export interface CardSort {
+export interface Sort {
   empty: boolean
   sorted: boolean
   unsorted: boolean
@@ -31,11 +31,17 @@ export interface Response<T> {
   numberOfElements: number
   pageable: PageInfo
   size: number
-  sort: CardSort | null
+  sort: Sort | null
 }
 
-export interface PageableCardResponse<T> {
+export interface PageableResponse<T> {
   error: ApiError | null
   response: Response<T> | null
+  success: boolean
+}
+
+export interface NonPageableResponse<T> {
+  error: ApiError | null
+  response: T | null
   success: boolean
 }

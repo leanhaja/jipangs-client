@@ -1,5 +1,4 @@
-import { useQueryClient } from '@tanstack/react-query'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { ScrollView, Share } from 'react-native'
 
 import Filters from '../../components/filters'
@@ -8,75 +7,17 @@ import CardGrid, {
 } from '../../features/home/components/card-grid/index'
 import Empty from '../../features/home/components/empty'
 import useBookMark from '../../hooks/useBookMark'
-import useScrap from '../../hooks/useScrap'
+import useScrap from '../../hooks/useScrapCard'
 import theme from '../../styles/theme'
-import { MainTabScreenProps } from '../../types/navigation'
 import { transformPixelToDp } from '../../utils'
 
 import { FILTER_BUTTONS } from './constants'
 import * as Styled from './styled'
 
-// const images = Array.from({ length: 8 }, () => ({
-//   category: '학술/행사',
-//   deadLine: 'D-8',
-//   img: 'https://cdn.pixabay.com/photo/2023/02/14/22/12/birds-7790506_1280.jpg',
-//   link: 'https://www.naver.com/',
-//   major: '',
-//   source: '사회복지법인 서울시의사회',
-//   title: '서울시 의사회 의료봉사단 약사 자원봉사자 모집 공고',
-//   typeName: '',
-// }))
+export type FilterKey = (typeof FILTER_BUTTONS)[number]['key']
 
-export interface GetCardManagement {
-  error: {
-    message: string
-    status: number
-  }
-  response: {
-    content: [
-      {
-        category: string
-        deadLine: string
-        id: number
-        img: string
-        link: string
-        major: string
-        scrap: true
-        scrapCnt: number
-        source: string
-        title: string
-        typeName: string
-      }
-    ]
-    empty: true
-    first: true
-    last: true
-    number: number
-    numberOfElements: number
-    pageable: {
-      offset: number
-      pageNumber: number
-      pageSize: number
-      paged: true
-      sort: {
-        empty: true
-        sorted: true
-        unsorted: true
-      }
-      unpaged: true
-    }
-    size: number
-    sort: {
-      empty: true
-      sorted: true
-      unsorted: true
-    }
-  } | null
-  success: true
-}
-
-function Save({ navigation }: MainTabScreenProps<'Scrap'>) {
-  const [filter, setFilter] = useState(FILTER_BUTTONS[0].key)
+function Save() {
+  const [filter, setFilter] = useState<FilterKey>(FILTER_BUTTONS[0].key)
 
   const filterButtons = FILTER_BUTTONS.map(({ key, label }) => ({
     key,
@@ -86,70 +27,28 @@ function Save({ navigation }: MainTabScreenProps<'Scrap'>) {
     },
   }))
 
-  const queryClient = useQueryClient()
-
-  const refetch = async () => {
-    try {
-      await queryClient.invalidateQueries()
-
-      await queryClient.refetchQueries()
-      console.log('success')
-    } catch (e) {
-      console.error(e)
-    }
-  }
-
-  const isFocus = navigation.isFocused()
-
-  useEffect(() => {
-    if (!isFocus) return
-
-    // console.log('focus')
-    console.log('focus')
-
-    const refetchScrap = async () => {
-      try {
-        await queryClient.invalidateQueries()
-
-        await queryClient.refetchQueries()
-        console.log('success')
-      } catch (e) {
-        console.error(e)
-      }
-    }
-
-    refetchScrap().catch(console.error)
-  }, [isFocus, queryClient])
-
   const flatListBottomPadding = transformPixelToDp(theme.bottomNavigationHeight)
 
-  const { scarp } = useScrap()
+  const { scarp } = useScrap(
+    filter === 'external-activity' ? '대외활동' : '봉사활동'
+  )
 
   const scrapCards = scarp?.pages[0]?.content || []
 
-  // const { popularCard } = usePopularActivities('대외활동')
-
-  // console.log(popularCard?.pages[0]?.content)
-
   const { mutate: requestBookMark } = useBookMark()
-
-  // const [innerWidth, setInnerWidth] = useState(0)
-
-  // const onLayout = (event: LayoutChangeEvent) => {
-  //   const { width } = event.nativeEvent.layout
-
-  //   setInnerWidth(width)
-  // }
 
   const onShareClick = (link: string, title: string) => {
     Share.share({
       message: link,
       title,
       url: link,
-    }).catch(console.error)
-  }
+    }).catch((e) => {
+      const errorMessage =
+        e instanceof Error ? e.message : '알 수 없는 에러가 발생했습니다.'
 
-  // const width = (innerWidth - 9) / 2
+      throw new Error(errorMessage)
+    })
+  }
 
   return (
     <Styled.Container>
@@ -192,7 +91,6 @@ function Save({ navigation }: MainTabScreenProps<'Scrap'>) {
                 location: source,
                 onScrapClick: () => {
                   requestBookMark(id)
-                  refetch().catch(console.error)
                 },
                 onShareClick: () => {
                   onShareClick(link, title)

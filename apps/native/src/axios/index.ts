@@ -5,11 +5,11 @@ import axios, {
   InternalAxiosRequestConfig,
 } from 'axios'
 
-import { BASEURL } from '../../config'
+import { BASE_URL } from '../../config'
 import { store } from '../redux/store'
 
-const instance = axios.create({
-  baseURL: BASEURL,
+export const instance = axios.create({
+  baseURL: BASE_URL,
   headers: {
     'Content-Type': 'application/json',
   },
@@ -20,6 +20,7 @@ instance.interceptors.request.use(
   (config: InternalAxiosRequestConfig) => {
     const { token } = store.getState().auth
     if (config.headers) config.headers.Authorization = `Bearer ${token}`
+
     return config
   },
   (error: AxiosError) => Promise.reject(error)
@@ -29,5 +30,3 @@ instance.interceptors.response.use(
   (response: AxiosResponse) => response,
   (error: AxiosError) => Promise.reject(error)
 )
-
-export default instance

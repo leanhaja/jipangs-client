@@ -5,13 +5,13 @@ import useAuth from '../../hooks/useAuth'
 import { parseQueryString } from '../../utils/parseQuery'
 
 export default function LoginWebView() {
-  const { login } = useAuth()
+  const { setToken } = useAuth()
 
   const handleNavigationStateChange = (navigationState: WebViewNavigation) => {
     const queryObject = parseQueryString(navigationState.url)
     if (!queryObject || !queryObject.token || !queryObject.hasInfo) return
     const hasInfo = queryObject.hasInfo === 'true'
-    login({ hasInfo, token: queryObject.token })
+    setToken({ hasInfo, token: queryObject.token })
   }
   return (
     <WebView

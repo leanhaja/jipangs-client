@@ -111,3 +111,9 @@ export interface GetMajorsResponse {
   response: { name: string }[]
   success: boolean
 }
+export interface GetCardParams {
+  activityType: '대외활동' | '봉사활동'
+  cardType: 'popular' | 'new'
+  page?: number
+  size?: number
+}

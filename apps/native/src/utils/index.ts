@@ -1,4 +1,4 @@
 export * from './asyncStorage'
-export * from './isExternalLinkBridgeResponse'
+export * from './createQuery'
 export * from './parseQuery'
 export * from './transformPixelToDp'

@@ -1,5 +1,6 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
+import useUser from '../hooks/useUser'
 import { useAppSelector } from '../redux/hooks'
 import ExternalLink from '../screens/external-link'
 import Login from '../screens/login'
@@ -13,6 +14,7 @@ import Setting from './SettingRoutes'
 const STACK = createNativeStackNavigator<RootStackParamList>()
 
 function Routes() {
+  useUser()
   const { token } = useAppSelector((state) => state.auth)
 
   return (

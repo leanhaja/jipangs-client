@@ -23,8 +23,6 @@ import jipangs from '../../../service/jipangs'
 
 import * as Styled from './styled'
 
-const GENDER: Gender[] = ['남성', '여성']
-
 const getUserInfo = async () => {
   const { data } = await jipangs.getUserInfo()
   return data
@@ -168,17 +166,23 @@ export default function UserInfoPage() {
       />
       <Styled.GapNarrow />
       <Styled.ButtonContainer>
-        {GENDER.map((gender, index) => (
-          <Button
-            key={`${gender}-${index + 1}`}
-            isSelected={gender === selectedGender}
-            onPress={handleGenderPress}
-            textStyle={{ fontSize: 16 }}
-            viewStyle={{ height: 44, width: 164 }}
-          >
-            {gender}
-          </Button>
-        ))}
+        <Button
+          isSelected={selectedGender === '남성'}
+          onPress={handleGenderPress}
+          textStyle={{ fontSize: 16 }}
+          viewStyle={{ height: 44, width: 164 }}
+        >
+          {'남성' as Gender}
+        </Button>
+        <Styled.GapHoriziontal />
+        <Button
+          isSelected={selectedGender === '여성'}
+          onPress={handleGenderPress}
+          textStyle={{ fontSize: 16 }}
+          viewStyle={{ height: 44, width: 164 }}
+        >
+          {'여성' as Gender}
+        </Button>
       </Styled.ButtonContainer>
       <Styled.GapNarrow />
       <Input

@@ -11,13 +11,13 @@ export const MainDescriptionBar = styled.View`
 export const Wrapper = styled.View`
   align-items: center;
   flex-direction: row;
-  gap: 12px;
 `
 
 export const Text = styled.Text`
   color: ${({ theme }) => theme.colors.SCRIM};
   font-family: 'Pretendard-Regular';
   font-size: 13px;
+  margin-left: 12px;
 `
 
 export const Button = styled.Pressable``

@@ -21,8 +21,6 @@ import { RegisterStackProps } from '../../../types/navigation'
 
 import * as Styled from './styled'
 
-const GENDER: Gender[] = ['남성', '여성']
-
 export default function UserInfoPage({
   navigation,
 }: RegisterStackProps<'UserInfo'>) {
@@ -74,71 +72,77 @@ export default function UserInfoPage({
 
   return (
     <KeyboardAwareScrollView>
-    <Styled.Screen>
-      <ProgressBar currentStep={3} totalStep={4} />
-      <Input
-        autoComplete="name"
-        errorMessage="형식에 맞지 않는 이름이에요!"
-        isInvalid={name.isTouched && !name.isValid}
-        isValid={name.isValid}
-        onBlur={handleNameBlur}
-        onChangeText={handleName}
-        title="이름"
-        value={name.value}
+      <Styled.Screen>
+        <ProgressBar currentStep={3} totalStep={4} />
+        <Input
+          autoComplete="name"
+          errorMessage="형식에 맞지 않는 이름이에요!"
+          isInvalid={name.isTouched && !name.isValid}
+          isValid={name.isValid}
+          onBlur={handleNameBlur}
+          onChangeText={handleName}
+          title="이름"
+          value={name.value}
         />
-      <Styled.GapNarrow />
-      <Input
-        errorMessage="형식에 맞지 않는 닉네임이에요!"
-        isInvalid={nickname.isTouched && !nickname.isValid}
-        isValid={nickname.isValid}
-        onBlur={handleNicknameBlur}
-        onChangeText={handleNickname}
-        title="닉네임"
-        value={nickname.value}
+        <Styled.GapNarrow />
+        <Input
+          errorMessage="형식에 맞지 않는 닉네임이에요!"
+          isInvalid={nickname.isTouched && !nickname.isValid}
+          isValid={nickname.isValid}
+          onBlur={handleNicknameBlur}
+          onChangeText={handleNickname}
+          title="닉네임"
+          value={nickname.value}
         />
-      <Styled.GapNarrow />
-      <Input
-        autoComplete="email"
-        errorMessage="형식에 맞지 않는 이메일이에요!"
-        isInvalid={email.isTouched && !email.isValid}
-        isValid={email.isValid}
-        onBlur={handleEmailBlur}
-        onChangeText={handleEmail}
-        title="이메일"
-        value={email.value}
+        <Styled.GapNarrow />
+        <Input
+          autoComplete="email"
+          errorMessage="형식에 맞지 않는 이메일이에요!"
+          isInvalid={email.isTouched && !email.isValid}
+          isValid={email.isValid}
+          onBlur={handleEmailBlur}
+          onChangeText={handleEmail}
+          title="이메일"
+          value={email.value}
         />
-      <Styled.GapNarrow />
-      <Styled.ButtonContainer>
-        {GENDER.map((gender, index) => (
+        <Styled.GapNarrow />
+        <Styled.ButtonContainer>
           <Button
-          key={`${gender}-${index + 1}`}
-          isSelected={gender === selectedGender}
-          onPress={handleGenderPress}
-          textStyle={{ fontSize: 16 }}
-          viewStyle={{ height: 44, width: 164 }}
+            isSelected={selectedGender === '남성'}
+            onPress={handleGenderPress}
+            textStyle={{ fontSize: 16 }}
+            viewStyle={{ height: 44, width: 164 }}
           >
-            {gender}
+            {'남성' as Gender}
           </Button>
-        ))}
-      </Styled.ButtonContainer>
-      <Styled.GapNarrow />
-      <Input
-        errorMessage="형식에 맞지 않는 생년월일이에요!"
-        inputMode="numeric"
-        isInvalid={birth.isTouched && !birth.isValid}
-        isValid={birth.isValid}
-        keyboardType="number-pad"
-        maxLength={6}
-        onBlur={handleBirthBlur}
-        onChangeText={handleBirth}
-        title="생년월일"
-        value={birth.value}
+          <Styled.GapHoriziontal />
+          <Button
+            isSelected={selectedGender === '여성'}
+            onPress={handleGenderPress}
+            textStyle={{ fontSize: 16 }}
+            viewStyle={{ height: 44, width: 164 }}
+          >
+            {'여성' as Gender}
+          </Button>
+        </Styled.ButtonContainer>
+        <Styled.GapNarrow />
+        <Input
+          errorMessage="형식에 맞지 않는 생년월일이에요!"
+          inputMode="numeric"
+          isInvalid={birth.isTouched && !birth.isValid}
+          isValid={birth.isValid}
+          keyboardType="number-pad"
+          maxLength={6}
+          onBlur={handleBirthBlur}
+          onChangeText={handleBirth}
+          title="생년월일"
+          value={birth.value}
         />
-      <Styled.GapWide />
-      <NextButton disabled={!isFormValid} onPress={handleNextButton}>
-        다음
-      </NextButton>
-    </Styled.Screen>
-        </KeyboardAwareScrollView>
+        <Styled.GapWide />
+        <NextButton disabled={!isFormValid} onPress={handleNextButton}>
+          다음
+        </NextButton>
+      </Styled.Screen>
+    </KeyboardAwareScrollView>
   )
 }

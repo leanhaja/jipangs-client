@@ -59,6 +59,7 @@ export default function SelectMajorScreen({
             key={`${major}-${index + 1}`}
             isSelected={major === selectedMajor}
             onPress={handleButtonPress}
+            viewStyle={{ marginBottom: 16, marginHorizontal: 5 }}
           >
             {major}
           </Button>

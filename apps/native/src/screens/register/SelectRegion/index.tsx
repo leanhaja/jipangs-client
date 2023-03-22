@@ -56,6 +56,7 @@ export default function SelectRegionScreen({
             key={`${region}-${index + 1}`}
             isSelected={selectedRegion?.includes(region)}
             onPress={handleButtonPress}
+            viewStyle={{ marginBottom: 16, marginHorizontal: 5 }}
           >
             {region}
           </Button>

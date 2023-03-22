@@ -24,7 +24,6 @@ export const BackDrop = styled.View`
 
 export const ButtonContainer = styled.View`
   flex-direction: row;
-  gap: 16px;
   justify-content: center;
   margin-top: 8px;
 `

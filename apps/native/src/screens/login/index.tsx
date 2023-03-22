@@ -21,9 +21,7 @@ export default function LoginScreen({ navigation }: RootScreenProps<'Login'>) {
       <Styled.GapNarrow />
       <Styled.Logo contentFit="cover" placeholder={blurhash} source={Logo} />
       <Styled.GapWide />
-      <Styled.ButtonContainer>
-        <LoginButton oauthProvider="kakao" onPress={handleLoginPress} />
-      </Styled.ButtonContainer>
+      <LoginButton oauthProvider="kakao" onPress={handleLoginPress} />
     </Styled.Screen>
   )
 }

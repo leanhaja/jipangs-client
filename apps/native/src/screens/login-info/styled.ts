@@ -16,7 +16,6 @@ export const EmailWrapper = styled.View`
   background-color: ${({ theme }) => theme.colors.TRANSPARENT_GRAY};
   border-radius: 8px;
   flex-direction: row;
-  gap: 16px;
   height: 48px;
   padding: 0 16px;
   width: 343px;
@@ -25,6 +24,7 @@ export const EmailWrapper = styled.View`
 export const Email = styled.Text`
   font-family: 'Pretendard-Medium';
   font-size: 16px;
+  margin-left: 16px;
 `
 
 export const Button = styled.Pressable`

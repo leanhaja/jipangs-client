@@ -7,10 +7,6 @@ export const Screen = styled.View`
   justify-content: center;
 `
 
-export const ButtonContainer = styled.View`
-  gap: 12px;
-`
-
 export const Logo = styled(Image)`
   height: 265px;
   width: 252px;

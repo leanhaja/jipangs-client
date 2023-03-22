@@ -29,7 +29,10 @@ export default function CompleteModal({ onClose }: CompleteModalProps) {
           >
             닫기
           </Button>
-          <Button onPress={() => {}} viewStyle={{ height: 48, width: 121 }}>
+          <Button
+            onPress={() => {}}
+            viewStyle={{ height: 48, marginLeft: 16, width: 121 }}
+          >
             초대하기
           </Button>
         </Styled.ButtonContainer>

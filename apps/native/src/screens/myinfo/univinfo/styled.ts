@@ -6,11 +6,6 @@ export const Screen = styled.View`
   background-color: ${({ theme }) => theme.colors.WHITE};
   flex: 1;
 `
-export const ButtonContainer = styled.View`
-  flex-direction: row;
-  flex-wrap: wrap;
-  gap: 16px 10px;
-`
 
 export const GapNarrow = styled.View`
   height: 24px;

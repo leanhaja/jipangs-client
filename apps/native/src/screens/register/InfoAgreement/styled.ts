@@ -9,11 +9,6 @@ export const Screen = styled.View`
   justify-content: flex-end;
   padding: 0 16px;
 `
-export const ButtonContainer = styled.View`
-  flex-direction: row;
-  flex-wrap: wrap;
-  gap: 16px 10px;
-`
 
 export const GapNarrow = styled.View`
   height: 10px;

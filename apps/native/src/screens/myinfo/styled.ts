@@ -6,11 +6,6 @@ export const Screen = styled.View`
   flex: 1;
   padding: 0 16px;
 `
-export const ButtonContainer = styled.View`
-  flex-direction: row;
-  gap: 15px;
-`
-
 export const GapNarrow = styled.View`
   height: 24px;
 `

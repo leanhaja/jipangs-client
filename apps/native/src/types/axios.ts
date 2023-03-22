@@ -84,3 +84,12 @@ export interface GetUserInfoResponse {
     message: string
   }
 }
+
+export interface GetDeleteUserResponse {
+  error: {
+    message: string
+    status: number
+  }
+  response: string
+  success: boolean
+}

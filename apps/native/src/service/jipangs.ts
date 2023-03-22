@@ -1,6 +1,7 @@
 import { AxiosPromise } from 'axios'
 
 import {
+  GetDeleteUserResponse,
   GetUserInfoResponse,
   PostUserAlarmReponse,
   PostUserInfoResponse,
@@ -9,6 +10,16 @@ import {
 import Axios from '../utils/axios'
 
 export default {
+  /**
+   * 회원 탈퇴 api
+   */
+  deleteUser(): AxiosPromise<GetDeleteUserResponse> {
+    return Axios({
+      method: 'get',
+      url: '/api/v1/oauth2/delete',
+    })
+  },
+
   /**
    * 개인별 동의 여부를 가저오는 api
    */

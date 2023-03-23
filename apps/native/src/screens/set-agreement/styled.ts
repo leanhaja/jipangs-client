@@ -12,6 +12,7 @@ export const Text = styled.Text`
 `
 
 export const Container = styled.View`
+  align-items: center;
   flex-direction: row;
   height: 56px;
   justify-content: space-between;

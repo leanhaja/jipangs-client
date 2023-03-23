@@ -12,6 +12,7 @@ import { Pressable } from 'react-native'
 import Icon from '../components/icon'
 import LoginInfo from '../screens/login-info'
 import Myinfo from '../screens/myinfo'
+import SetAgreementScreen from '../screens/set-agreement'
 import { COLORS } from '../styles/colors'
 
 import {
@@ -73,9 +74,26 @@ export default function SettingRoutes() {
         component={LoginInfo}
         name="LoginInfo"
       />
+      <STACK.Screen
+        options={{
+          headerLeft: (props) => (
+            <Pressable
+              onPress={() => navigate.replace('Main', { screen: 'Mypage' })}
+            >
+              <Icon
+                iconName="before_arrow"
+                {...props}
+                stroke={COLORS.BACK_BUTTON}
+              />
+            </Pressable>
+          ),
+          title: '정보 동의 설정',
+        }}
+        component={SetAgreementScreen}
+        name="InfoAgreementSetting"
+      />
       {/* <STACK.Screen name="AlarmSetting" />
       <STACK.Screen name="Announcement" />
-      <STACK.Screen name="InfoAgreementSetting" />
       <STACK.Screen name="Inquiry" />
       <STACK.Screen name="PrivacyPolicy" />
       <STACK.Screen name="TermOfUse" /> */}

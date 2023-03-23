@@ -1,12 +1,27 @@
 import ProfileImage from '../../../../../assets/images/profile.png'
 import Icon from '../../../../components/icon'
+import { COLORS } from '../../../../styles/colors'
 
 import * as Styled from './styled'
 
 const blurhash =
   '|rF?hV%2WCj[ayj[a|j[az_NaeWBj@ayfRayfQfQM{M|azj[azf6fQfQfQIpWXofj[ayj[j[fQayWCoeoeaya}j[ayfQa{oLj?j[WVj[ayayj[fQoff7azayj[ayj[j[ayofayayayj[fQj[ayayj[ayfjj[j[ayjuayj['
 
-export default function Card() {
+interface CardProps {
+  grade: string | undefined
+  hasInterestedRigion: boolean
+  major: string | undefined
+  name: string | undefined
+  university: string | undefined
+}
+
+export default function Card({
+  grade,
+  hasInterestedRigion,
+  major,
+  name,
+  university,
+}: CardProps) {
   return (
     <Styled.Card>
       <Styled.Profile>
@@ -16,13 +31,17 @@ export default function Card() {
           source={ProfileImage}
         />
         <Styled.ProfileText>
-          <Styled.Name>지팡스</Styled.Name>
-          <Styled.Detail>CMC대학교 지팡스학과 18</Styled.Detail>
+          <Styled.Name>{name}</Styled.Name>
+          <Styled.Detail>
+            {university} {major} {grade}
+          </Styled.Detail>
         </Styled.ProfileText>
       </Styled.Profile>
       <Styled.Box>
         <Styled.CheckBox>
-          <Icon iconName="check" />
+          {hasInterestedRigion && (
+            <Icon iconName="check" stroke={COLORS.PRIMARY_BLUE} />
+          )}
         </Styled.CheckBox>
         <Styled.BoxText>나의 관심지역</Styled.BoxText>
       </Styled.Box>

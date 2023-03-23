@@ -1,4 +1,4 @@
-import { useQuery } from '@tanstack/react-query'
+import { useMutation, useQuery } from '@tanstack/react-query'
 
 import Icon from '../../components/icon'
 import { queryKeys } from '../../react-query/constants'
@@ -13,9 +13,23 @@ const getUserInfo = async () => {
   return data
 }
 
+const deleteUser = async () => {
+  const { data } = await jipangs.deleteUser()
+  return data
+}
+
 export default function LoginInfo() {
   const dispatch = useAppDispatch()
   const { data } = useQuery([queryKeys.userInfo], getUserInfo)
+  const mutation = useMutation(deleteUser, {
+    onSuccess: () => {
+      dispatch(logout())
+    },
+  })
+
+  const handleDeleteUserButton = () => {
+    mutation.mutate()
+  }
 
   return (
     <Styled.Screen>
@@ -31,7 +45,7 @@ export default function LoginInfo() {
         <Styled.Text onPress={() => dispatch(logout())}>로그아웃</Styled.Text>
       </Styled.Button>
       <Styled.Button>
-        <Styled.Text>탈퇴하기</Styled.Text>
+        <Styled.Text onPress={handleDeleteUserButton}>탈퇴하기</Styled.Text>
       </Styled.Button>
     </Styled.Screen>
   )

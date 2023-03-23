@@ -30,6 +30,7 @@ export default function Button({
         { alignSelf: 'stretch' },
         pressed && styles.pressed,
       ]}
+      disabled={disabled}
       onPress={onPress}
     >
       <View style={[styles.button, disabled && styles.disabled, viewStyle]}>

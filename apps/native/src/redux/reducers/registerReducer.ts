@@ -22,6 +22,8 @@ import {
   MarketingPolicy,
   TermOfUse,
   AllPolicy,
+  University,
+  MajorSpecific,
 } from '../types'
 
 type RegisterType = MajorType &
@@ -153,6 +155,12 @@ export const registerSlice = createSlice({
     selectYearOfAdmission: (state, action: PayloadAction<YearOfAdmission>) => {
       state.yearOfAdmission = action.payload
     },
+    setMajor: (state, action: PayloadAction<MajorSpecific>) => {
+      state.majorSpecific = action.payload
+    },
+    setUniversity: (state, action: PayloadAction<University>) => {
+      state.university = action.payload
+    },
     setValue: (state, action: PayloadAction<RegisterType>) => {
       state.birth = action.payload.birth
       state.email = action.payload.email
@@ -206,6 +214,8 @@ export const {
   reset,
   selectGrade,
   selectYearOfAdmission,
+  setMajor,
+  setUniversity,
   setValue,
   toggleAllPolicy,
   toggleMarketingPolicy,

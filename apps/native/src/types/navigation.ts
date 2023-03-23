@@ -21,6 +21,8 @@ export type RegisterStackParamList = {
   [ROUTE_NAMES.USER_INFO]: undefined
   [ROUTE_NAMES.UNIV_INFO]: undefined
   [ROUTE_NAMES.INFO_AGREEMENT]: undefined
+  [ROUTE_NAMES.SEARCH_UNIV]: undefined
+  [ROUTE_NAMES.SEARCH_MAJOR]: undefined
 }
 
 export type MainTabParamList = {

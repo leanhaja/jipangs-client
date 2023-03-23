@@ -93,3 +93,21 @@ export interface GetDeleteUserResponse {
   response: string
   success: boolean
 }
+
+export interface GetUniversitiesResponse {
+  error: {
+    message: string
+    status: number
+  }
+  response: { name: string }[]
+  success: boolean
+}
+
+export interface GetMajorsResponse {
+  error: {
+    message: string
+    status: number
+  }
+  response: { name: string }[]
+  success: boolean
+}

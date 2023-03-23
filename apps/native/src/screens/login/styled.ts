@@ -12,12 +12,23 @@ export const Logo = styled(Image)`
   width: 252px;
 `
 
-export const LogoText = styled(Image)`
-  height: 51px;
-  width: 139px;
+export const Text = styled.Text`
+  font-family: 'Pretendard-Light';
+  font-size: 16px;
+  line-height: 24px;
+  text-align: center;
 `
+
+export const Bold = styled.Text`
+  font-family: 'Pretendard-Medium';
+`
+
 export const GapNarrow = styled.View`
   height: 18px;
+`
+
+export const GapMedium = styled.View`
+  height: 24px;
 `
 
 export const GapWide = styled.View`

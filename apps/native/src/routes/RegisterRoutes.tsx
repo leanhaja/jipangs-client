@@ -10,7 +10,9 @@ import {
 import { Pressable } from 'react-native'
 
 import Icon from '../components/icon'
+import SearchMajorScreen from '../screens/register/\bSearchMajor'
 import InfoAgreement from '../screens/register/InfoAgreement'
+import SearchUniv from '../screens/register/SearchUniv'
 import SelectMajor from '../screens/register/SelectMajor'
 import SelectRegion from '../screens/register/SelectRegion'
 import UnivInfo from '../screens/register/UnivInfo'
@@ -97,6 +99,32 @@ export default function RegisterRoutes() {
         }}
         component={UnivInfo}
         name="UnivInfo"
+      />
+      <STACK.Screen
+        options={{
+          headerLeft: (props) => (
+            <Pressable onPress={() => navigate.pop()}>
+              <Icon iconName="before_arrow" {...props} stroke={COLORS.GREY4} />
+            </Pressable>
+          ),
+          headerShown: true,
+          title: '학교 검색',
+        }}
+        component={SearchUniv}
+        name="SearchUniv"
+      />
+      <STACK.Screen
+        options={{
+          headerLeft: (props) => (
+            <Pressable onPress={() => navigate.pop()}>
+              <Icon iconName="before_arrow" {...props} stroke={COLORS.GREY4} />
+            </Pressable>
+          ),
+          headerShown: true,
+          title: '전공 검색',
+        }}
+        component={SearchMajorScreen}
+        name="SearchMajor"
       />
     </STACK.Navigator>
   )

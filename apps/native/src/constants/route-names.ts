@@ -15,6 +15,8 @@ export const ROUTE_NAMES = {
   PRIVACY_POLICY: 'PrivacyPolicy',
   REGISTER: 'Register',
   SCRAP: 'Scrap',
+  SEARCH_MAJOR: 'SearchMajor',
+  SEARCH_UNIV: 'SearchUniv',
   SELECT_MAJOR: 'SelectMajor',
   SELECT_REGION: 'SelectRegion',
   SETTING: 'Setting',

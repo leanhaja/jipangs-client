@@ -1,17 +1,33 @@
+import { Pressable, TextInputProps } from 'react-native'
+
 import Icon from '../../../../../components/icon'
+import { COLORS } from '../../../../../styles/colors'
 
 import * as Styled from './styled'
 
-export default function Input() {
+interface InputProps extends TextInputProps {
+  hasValue: boolean
+  onClickClose: () => void
+}
+
+export default function Input({
+  hasValue,
+  onClickClose,
+  ...textInputProps
+}: InputProps) {
   return (
     <Styled.InputContainer>
       <Styled.IconWrapperLeft>
-        <Icon iconName="search" />
+        <Icon fill={COLORS.GREY4} iconName="search" />
       </Styled.IconWrapperLeft>
-      <Styled.Input />
-      <Styled.IconWrapperRight>
-        <Icon iconName="x" />
-      </Styled.IconWrapperRight>
+      <Styled.Input {...textInputProps} />
+      {hasValue && (
+        <Styled.IconWrapperRight>
+          <Pressable onPress={onClickClose}>
+            <Icon fill={COLORS.GREY4} iconName="x" />
+          </Pressable>
+        </Styled.IconWrapperRight>
+      )}
     </Styled.InputContainer>
   )
 }

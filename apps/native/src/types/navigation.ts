@@ -10,7 +10,7 @@ export type RootStackParamList = {
   [ROUTE_NAMES.EXTERNAL_LINK]: ExternalLink
   [ROUTE_NAMES.MAIN]: NavigatorScreenParams<MainTabParamList>
   [ROUTE_NAMES.LOGIN]: undefined
-  [ROUTE_NAMES.REGISTER]: undefined
+  [ROUTE_NAMES.REGISTER]: NavigatorScreenParams<RegisterStackParamList>
   [ROUTE_NAMES.LOGIN_WEBVIEW]: undefined
   [ROUTE_NAMES.SETTING]: NavigatorScreenParams<SettingStackParamList>
 }

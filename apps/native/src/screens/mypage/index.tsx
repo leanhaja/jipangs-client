@@ -46,7 +46,7 @@ export default function MypageScreen({ navigation }: MypageScreenProps) {
         <Card
           grade={data?.body.user.grade}
           hasInterestedRigion
-          major={data?.body.user.grade}
+          major={data?.body.user.major}
           name={data?.body.user.name}
           university={data?.body.user.university}
         />

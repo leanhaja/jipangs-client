@@ -109,13 +109,13 @@ export default function UnivInfoScreen({ navigation }: UniversityScreenProps) {
               email: email.value,
               gender,
               grade,
-              major: '지팡스학과',
+              major: majorSpecific,
               marketingPolicy,
               name: name.value,
               nickName: nickname.value,
               privacyPolicy,
               studentId: yearOfAdmission,
-              university: '지팡스대학교',
+              university,
             },
             {
               onSuccess: () => {

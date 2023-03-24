@@ -1,5 +1,4 @@
 import { useInfiniteQuery } from '@tanstack/react-query'
-import { AxiosError } from 'axios'
 
 import { queryKeys } from '../react-query/constants'
 import jipangsApi from '../service/jipangs'
@@ -32,7 +31,7 @@ const useLatestActivities = (
     isSuccess,
     refetch,
   } = useInfiniteQuery(
-    [queryKeys.latestCard, activityType, cardType],
+    [queryKeys.latestCard, activityType, cardType, size],
     ({ pageParam = 0 }: { pageParam?: number }) =>
       getScrapCard(activityType, cardType, pageParam, size),
     {
@@ -41,11 +40,6 @@ const useLatestActivities = (
 
         const nextPage = lastPage.pageable.pageNumber + 1
         return nextPage
-      },
-      onError: (error) => {
-        if (error instanceof AxiosError) {
-          console.log(error.status === 401, 'token')
-        }
       },
     }
   )

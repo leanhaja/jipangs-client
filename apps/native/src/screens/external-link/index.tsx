@@ -25,7 +25,14 @@ function ExternalLink({
               message: link,
               title,
               url: link,
-            }).catch(console.error)
+            }).catch((e) => {
+              const errorMessage =
+                e instanceof Error
+                  ? e.message
+                  : '알 수 없는 에러가 발생했습니다.'
+
+              throw new Error(errorMessage)
+            })
           }}
           iconName="share"
         />

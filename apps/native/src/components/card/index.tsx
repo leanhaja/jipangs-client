@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useFocusEffect } from '@react-navigation/native'
+import { useCallback, useRef, useState } from 'react'
 import { StyleProp, ViewStyle } from 'react-native'
 
 import theme from '../../styles/theme'
@@ -18,8 +19,6 @@ export interface CardProps {
   title: string
 }
 
-const DEFAULT =
-  'https://jipangs-backend.s3.ap-northeast-2.amazonaws.com/test/f3c6fb2d-2ce1-4535-9245-5ef5051d47fcno-image-icon-6.png'
 const { colors } = theme
 
 function Card({
@@ -33,11 +32,27 @@ function Card({
   tags,
   title,
 }: CardProps) {
+  const prevInitialIsBookMarked = useRef<boolean | null>(null)
   const [isBookMarked, setIsBookMarked] = useState(initialIsBookMarked)
   const bigSize = size === 'big'
 
+  useFocusEffect(
+    useCallback(() => {
+      if (prevInitialIsBookMarked.current === null) {
+        setIsBookMarked(initialIsBookMarked)
+        return
+      }
+
+      if (prevInitialIsBookMarked.current !== initialIsBookMarked) {
+        setIsBookMarked(initialIsBookMarked)
+        prevInitialIsBookMarked.current = initialIsBookMarked
+      }
+    }, [initialIsBookMarked])
+  )
+
   const onClick = () => {
     setIsBookMarked((prevIsBookMarked) => !prevIsBookMarked)
+    // console.log('click')
     onScrapClick?.()
   }
 
@@ -45,13 +60,7 @@ function Card({
     <Styled.Article style={[style, { borderRadius: bigSize ? 8 : 4 }]}>
       <Styled.Figure bigSize={bigSize}>
         <Styled.Image
-          source={
-            // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-            imageSrc === DEFAULT
-              ? // eslint-disable-next-line global-require
-                require('../../../assets/images/default_card.png')
-              : { uri: imageSrc }
-          }
+          source={{ uri: imageSrc }}
           style={{ borderRadius: bigSize ? 8 : 4 }}
         />
         <Styled.ShareButton

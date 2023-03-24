@@ -15,8 +15,9 @@ const useSearchingCards = (keyword: string, size = 20) => {
     fetchNextPage: fetchNextResult,
     hasNextPage: hasNextResult,
     isSuccess,
+    refetch,
   } = useInfiniteQuery(
-    [queryKeys.searchingResultCard, keyword],
+    [queryKeys.searchingResultCard, keyword, size],
     ({ pageParam = 0 }: { pageParam?: number }) =>
       getScrapCard(keyword, pageParam, size),
     {
@@ -35,6 +36,7 @@ const useSearchingCards = (keyword: string, size = 20) => {
     fetchNextResult,
     hasNextResult,
     isSuccess,
+    refetch,
     result,
   }
 }

@@ -16,9 +16,11 @@ export const EmptyIcon = styled(IconButton)`
 `
 
 export const EmptyMessage = styled.Text`
+  align-items: stretch;
   color: ${({ theme }) => theme.colors.GREY3};
-  margin-top: 44px;
+  height: 300px;
   ${({ theme }) => theme.typographies.p2};
+  margin-top: 44px;
   text-align: center;
   width: 100%;
 `

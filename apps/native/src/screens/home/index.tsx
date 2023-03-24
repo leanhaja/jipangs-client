@@ -1,7 +1,7 @@
 import { BottomTabScreenProps } from '@react-navigation/bottom-tabs'
-import { CompositeScreenProps } from '@react-navigation/native'
+import { CompositeScreenProps, useFocusEffect } from '@react-navigation/native'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
-import React, { useEffect, useMemo, useState } from 'react'
+import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import { FlatList, LayoutChangeEvent, ScrollView, Share } from 'react-native'
 
 import Banner, { BannerProps } from '../../components/banner'
@@ -39,7 +39,7 @@ import * as Styled from './styled'
 const GAP = 16
 const CARD_WIDTH = 265
 
-type BannerCarouselItem = {
+export type BannerCarouselItem = {
   props: BannerCarouselProps
   type: 'banner-carousel'
 }
@@ -69,24 +69,73 @@ function Home({ navigation, route }: HomeScreenProps) {
   const [isSearching, setIsSearching] = useState(false)
   const [keyword, setKeyword] = useState('')
   const [tabIndex, setTabIndex] = useState(0)
-  const { cardsResponse: popularExternalCardPageInfo } = useActivities(
-    '대외활동',
-    'popular'
-  )
-  const { cardsResponse: popularVolunteerCardPageInfo } = useActivities(
-    '봉사활동',
-    'popular'
-  )
+  const {
+    cardsResponse: popularExternalCardPageInfo,
+    refetch: refetchExternal,
+  } = useActivities('대외활동', 'popular', 6)
+  const {
+    cardsResponse: popularVolunteerCardPageInfo,
+    refetch: refetchVolunteer,
+  } = useActivities('봉사활동', 'popular', 6)
   const {
     cardsResponse: latestCardPageInfo,
     fetchNextCards: fetchNextLatestCards,
     hasNextCards: hasNextLatestCard,
-  } = useActivities(tabIndex === 1 ? '대외활동' : '봉사활동', 'new')
+    refetch: refetchLatestCard,
+  } = useActivities(tabIndex === 1 ? '대외활동' : '봉사활동', 'new', 10)
   const [resultCards, setResultCards] = useState<CardInfo[]>([])
 
-  const { result } = useSearchingCards(keyword)
+  const { refetch, result } = useSearchingCards(keyword)
 
   const [innerWidth, setInnerWidth] = useState(0)
+
+  useFocusEffect(
+    useCallback(() => {
+      if (tabIndex !== 2) {
+        refetchExternal().catch((e) => {
+          const errorMessage =
+            e instanceof Error ? e.message : '알 수 없는 에러가 발생했습니다.'
+
+          throw new Error(errorMessage)
+        })
+      }
+
+      if (tabIndex !== 1) {
+        refetchVolunteer().catch((e) => {
+          const errorMessage =
+            e instanceof Error ? e.message : '알 수 없는 에러가 발생했습니다.'
+
+          throw new Error(errorMessage)
+        })
+      }
+
+      if (tabIndex !== 0) {
+        refetchLatestCard().catch((e) => {
+          const errorMessage =
+            e instanceof Error ? e.message : '알 수 없는 에러가 발생했습니다.'
+
+          throw new Error(errorMessage)
+        })
+      }
+
+      if (isSearching && keyword) {
+        refetch().catch((e) => {
+          const errorMessage =
+            e instanceof Error ? e.message : '알 수 없는 에러가 발생했습니다.'
+
+          throw new Error(errorMessage)
+        })
+      }
+    }, [
+      isSearching,
+      keyword,
+      refetch,
+      refetchExternal,
+      refetchLatestCard,
+      refetchVolunteer,
+      tabIndex,
+    ])
+  )
 
   const onLayout = (event: LayoutChangeEvent) => {
     const { width } = event.nativeEvent.layout
@@ -97,9 +146,12 @@ function Home({ navigation, route }: HomeScreenProps) {
   const { mutate: requestBookMark } = useBookMark()
 
   const popularExternalCards =
-    popularExternalCardPageInfo?.pages[0]?.content || []
+    popularExternalCardPageInfo?.pages.flatMap((page) => page?.content || []) ||
+    []
   const popularVolunteerCards =
-    popularVolunteerCardPageInfo?.pages[0]?.content || []
+    popularVolunteerCardPageInfo?.pages.flatMap(
+      (page) => page?.content || []
+    ) || []
   const latestCards =
     latestCardPageInfo?.pages.flatMap((page) => page?.content || []) || []
 
@@ -466,24 +518,22 @@ function Home({ navigation, route }: HomeScreenProps) {
             </>
           ) : (
             <ScrollView
-              onScrollEndDrag={({
+              onScroll={({
                 nativeEvent: { contentOffset, contentSize, layoutMeasurement },
               }) => {
                 const isCloseToBottom =
                   layoutMeasurement.height + contentOffset.y >=
-                  contentSize.height - mainBottomPadding
+                  (contentSize.height - mainBottomPadding) * 0.8
 
-                if (isCloseToBottom && tabIndex !== 0) {
-                  if (hasNextLatestCard) {
-                    fetchNextLatestCards().catch((e) => {
-                      const errorMessage =
-                        e instanceof Error
-                          ? e.message
-                          : '알 수 없는 에러가 발생했습니다.'
+                if (isCloseToBottom && tabIndex !== 0 && hasNextLatestCard) {
+                  fetchNextLatestCards().catch((e) => {
+                    const errorMessage =
+                      e instanceof Error
+                        ? e.message
+                        : '알 수 없는 에러가 발생했습니다.'
 
-                      throw new Error(errorMessage)
-                    })
-                  }
+                    throw new Error(errorMessage)
+                  })
                 }
               }}
               onLayout={onLayout}

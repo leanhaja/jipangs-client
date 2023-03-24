@@ -12,7 +12,7 @@ export const Container = styled.View`
 export const Divider = styled.View`
   background-color: ${({ theme }) => theme.colors.GREY2};
   height: 18px;
-  margin: 16px 0;
+  margin: 16px;
   width: 1px;
 `
 export const Button = styled.Text<StyleProps>`

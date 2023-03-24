@@ -10,7 +10,7 @@ export type RootStackParamList = {
   [ROUTE_NAMES.EXTERNAL_LINK]: ExternalLink
   [ROUTE_NAMES.MAIN]: NavigatorScreenParams<MainTabParamList>
   [ROUTE_NAMES.LOGIN]: undefined
-  [ROUTE_NAMES.REGISTER]: undefined
+  [ROUTE_NAMES.REGISTER]: NavigatorScreenParams<RegisterStackParamList>
   [ROUTE_NAMES.LOGIN_WEBVIEW]: undefined
   [ROUTE_NAMES.SETTING]: NavigatorScreenParams<SettingStackParamList>
 }
@@ -21,6 +21,8 @@ export type RegisterStackParamList = {
   [ROUTE_NAMES.USER_INFO]: undefined
   [ROUTE_NAMES.UNIV_INFO]: undefined
   [ROUTE_NAMES.INFO_AGREEMENT]: undefined
+  [ROUTE_NAMES.SEARCH_UNIV]: undefined
+  [ROUTE_NAMES.SEARCH_MAJOR]: undefined
 }
 
 export type MainTabParamList = {

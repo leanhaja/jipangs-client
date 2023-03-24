@@ -2,6 +2,8 @@ import { AxiosPromise } from 'axios'
 
 import {
   GetDeleteUserResponse,
+  GetMajorsResponse,
+  GetUniversitiesResponse,
   GetUserInfoResponse,
   PostUserAlarmReponse,
   PostUserInfoResponse,
@@ -17,6 +19,32 @@ export default {
     return Axios({
       method: 'get',
       url: '/api/v1/oauth2/delete',
+    })
+  },
+
+  /**
+   * name으로 검색한 학과를 가져오는 api
+   * @param name 검색할 학과
+   * @returns
+   */
+  getMajorList(name: string): AxiosPromise<GetMajorsResponse> {
+    return Axios({
+      method: 'get',
+      params: { name },
+      url: '/api/v1/major-management/majors',
+    })
+  },
+
+  /**
+   * name으로 검색한 대학을 가져오는 api
+   * @param name 검색할 대학
+   * @returns
+   */
+  getUniversityList(name: string): AxiosPromise<GetUniversitiesResponse> {
+    return Axios({
+      method: 'get',
+      params: { name },
+      url: '/api/v1/university-management/universites',
     })
   },
 

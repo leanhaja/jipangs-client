@@ -2,12 +2,12 @@ import styled from '@emotion/native'
 
 export const InputContainer = styled.View`
   align-items: center;
+  align-self: stretch;
   background-color: ${({ theme }) => theme.colors.GREY1};
   border-radius: 16px;
   flex-direction: row;
   height: 57px;
-
-  width: 343px;
+  margin: 0 16px;
 `
 export const Input = styled.TextInput`
   font-family: 'Pretendard-Medium';

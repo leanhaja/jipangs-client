@@ -43,6 +43,8 @@ export type University = string
 
 export type YearOfAdmission = string
 
+export type MajorSpecific = string
+
 export type GradeType = {
   grade: Grade | undefined
 }
@@ -100,7 +102,7 @@ export type EmailType = {
 }
 
 export type MajorSpecificType = {
-  majorSpecific: string
+  majorSpecific: MajorSpecific
 }
 
 export type PrivacyPolicy = { privacyPolicy: boolean }

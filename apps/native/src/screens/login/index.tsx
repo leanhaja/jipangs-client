@@ -5,9 +5,6 @@ import type { RootScreenProps } from '../../types/navigation'
 
 import * as Styled from './styled'
 
-const blurhash =
-  '|rF?hV%2WCj[ayj[a|j[az_NaeWBj@ayfRayfQfQM{M|azj[azf6fQfQfQIpWXofj[ayj[j[fQayWCoeoeaya}j[ayfQa{oLj?j[WVj[ayayj[fQoff7azayj[ayj[j[ayofayayayj[fQj[ayayj[ayfjj[j[ayjuayj['
-
 export default function LoginScreen({ navigation }: RootScreenProps<'Login'>) {
   const handleLoginPress = () => navigation.navigate('LoginWebView')
 
@@ -21,7 +18,7 @@ export default function LoginScreen({ navigation }: RootScreenProps<'Login'>) {
         큐레이션 서비스
       </Styled.Text>
       <Styled.GapNarrow />
-      <Styled.Logo contentFit="cover" placeholder={blurhash} source={Logo} />
+      <Styled.Logo source={Logo} />
       <Styled.GapWide />
       <LoginButton oauthProvider="kakao" onPress={handleLoginPress} />
     </Styled.Screen>

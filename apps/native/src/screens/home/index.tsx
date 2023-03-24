@@ -2,7 +2,14 @@ import { BottomTabScreenProps } from '@react-navigation/bottom-tabs'
 import { CompositeScreenProps, useFocusEffect } from '@react-navigation/native'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import React, { useCallback, useEffect, useMemo, useState } from 'react'
-import { FlatList, LayoutChangeEvent, ScrollView, Share } from 'react-native'
+import {
+  FlatList,
+  LayoutChangeEvent,
+  NativeScrollEvent,
+  NativeSyntheticEvent,
+  ScrollView,
+  Share,
+} from 'react-native'
 
 import Banner, { BannerProps } from '../../components/banner'
 import Card from '../../components/card'
@@ -421,9 +428,26 @@ function Home({ navigation, route }: HomeScreenProps) {
   //   )
   // }
 
+  const handleScroll = ({
+    nativeEvent: { contentOffset, contentSize, layoutMeasurement },
+  }: NativeSyntheticEvent<NativeScrollEvent>) => {
+    const isCloseToBottom =
+      layoutMeasurement.height + contentOffset.y >=
+      (contentSize.height - mainBottomPadding) * 0.8
+
+    if (isCloseToBottom && tabIndex !== 0 && hasNextLatestCard) {
+      fetchNextLatestCards().catch((e) => {
+        const errorMessage =
+          e instanceof Error ? e.message : '알 수 없는 에러가 발생했습니다.'
+
+        throw new Error(errorMessage)
+      })
+    }
+  }
+
   if (!hasInfo) {
     navigation.setParams({ isNewUser: true })
-    navigation.replace('Register')
+    navigation.replace('Register', { screen: 'InfoAgreement' })
   }
 
   return (
@@ -518,25 +542,9 @@ function Home({ navigation, route }: HomeScreenProps) {
             </>
           ) : (
             <ScrollView
-              onScroll={({
-                nativeEvent: { contentOffset, contentSize, layoutMeasurement },
-              }) => {
-                const isCloseToBottom =
-                  layoutMeasurement.height + contentOffset.y >=
-                  (contentSize.height - mainBottomPadding) * 0.8
-
-                if (isCloseToBottom && tabIndex !== 0 && hasNextLatestCard) {
-                  fetchNextLatestCards().catch((e) => {
-                    const errorMessage =
-                      e instanceof Error
-                        ? e.message
-                        : '알 수 없는 에러가 발생했습니다.'
-
-                    throw new Error(errorMessage)
-                  })
-                }
-              }}
               onLayout={onLayout}
+              onScroll={handleScroll}
+              scrollEventThrottle={50}
               style={{ flex: 1 }}
             >
               {createMain(getPageItems())}
